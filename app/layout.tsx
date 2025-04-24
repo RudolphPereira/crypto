@@ -8,6 +8,7 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+// eslint-disable-next-line
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
