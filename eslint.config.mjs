@@ -1,3 +1,4 @@
+import js from "@eslint/js";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
@@ -7,11 +8,17 @@ const __dirname = dirname(__filename);
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
+  recommendedConfig: js.configs.recommended,
 });
 
 const eslintConfig = [
   ...compat.config({
-    extends: ["next/core-web-vitals", "next/typescript"],
+    extends: [
+      "next/core-web-vitals",
+      "next/typescript",
+      "eslint:recommended",
+      "plugin:react/recommended",
+    ],
     rules: {
       "no-unused-vars": "error", // Disallows unused variables and functions
       "no-console": "error", // Disallows console.log statements
@@ -20,7 +27,18 @@ const eslintConfig = [
       semi: ["error", "always"], // Enforces semicolons at the end of statements
       "no-multiple-empty-lines": ["error", { max: 1 }], // Disallows multiple empty lines
       "no-extra-semi": "error", // Disallows unnecessary semicolons
+      "react/no-array-index-key": "warn",
+      "react/react-in-jsx-scope": "off",
+      "no-undef": "off",
       camelcase: "error", // Enforces camelCase naming convention
+    },
+
+    plugins: ["react"],
+
+    settings: {
+      react: {
+        version: "detect",
+      },
     },
   }),
 ];
