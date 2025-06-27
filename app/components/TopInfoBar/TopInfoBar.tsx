@@ -6,9 +6,9 @@ import increaseIcon from "../../assets/increase.svg";
 import bitcoinIcon from "../../assets/Currency-icon-02.svg";
 import ethIcon from "../../assets/Currency-icon-01.svg";
 
-type Props = {};
+// type Props = {};
 
-export const TopInfoBar = (props: Props) => {
+export const TopInfoBar = () => {
   return (
     <div className="infoBar bg-deep-plum px-2 py-3 border-b border-b-white/10 text-white flex justify-center w-full min-h-14">
       <div className="infoBarBox flex items-center gap-5 flex-wrap justify-center">

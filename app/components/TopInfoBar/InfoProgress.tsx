@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Progress } from "@/components/ui/progress";
 
 type Props = {
-  image?: any;
+  image?: string;
   number: string;
   progressColor: string;
 };

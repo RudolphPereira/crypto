@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 type Props = {
-  image: any;
+  image: string;
   text: string;
   number: number;
   additionalClass?: string;
