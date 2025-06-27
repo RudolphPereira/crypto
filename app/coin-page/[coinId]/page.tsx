@@ -4,5 +4,5 @@ export default async function CoinPage({
   params: Promise<{ coinId: string }>;
 }) {
   const { coinId } = await params;
-  return <div>{coinId}</div>;
+  return <div></div>;
 }
