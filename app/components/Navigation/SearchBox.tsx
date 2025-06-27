@@ -38,7 +38,9 @@ const FRAMEWORKS = [
 ];
 
 export const SearchBox = () => {
+  // eslint-disable-next-line
   const [isLoading, setLoading] = useState(false);
+  // eslint-disable-next-line
   const [isDisabled, setDisabled] = useState(false);
   const [value, setValue] = useState<Option>();
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import sunIcon from "../../assets/sunIcon.svg";
-import moonIcon from "../../assets/moonIcon.svg";
+// import moonIcon from "../../assets/moonIcon.svg";
 import { Button } from "@/components/ui/button";
 
 export const ThemeBox = () => {

@@ -7,7 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Check, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 const currencies = [
@@ -65,9 +65,6 @@ export const CurrencyBox = () => {
                   <span>{currency.name}</span>
                 </div>
               </div>
-              {/* {selectedCurrency.id === currency.id && (
-                <Check className="ml-1" />
-              )} */}
             </DropdownMenuItem>
           ))}
         </DropdownMenuContent>

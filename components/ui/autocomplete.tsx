@@ -18,6 +18,7 @@ type AutoCompleteProps = {
   options: Option[];
   emptyMessage: string;
   value?: Option;
+  // eslint-disable-next-line
   onValueChange?: (value: Option) => void;
   isLoading?: boolean;
   disabled?: boolean;
@@ -92,7 +93,7 @@ export const AutoComplete = ({
 
   return (
     <CommandPrimitive onKeyDown={handleKeyDown}>
-      <div className="h-[100%] w-[100%] border border-white/15 rounded-sm bg-black-russian text-sm">
+      <div className="h-[100%] w-[100%]  text-sm">
         <CommandInput
           ref={inputRef}
           value={inputValue}
