@@ -108,7 +108,7 @@ export const AutoComplete = ({
       <div className="relative">
         <div
           className={cn(
-            "animate-in fade-in-0 zoom-in-95 absolute -top-1 rounded-b-sm z-10 w-full bg-black-russian outline-none border border-white/15 text-white",
+            "animate-in fade-in-0 zoom-in-95 absolute -top-1 rounded-b-sm z-10 w-full bg-gradient-to-r from-black-russian to-dark-blue outline-none border border-white/15 text-white",
             isOpen ? "block" : "hidden"
           )}
         >

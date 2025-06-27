@@ -31,7 +31,7 @@ export const CurrencyBox = () => {
   return (
     <div className="currency h-[100%]">
       <DropdownMenu>
-        <DropdownMenuTrigger className="flex justify-between items-center gap-2 px-2 h-10 outline-none min-w-[7rem] rounded-sm border border-white/15 bg-black-russian text-sm w-[100%]">
+        <DropdownMenuTrigger className="flex justify-between items-center gap-2 px-2 h-10 outline-none min-w-[7rem] rounded-sm border border-white/15 bg-black-russian text-sm w-[100%] cursor-pointer">
           <Avatar className="rounded-sm h-6 w-6">
             <AvatarFallback className="rounded-sm bg-primary text-primary-foreground">
               {selectedCurrency.name[0]}
@@ -46,7 +46,7 @@ export const CurrencyBox = () => {
         </DropdownMenuTrigger>
 
         <DropdownMenuContent
-          className="absolute px-1 -top-2 rounded-none rounded-b-sm z-10 outline-none border border-white/15 text-white bg-black-russian"
+          className="absolute px-1 -top-2 rounded-none rounded-b-sm z-10 outline-none border border-white/15 text-white bg-gradient-to-r from-black-russian to-dark-blue"
           align="start"
         >
           {currencies.map((currency) => (
