@@ -11,7 +11,7 @@ import ethIcon from "../../assets/Currency-icon-01.svg";
 export const TopInfoBar = () => {
   return (
     <div className="infoBar bg-deep-plum px-2 py-3 border-b border-b-white/10 text-white flex justify-center w-full min-h-14">
-      <div className="infoBarBox flex items-center gap-5 flex-wrap justify-center">
+      <div className="infoBarBox flex items-center sm:gap-7 gap-5 flex-wrap justify-center">
         <InfoText
           image={coinIcon}
           iconSize="w-[1.15rem] h-[1.15rem]"

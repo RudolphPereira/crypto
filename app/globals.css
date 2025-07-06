@@ -5,12 +5,15 @@
 
 @theme inline {
   --color-deep-plum: #1e1932;
-  --color-app-background: #191925;
+  --color-app-background: #13121a;
+  --color-black-russian: #191925;
+  --color-dark-blue: #191932;
   --color-orange: #f7931a;
   --color-pastel-blue: #849dff;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-space-grotesk: var(--font-space-grotesk);
+  --font-inter: var(--font-inter);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -122,4 +125,8 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.active {
+  opacity: 1;
 }
