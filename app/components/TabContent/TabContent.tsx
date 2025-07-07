@@ -15,7 +15,7 @@ export const TabContent = () => {
                 value={tab}
                 key={tab}
                 defaultValue={tab}
-                className="cursor-pointer text-white rounded-sm h-10 border-transparent border-b-0 data-[state=active]:bg-periwinkle-blue/50 data-[state=active]:border-periwinkle-blue data-[state=active]:border-b-0 data-[state=active]:drop-shadow-xl data-[state=active]:drop-shadow-periwinkle-blue/60"
+                className="cursor-pointer text-white rounded-sm h-10 border-transparent border-b-0 data-[state=active]:bg-periwinkle-blue/50 data-[state=active]:border-periwinkle-blue data-[state=active]:border-b-0 data-[state=active]:drop-shadow-md data-[state=active]:drop-shadow-periwinkle-blue/60"
               >
                 {tab}
               </TabsTrigger>
