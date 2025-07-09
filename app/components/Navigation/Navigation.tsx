@@ -5,21 +5,21 @@ import { LinkBox } from "./LinkBox";
 
 export const Navigation = () => {
   return (
-    <nav className="navigation sm:flex-row flex flex-col items-center justify-between lg:gap-20 gap-5 py-4 flex-wrap">
-      <div className="navigationLeftBox flex-1">
-        <div className="linkBox">
+    <nav className="sm:flex-row flex flex-col items-center justify-between lg:gap-20 gap-5 py-4 flex-wrap">
+      <div className="flex-1">
+        <div className="">
           <LinkBox />
         </div>
       </div>
 
-      <div className="navigationRightBox flex-1 flex items-center gap-2 justify-end">
-        <div className="searchBox xl:w-auto w-[100%]">
+      <div className="flex-1 flex items-center gap-2 justify-end">
+        <div className="xl:w-auto w-[100%]">
           <SearchBox />
         </div>
-        <div className="currencyBox">
+        <div className="">
           <CurrencyBox />
         </div>
-        <div className="themeBox">
+        <div className="">
           <ThemeBox />
         </div>
       </div>

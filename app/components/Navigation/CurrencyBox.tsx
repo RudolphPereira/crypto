@@ -29,7 +29,7 @@ export const CurrencyBox = () => {
   const [selectedCurrency, setSelectedCurrency] = useState(currencies[0]);
 
   return (
-    <div className="currency h-[100%]">
+    <div className="h-[100%]">
       <DropdownMenu>
         <DropdownMenuTrigger className="flex justify-between items-center gap-2 px-2 h-10 outline-none min-w-[7rem] rounded-sm border border-white/15 bg-black-russian text-sm w-[100%] cursor-pointer">
           <Avatar className="rounded-sm h-6 w-6">

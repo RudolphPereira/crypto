@@ -7,8 +7,8 @@ import { CoinSlider } from "./CoinSlider";
 export const SliderContent = () => {
   return (
     <div className="slider">
-      <div className="sliderBox flex flex-col gap-5">
-        <div className="topBox flex flex-col gap-3 sm:flex-row justify-between sm:items-end">
+      <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-3 sm:flex-row justify-between sm:items-end">
           <p className="text-sm text-white/70">
             Select the currency to view statistics
           </p>
