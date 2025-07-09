@@ -10,17 +10,17 @@ type Props = {
 
 export const InfoProgress = ({ image, number, progressColor }: Props) => {
   return (
-    <div className="infoProgress">
-      <div className="infoProgressBox text-xs flex items-center gap-1.5">
+    <div className="">
+      <div className="text-xs flex items-center gap-1.5">
         {image && (
-          <div className="iconBox w-[1.3rem] h-[1.3rem] overflow-visible">
+          <div className="w-[1.3rem] h-[1.3rem] overflow-visible">
             <Image src={image} alt="coin icon" className="w-full h-full" />
           </div>
         )}
-        <div className="numBox">
+        <div className="">
           <span>{number}</span>
         </div>
-        <div className="progressBox">
+        <div className="">
           <Progress
             value={44}
             className={`w-[3.5rem] h-[0.4rem] ${progressColor} bg-white/40 rounded-xs [&>div]:rounded-xs`}

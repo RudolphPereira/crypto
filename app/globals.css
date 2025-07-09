@@ -10,6 +10,10 @@
   --color-dark-blue: #191932;
   --color-orange: #f7931a;
   --color-pastel-blue: #849dff;
+  --color-dark-gunmetal: #232336;
+  --color-periwinkle-blue: #7878fa;
+  --color-mint-green: #01f1e3;
+  --color-deep-pink: #fe2264;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-space-grotesk: var(--font-space-grotesk);
@@ -129,4 +133,20 @@
 
 .active {
   opacity: 1;
+}
+
+.active:hover {
+  color: #fff;
+}
+
+button {
+  transition: all ease-in 0.2s;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+disabled {
+  display: none;
 }

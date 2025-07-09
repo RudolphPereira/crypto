@@ -44,7 +44,7 @@ export const SearchBox = () => {
   const [isDisabled, setDisabled] = useState(false);
   const [value, setValue] = useState<Option>();
   return (
-    <div className="search sm:min-w-[20rem]">
+    <div className="sm:min-w-[20rem]">
       <AutoComplete
         options={FRAMEWORKS}
         emptyMessage="No results."

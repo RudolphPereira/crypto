@@ -11,13 +11,13 @@ import { usePathname } from "next/navigation";
 export const LinkBox = () => {
   const pathname = usePathname();
   return (
-    <div className="links flex justify-center sm:justify-between items-center flex-wrap gap-5">
-      <div className="logoBox">
+    <div className="flex justify-center sm:justify-between items-center flex-wrap gap-5">
+      <div className="">
         <Link
           href="/"
-          className="homeLink flex items-center gap-2 font-inter font-[700] text-xl"
+          className="flex items-center gap-2 font-inter font-[700] text-xl"
         >
-          <div className="imgBox w-[2.3rem] h-[2.3rem]">
+          <div className="w-[2.3rem] h-[2.3rem]">
             <Image
               src={logo}
               alt="logo"
@@ -27,15 +27,15 @@ export const LinkBox = () => {
           Crypto Vault
         </Link>
       </div>
-      <ul className="navigationList flex gap-5 text-sm">
-        <li className="navigationItem">
+      <ul className="flex gap-5 text-sm">
+        <li className="">
           <Link
             href="/"
-            className={`navigationLink flex items-center gap-2 opacity-50 transition-opacity ease-in duration-75 ${
+            className={`flex items-center gap-2 opacity-50 transition-all ease-in duration-75 hover:text-periwinkle-blue hover:opacity-100 ${
               pathname === "/" ? "active" : ""
             }`}
           >
-            <div className="imgBox w-[1.2rem] h-[1.2rem]">
+            <div className="w-[1.2rem] h-[1.2rem]">
               <Image
                 src={pathname === "/" ? homeIconFull : homeIcon}
                 alt="home"
@@ -45,14 +45,14 @@ export const LinkBox = () => {
             Home
           </Link>
         </li>
-        <li className="navigationItem">
+        <li className="">
           <Link
             href="/portfolio"
-            className={`navigationLink flex items-center gap-2 opacity-50 transition-opacity ease-in duration-75 ${
+            className={`flex items-center gap-2 opacity-50 transition-all ease-in duration-75 hover:text-periwinkle-blue hover:opacity-100 ${
               pathname === "/portfolio" ? "active" : ""
             }`}
           >
-            <div className="imgBox w-[1.2rem] h-[1.2rem]">
+            <div className="w-[1.2rem] h-[1.2rem]">
               <Image
                 src={
                   pathname === "/portfolio" ? portfolioIconFull : portfolioIcon

@@ -7,12 +7,12 @@ import { Button } from "@/components/ui/button";
 export const ThemeBox = () => {
   return (
     <div className="theme h-10 w-10">
-      <div className="themeBtn border rounded-sm h-[100%] border-white/15 text-sm bg-black-russian">
+      <div className="h-10">
         <Button
           size="icon"
-          className="h-[100%] w-[100%] cursor-pointer bg-black-russian rounded-sm hover:bg-black-russian group"
+          className="border h-[100%] w-[100%] border-white/15 text-sm cursor-pointer bg-black-russian rounded-sm group hover:bg-periwinkle-blue/60 hover:border-b-0 hover:border-periwinkle-blue  hover:drop-shadow-periwinkle-blue/60"
         >
-          <div className="imgBox w-[1.3rem] h-[1.3rem]">
+          <div className="w-[1.3rem] h-[1.3rem]">
             <Image
               src={sunIcon}
               alt="logo"

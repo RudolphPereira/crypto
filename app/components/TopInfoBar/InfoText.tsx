@@ -17,17 +17,17 @@ export const InfoText = ({
   iconSize,
 }: Props) => {
   return (
-    <div className="infoText text-xs flex items-center gap-1.5">
-      <div className={`iconBox ${iconSize}`}>
+    <div className="text-xs flex items-center gap-1.5">
+      <div className={`${iconSize}`}>
         <Image src={image} alt="flash circle" className="w-full h-full" />
       </div>
 
-      <div className={`infoBox flex items-center gap-1.5 ${additionalClass}`}>
-        <div className="textBox text-white/80 font-[300]">
+      <div className={`flex items-center gap-1.5 ${additionalClass}`}>
+        <div className="text-white/80 font-[300]">
           <span>{text}</span>
         </div>
 
-        <div className="numBox">
+        <div className="">
           <span>{number}</span>
         </div>
       </div>
