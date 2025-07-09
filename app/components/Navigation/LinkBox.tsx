@@ -31,7 +31,7 @@ export const LinkBox = () => {
         <li className="navigationItem">
           <Link
             href="/"
-            className={`navigationLink flex items-center gap-2 opacity-50 transition-opacity ease-in duration-75 ${
+            className={`navigationLink flex items-center gap-2 opacity-50 transition-all ease-in duration-75 hover:text-periwinkle-blue hover:opacity-100 ${
               pathname === "/" ? "active" : ""
             }`}
           >
@@ -48,7 +48,7 @@ export const LinkBox = () => {
         <li className="navigationItem">
           <Link
             href="/portfolio"
-            className={`navigationLink flex items-center gap-2 opacity-50 transition-opacity ease-in duration-75 ${
+            className={`navigationLink flex items-center gap-2 opacity-50 transition-all ease-in duration-75 hover:text-periwinkle-blue hover:opacity-100 ${
               pathname === "/portfolio" ? "active" : ""
             }`}
           >

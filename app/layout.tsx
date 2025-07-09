@@ -33,8 +33,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${spaceGrotesk.variable} ${inter.variable}`}>
-        <main className="main bg-app-background text-white font-space-grotesk">
+      <body
+        className={`${spaceGrotesk.variable} ${inter.variable} bg-dark-gunmetal`}
+      >
+        <main className="main bg-app-background text-white font-space-grotesk min-h-[100vh] max-w-[1500px] m-auto">
           <TopInfoBar />
           <div className="content w-[90%] mx-auto">
             <Navigation />
