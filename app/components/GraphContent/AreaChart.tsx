@@ -64,7 +64,9 @@ export function ChartAreaGradient() {
         >
           <ChartTooltip
             cursor={false}
-            content={<ChartTooltipContent className="rounded-sm" />}
+            content={
+              <ChartTooltipContent className="rounded-sm" hideIndicator />
+            }
           />
           <defs>
             <linearGradient id="fillCoinOne" x1="0" y1="0" x2="0" y2="1">
