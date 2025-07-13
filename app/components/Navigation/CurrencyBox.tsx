@@ -33,7 +33,7 @@ export const CurrencyBox = () => {
       <DropdownMenu>
         <DropdownMenuTrigger className="flex justify-between items-center gap-2 px-2 h-10 outline-none min-w-[7rem] rounded-sm border border-white/15 bg-black-russian text-sm w-[100%] cursor-pointer">
           <Avatar className="rounded-sm h-6 w-6">
-            <AvatarFallback className="rounded-sm bg-primary text-primary-foreground">
+            <AvatarFallback className="rounded-sm bg-background text-foreground text-sm">
               {selectedCurrency.name[0]}
             </AvatarFallback>
           </Avatar>
@@ -53,11 +53,11 @@ export const CurrencyBox = () => {
             <DropdownMenuItem
               key={currency.id}
               onClick={() => setSelectedCurrency(currency)}
-              className="w-[100%] cursor-pointer"
+              className="w-full cursor-pointer"
             >
-              <div className="flex items-center gap-2">
-                <Avatar className="rounded-md h-6 w-6">
-                  <AvatarFallback className="rounded-md bg-primary/10 text-foreground text-sm">
+              <div className="flex items-center gap-3 w-full">
+                <Avatar className="rounded-sm h-6 w-6">
+                  <AvatarFallback className="rounded-sm bg-foreground text-background text-xs">
                     {currency.name[0]}
                   </AvatarFallback>
                 </Avatar>
