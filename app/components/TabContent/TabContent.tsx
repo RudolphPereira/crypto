@@ -1,6 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SliderContent } from "../SliderContent/SliderContent";
 import { GraphContent } from "../GraphContent/GraphContent";
+import { TableContent } from "../TableContent/TableContent";
 
 type Triggers = string[];
 
@@ -29,6 +30,7 @@ export const TabContent = () => {
         <TabsContent value={tabs[0]} className="flex flex-col gap-8">
           <SliderContent />
           <GraphContent />
+          <TableContent />
         </TabsContent>
         <TabsContent value={tabs[1]}>
           <h1>Jello</h1>

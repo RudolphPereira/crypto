@@ -9,39 +9,39 @@ import {
 } from "@/components/ui/chart";
 
 const chartData = [
-  { month: "January", desktop: 186, mobile: 80, tab: 123 },
-  { month: "February", desktop: 305, mobile: 200, tab: 400 },
-  { month: "March", desktop: 237, mobile: 120, tab: 200 },
-  { month: "April", desktop: 73, mobile: 190, tab: 250 },
-  { month: "May", desktop: 209, mobile: 130, tab: 100 },
-  { month: "June", desktop: 214, mobile: 140, tab: 150 },
-  { month: "March", desktop: 237, mobile: 120, tab: 200 },
-  { month: "January", desktop: 186, mobile: 80, tab: 123 },
-  { month: "February", desktop: 305, mobile: 200, tab: 400 },
-  { month: "March", desktop: 237, mobile: 120, tab: 200 },
-  { month: "April", desktop: 73, mobile: 190, tab: 250 },
-  { month: "May", desktop: 209, mobile: 130, tab: 100 },
-  { month: "June", desktop: 214, mobile: 140, tab: 150 },
-  { month: "March", desktop: 237, mobile: 120, tab: 200 },
-  { month: "January", desktop: 186, mobile: 80, tab: 123 },
-  { month: "February", desktop: 305, mobile: 200, tab: 400 },
-  { month: "March", desktop: 237, mobile: 120, tab: 200 },
-  { month: "April", desktop: 73, mobile: 190, tab: 250 },
-  { month: "May", desktop: 209, mobile: 130, tab: 100 },
-  { month: "June", desktop: 214, mobile: 140, tab: 150 },
+  { month: "January", coinOne: 186, coinTwo: 80, coinThree: 123 },
+  { month: "February", coinOne: 305, coinTwo: 200, coinThree: 400 },
+  { month: "March", coinOne: 237, coinTwo: 120, coinThree: 200 },
+  { month: "April", coinOne: 73, coinTwo: 190, coinThree: 250 },
+  { month: "May", coinOne: 209, coinTwo: 130, coinThree: 100 },
+  { month: "June", coinOne: 214, coinTwo: 140, coinThree: 150 },
+  { month: "March", coinOne: 237, coinTwo: 120, coinThree: 200 },
+  { month: "January", coinOne: 186, coinTwo: 80, coinThree: 123 },
+  { month: "February", coinOne: 305, coinTwo: 200, coinThree: 400 },
+  { month: "March", coinOne: 237, coinTwo: 120, coinThree: 200 },
+  { month: "April", coinOne: 73, coinTwo: 190, coinThree: 250 },
+  { month: "May", coinOne: 209, coinTwo: 130, coinThree: 100 },
+  { month: "June", coinOne: 214, coinTwo: 140, coinThree: 150 },
+  { month: "March", coinOne: 237, coinTwo: 120, coinThree: 200 },
+  { month: "January", coinOne: 186, coinTwo: 80, coinThree: 123 },
+  { month: "February", coinOne: 305, coinTwo: 200, coinThree: 400 },
+  { month: "March", coinOne: 237, coinTwo: 120, coinThree: 200 },
+  { month: "April", coinOne: 73, coinTwo: 190, coinThree: 250 },
+  { month: "May", coinOne: 209, coinTwo: 130, coinThree: 100 },
+  { month: "June", coinOne: 214, coinTwo: 140, coinThree: 150 },
 ];
 
 const chartConfig = {
   coinOne: {
-    label: "Desktop",
+    label: "Coin One",
     color: "var(--chart-1)",
   },
   coinTwo: {
-    label: "Mobile",
+    label: "Coin Two",
     color: "var(--chart-2)",
   },
   coinThree: {
-    label: "Tab",
+    label: "Coin Three",
     color: "var(--chart-3)",
   },
 } satisfies ChartConfig;
@@ -106,16 +106,9 @@ export function ChartAreaGradient() {
               />
             </linearGradient>
           </defs>
+
           <Area
-            dataKey="mobile"
-            type="natural"
-            fill="url(#fillCoinTwo)"
-            fillOpacity={0.5}
-            stroke="var(--color-coinTwo)"
-            stackId="a"
-          />
-          <Area
-            dataKey="desktop"
+            dataKey="coinOne"
             type="natural"
             fill="url(#fillCoinOne)"
             fillOpacity={0.5}
@@ -123,7 +116,15 @@ export function ChartAreaGradient() {
             stackId="a"
           />
           <Area
-            dataKey="tab"
+            dataKey="coinTwo"
+            type="natural"
+            fill="url(#fillCoinTwo)"
+            fillOpacity={0.5}
+            stroke="var(--color-coinTwo)"
+            stackId="a"
+          />
+          <Area
+            dataKey="coinThree"
             type="natural"
             fill="url(#fillCoinThree)"
             fillOpacity={0.5}
