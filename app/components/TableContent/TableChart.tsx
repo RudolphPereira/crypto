@@ -41,18 +41,19 @@ export function TableChart({ highStatus }: Props) {
                 stopColor={
                   highStatus ? "var(--color-high)" : "var(--color-low)"
                 }
-                stopOpacity={0.8}
+                stopOpacity={1}
               />
               <stop
                 offset="95%"
                 stopColor={
                   highStatus ? "var(--color-high)" : "var(--color-low)"
                 }
-                stopOpacity={0.2}
+                stopOpacity={0}
               />
             </linearGradient>
           </defs>
           <Area
+            strokeWidth={1.5}
             dataKey="desktop"
             type="natural"
             fill="url(#fillGraph)"

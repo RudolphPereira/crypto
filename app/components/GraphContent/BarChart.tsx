@@ -76,36 +76,36 @@ export function ChartBarStacked() {
               <stop
                 offset="5%"
                 stopColor="var(--color-coinOne)"
-                stopOpacity={0.8}
+                stopOpacity={1}
               />
               <stop
                 offset="95%"
                 stopColor="var(--color-coinOne)"
-                stopOpacity={0.2}
+                stopOpacity={0}
               />
             </linearGradient>
             <linearGradient id="fillCoinTwo" x1="0" y1="0" x2="0" y2="1">
               <stop
                 offset="5%"
                 stopColor="var(--color-coinTwo)"
-                stopOpacity={0.8}
+                stopOpacity={1}
               />
               <stop
                 offset="95%"
                 stopColor="var(--color-coinTwo)"
-                stopOpacity={0.1}
+                stopOpacity={0}
               />
             </linearGradient>
             <linearGradient id="fillCoinThree" x1="0" y1="0" x2="0" y2="1">
               <stop
                 offset="5%"
                 stopColor="var(--color-coinThree)"
-                stopOpacity={0.8}
+                stopOpacity={1}
               />
               <stop
                 offset="95%"
                 stopColor="var(--color-coinThree)"
-                stopOpacity={0.1}
+                stopOpacity={0}
               />
             </linearGradient>
           </defs>
@@ -114,7 +114,7 @@ export function ChartBarStacked() {
             type="natural"
             stackId="a"
             fill="url(#fillCoinOne)"
-            fillOpacity={0.8}
+            fillOpacity={1}
             radius={[4, 4, 0, 0]}
           />
           <Bar
@@ -122,7 +122,7 @@ export function ChartBarStacked() {
             type="natural"
             stackId="a"
             fill="url(#fillCoinTwo)"
-            fillOpacity={0.8}
+            fillOpacity={1}
             radius={[4, 4, 0, 0]}
           />
           <Bar
@@ -130,7 +130,7 @@ export function ChartBarStacked() {
             type="natural"
             stackId="a"
             fill="url(#fillCoinThree)"
-            fillOpacity={0.8}
+            fillOpacity={1}
             radius={[4, 4, 0, 0]}
           />
 

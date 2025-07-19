@@ -9,26 +9,26 @@ import {
 } from "@/components/ui/chart";
 
 const chartData = [
-  { month: "January", coinOne: 186, coinTwo: 80, coinThree: 123 },
-  { month: "February", coinOne: 305, coinTwo: 200, coinThree: 400 },
-  { month: "March", coinOne: 237, coinTwo: 120, coinThree: 200 },
-  { month: "April", coinOne: 73, coinTwo: 190, coinThree: 250 },
-  { month: "May", coinOne: 209, coinTwo: 130, coinThree: 100 },
-  { month: "June", coinOne: 214, coinTwo: 140, coinThree: 150 },
-  { month: "March", coinOne: 237, coinTwo: 120, coinThree: 200 },
-  { month: "January", coinOne: 186, coinTwo: 80, coinThree: 123 },
-  { month: "February", coinOne: 305, coinTwo: 200, coinThree: 400 },
-  { month: "March", coinOne: 237, coinTwo: 120, coinThree: 200 },
-  { month: "April", coinOne: 73, coinTwo: 190, coinThree: 250 },
-  { month: "May", coinOne: 209, coinTwo: 130, coinThree: 100 },
-  { month: "June", coinOne: 214, coinTwo: 140, coinThree: 150 },
-  { month: "March", coinOne: 237, coinTwo: 120, coinThree: 200 },
-  { month: "January", coinOne: 186, coinTwo: 80, coinThree: 123 },
-  { month: "February", coinOne: 305, coinTwo: 200, coinThree: 400 },
-  { month: "March", coinOne: 237, coinTwo: 120, coinThree: 200 },
-  { month: "April", coinOne: 73, coinTwo: 190, coinThree: 250 },
-  { month: "May", coinOne: 209, coinTwo: 130, coinThree: 100 },
-  { month: "June", coinOne: 214, coinTwo: 140, coinThree: 150 },
+  { month: "January", coinOne: 186 },
+  { month: "February", coinOne: 305 },
+  { month: "March", coinOne: 237 },
+  { month: "April", coinOne: 73 },
+  { month: "May", coinOne: 209 },
+  { month: "June", coinOne: 214 },
+  { month: "March", coinOne: 237 },
+  { month: "January", coinOne: 186 },
+  { month: "February", coinOne: 305 },
+  { month: "March", coinOne: 237 },
+  { month: "April", coinOne: 73 },
+  { month: "May", coinOne: 209 },
+  { month: "June", coinOne: 214 },
+  { month: "March", coinOne: 237 },
+  { month: "January", coinOne: 186 },
+  { month: "February", coinOne: 305 },
+  { month: "March", coinOne: 237 },
+  { month: "April", coinOne: 73 },
+  { month: "May", coinOne: 209 },
+  { month: "June", coinOne: 214 },
 ];
 
 const chartConfig = {
@@ -36,17 +36,17 @@ const chartConfig = {
     label: "Coin One",
     color: "var(--chart-1)",
   },
-  coinTwo: {
-    label: "Coin Two",
-    color: "var(--chart-2)",
-  },
-  coinThree: {
-    label: "Coin Three",
-    color: "var(--chart-3)",
-  },
+  //   coinTwo: {
+  //     label: "Coin Two",
+  //     color: "var(--chart-2)",
+  //   },
+  //   coinThree: {
+  //     label: "Coin Three",
+  //     color: "var(--chart-3)",
+  //   },
 } satisfies ChartConfig;
 
-export function ChartAreaGradient() {
+export function SingleAreaChart() {
   return (
     <div className="flex-1">
       <ChartContainer
@@ -81,7 +81,7 @@ export function ChartAreaGradient() {
                 stopOpacity={0}
               />
             </linearGradient>
-            <linearGradient id="fillCoinTwo" x1="0" y1="0" x2="0" y2="1">
+            {/* <linearGradient id="fillCoinTwo" x1="0" y1="0" x2="0" y2="1">
               <stop
                 offset="5%"
                 stopColor="var(--color-coinTwo)"
@@ -104,7 +104,7 @@ export function ChartAreaGradient() {
                 stopColor="var(--color-coinThree)"
                 stopOpacity={0}
               />
-            </linearGradient>
+            </linearGradient> */}
           </defs>
 
           <Area
@@ -116,24 +116,7 @@ export function ChartAreaGradient() {
             stackId="a"
             strokeWidth={2}
           />
-          <Area
-            dataKey="coinTwo"
-            type="natural"
-            fill="url(#fillCoinTwo)"
-            fillOpacity={0.6}
-            stroke="var(--color-coinTwo)"
-            stackId="a"
-            strokeWidth={2}
-          />
-          <Area
-            dataKey="coinThree"
-            type="natural"
-            fill="url(#fillCoinThree)"
-            fillOpacity={0.6}
-            stroke="var(--color-coinThree)"
-            stackId="a"
-            strokeWidth={2}
-          />
+
           <XAxis
             height={27}
             dataKey="month"

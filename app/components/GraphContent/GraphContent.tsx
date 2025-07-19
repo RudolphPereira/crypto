@@ -9,7 +9,7 @@ export const GraphContent = () => {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex md:flex-row flex-col gap-6 w-full mt-10 md:mt-0">
-        <div className="flex-1 p-3 md:p-6 bg-periwinkle-blue/15 rounded-lg flex flex-col">
+        <div className="flex-1 p-3 md:p-6 bg-dark-blue rounded-lg flex flex-col">
           <CoinDetails
             titleName="Bitcoin (BTC)"
             value="$13.431 mln"
@@ -17,7 +17,7 @@ export const GraphContent = () => {
           />
           <ChartAreaGradient />
         </div>
-        <div className="flex-1 p-3 md:p-6 bg-violet-blue/12 rounded-lg flex flex-col">
+        <div className="flex-1 p-3 md:p-6 bg-deep-plum rounded-lg flex flex-col">
           <CoinDetails
             titleName="Volume 24h"
             value="$807.243 bln"
