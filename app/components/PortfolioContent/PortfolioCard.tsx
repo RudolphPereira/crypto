@@ -1,4 +1,5 @@
 import React from "react";
+import { ActionBtn } from "../AppButtons/AppBtns";
 
 type Props = {
   coinDetails: React.ReactNode;
@@ -8,8 +9,12 @@ type Props = {
 export const PortfolioCard = ({ coinDetails, portfolioStats }: Props) => {
   return (
     <div className="bg-black-russian flex lg:flex-row flex-col w-full rounded-lg">
-      <div className="bg-dark-blue p-3 md:p-6 rounded-t-lg lg:rounded-tr-none lg:rounded-l-lg flex-1">
+      <div className="bg-dark-blue p-3 md:p-6 rounded-t-lg lg:rounded-tr-none lg:rounded-l-lg flex-1 flex flex-col gap-3">
         {coinDetails}
+        <ActionBtn
+          btnTitle="Remove Coin"
+          additionalClass="w-fit hover:bg-deep-pink/40 hover:border-deep-pink/50"
+        />
       </div>
       <div className="flex-1/2 p-3 md:p-6 sm:rounded-r-lg grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
         {portfolioStats}
