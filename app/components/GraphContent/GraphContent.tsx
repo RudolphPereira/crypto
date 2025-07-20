@@ -1,5 +1,5 @@
 import React from "react";
-import { CoinDetails } from "./CoinDetails";
+import { CoinDetails } from "../CoinDetails/CoinDetails";
 import { ChartAreaGradient } from "./AreaChart";
 import { ChartBarStacked } from "./BarChart";
 import { CoinBadge } from "./CoinBadge";

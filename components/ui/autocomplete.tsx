@@ -146,7 +146,7 @@ export const AutoComplete = ({
               </CommandGroup>
             ) : null}
             {!isLoading ? (
-              <CommandPrimitive.Empty className="select-none rounded-sm px-2 py-3 text-center text-sm">
+              <CommandPrimitive.Empty className="select-none rounded-sm px-2 py-3 text-center text-xs">
                 {emptyMessage}
               </CommandPrimitive.Empty>
             ) : null}

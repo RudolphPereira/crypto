@@ -1,7 +1,5 @@
-import React from "react";
-
 import { Button } from "@/components/ui/button";
-import { ArrowUp } from "lucide-react";
+import { ChevronUp } from "lucide-react";
 
 export const PushToTopBtn = () => {
   return (
@@ -10,7 +8,7 @@ export const PushToTopBtn = () => {
         size="icon"
         className="bg-background text-foreground hover:text-background rounded-full cursor-pointer border border-transparent border-b-0 hover:border-b-0 hover:border-periwinkle-blue hover:bg-periwinkle-blue/60 hover:drop-shadow-periwinkle-blue/60 transition-all ease-in"
       >
-        <ArrowUp className="size-5" />
+        <ChevronUp className="size-5" />
       </Button>
     </div>
   );

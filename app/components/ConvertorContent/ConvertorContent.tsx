@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { TitleBox } from "../TitleBox/TitleBox";
-import { CoinDetails } from "../GraphContent/CoinDetails";
+import { CoinDetails } from "../CoinDetails/CoinDetails";
 import { ConvertorCard } from "./ConvertorCard";
 import Image from "next/image";
 import switchIcon from "../../assets/switchIcon.svg";

@@ -1,21 +1,10 @@
-import { Button } from "@/components/ui/button";
-import { ChartNoAxesColumn } from "lucide-react";
-
 type Props = {
   title?: string;
   subtitle?: string;
-  btnTitle?: string;
-  actionBtn?: boolean;
-  actionBtnSecondary?: boolean;
+  actionBtn?: React.ReactNode;
 };
 
-export const TitleBox = ({
-  title,
-  subtitle,
-  btnTitle,
-  actionBtn,
-  actionBtnSecondary,
-}: Props) => {
+export const TitleBox = ({ title, subtitle, actionBtn }: Props) => {
   return (
     <div className="flex flex-col gap-3 sm:flex-row justify-between sm:items-end">
       <div className=" flex flex-col gap-0.5">
@@ -24,17 +13,7 @@ export const TitleBox = ({
         )}
         {subtitle && <p className="text-sm text-background/70">{subtitle}</p>}
       </div>
-      {actionBtn && (
-        <Button className="bg-dark-gunmetal rounded-sm font-[400] cursor-pointer border border-transparent border-b-0 hover:border-b-0 hover:border-periwinkle-blue hover:bg-periwinkle-blue/60 hover:drop-shadow-periwinkle-blue/60 transition-all ease-in text-background h-10">
-          <ChartNoAxesColumn />
-          {btnTitle}
-        </Button>
-      )}
-      {actionBtnSecondary && (
-        <Button className="bg-dark-gunmetal rounded-sm font-[400] cursor-pointer border border-transparent border-b-0 hover:border-b-0 hover:border-periwinkle-blue hover:bg-periwinkle-blue/60 hover:drop-shadow-periwinkle-blue/60 transition-all ease-in text-background h-10">
-          {btnTitle}
-        </Button>
-      )}
+      {actionBtn && actionBtn}
     </div>
   );
 };

@@ -1,11 +1,10 @@
 "use client";
 
 import * as React from "react";
-import { Check, ChevronDown } from "lucide-react";
+import { Check } from "lucide-react";
 import Image from "next/image";
 import bitcoinIcon from "../../assets/Currency-icon-02.svg";
 import ethCoinIcon from "../../assets/Currency-icon-01.svg";
-import coinIcon from "../../assets/flash-circle.svg";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -36,7 +35,7 @@ const coins = [
   },
 ];
 
-export function CoinDropDown() {
+export function SelectCoinsDropDown() {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
 
@@ -46,29 +45,21 @@ export function CoinDropDown() {
         <Button
           role="combobox"
           aria-expanded={open}
-          className="min-w-[230px] justify-start items-center gap-2 cursor-pointer bg-transparent shadow-none text-3xl has-[>svg]:px-0 font-[500] hover:bg-transparent"
+          className={`${
+            value ? "text-background" : "text-muted-foreground"
+          } w-full font-[400] text-base md:text-sm h-10 cursor-pointer rounded-sm bg-dark-gunmetal hover:bg-dark-gunmetal p-3`}
         >
-          <div className="w-[1.8rem] h-[1.8rem]">
-            <Image
-              src={
-                value
-                  ? coins.find((coin) => coin.value === value)?.icon
-                  : coinIcon
-              }
-              alt="coin icon"
-              className="w-full h-full"
-            />
-          </div>
           <div className="truncate flex-1 text-left">
             {value
               ? coins.find((coin) => coin.value === value)?.label
               : "Select Coin"}
           </div>
-
-          <ChevronDown className="opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0 border border-white/15 rounded-sm bg-black-russian">
+      <PopoverContent
+        className="w-full p-0 border border-white/15 rounded-sm bg-black-russian "
+        align="start"
+      >
         <Command className="bg-black-russian">
           <CommandInput placeholder="Search Coin" className="text-background" />
           <CommandList className="p-0.5 border-white/15 border-t-1 bg-gradient-to-r from-black-russian to-dark-blue">

@@ -8,8 +8,6 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import increaseIcon from "../../assets/increase.svg";
-import decreaseIcon from "../../assets/decrease.svg";
 import bitcoinIcon from "../../assets/Currency-icon-02.svg";
 import { CoinStats } from "../CoinStats/CoinStats";
 
@@ -42,7 +40,6 @@ export const CoinSlider = () => {
                           <CoinStats
                             price="27,445.55"
                             currency="USD"
-                            icon={decreaseIcon}
                             percentage="2.35"
                           />
                         </div>
@@ -75,7 +72,7 @@ export const CoinSlider = () => {
                           <CoinStats
                             price="27,445.55"
                             currency="USD"
-                            icon={increaseIcon}
+                            highStatus
                             percentage="2.35"
                           />
                         </div>

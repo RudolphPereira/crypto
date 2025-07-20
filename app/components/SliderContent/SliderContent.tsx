@@ -1,7 +1,7 @@
+import { ActionBtn } from "../AppButtons/AppBtns";
 import { TitleBox } from "../TitleBox/TitleBox";
 import { CoinSlider } from "./CoinSlider";
-
-// type Props = {};
+import { ChartNoAxesColumn } from "lucide-react";
 
 export const SliderContent = () => {
   return (
@@ -9,8 +9,9 @@ export const SliderContent = () => {
       <div className="flex flex-col gap-5">
         <TitleBox
           subtitle="Select the currency to view statistics"
-          btnTitle="Compare"
-          actionBtn
+          actionBtn={
+            <ActionBtn btnIcon={<ChartNoAxesColumn />} btnTitle="Compare" />
+          }
         />
         <CoinSlider />
       </div>

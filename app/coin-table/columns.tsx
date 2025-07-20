@@ -3,8 +3,6 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { HeaderBtn } from "../components/TableContent/HeaderBtn";
 import Image from "next/image";
-import increaseIcon from "../assets/increase.svg";
-import decreaseIcon from "../assets/decrease.svg";
 import { CoinStats } from "../components/CoinStats/CoinStats";
 import { ProgressStats } from "../components/TableContent/ProgressStats";
 import { TableChart } from "../components/TableContent/TableChart";
@@ -88,12 +86,7 @@ export const columns: ColumnDef<CoinData>[] = [
       );
     },
     cell: ({ row }) => {
-      return (
-        <CoinStats
-          icon={decreaseIcon}
-          percentage={row.original.oneHourPercentage}
-        />
-      );
+      return <CoinStats percentage={row.original.oneHourPercentage} />;
     },
   },
   {
@@ -111,7 +104,7 @@ export const columns: ColumnDef<CoinData>[] = [
     cell: ({ row }) => {
       return (
         <CoinStats
-          icon={increaseIcon}
+          highStatus
           percentage={row.original.twentyFourHourPercentage}
         />
       );
@@ -125,12 +118,7 @@ export const columns: ColumnDef<CoinData>[] = [
       );
     },
     cell: ({ row }) => {
-      return (
-        <CoinStats
-          icon={decreaseIcon}
-          percentage={row.original.sevenDayPercentage}
-        />
-      );
+      return <CoinStats percentage={row.original.sevenDayPercentage} />;
     },
   },
   {
