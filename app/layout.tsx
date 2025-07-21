@@ -5,7 +5,6 @@ import { Space_Grotesk, Inter } from "next/font/google";
 import { Navigation } from "./components/Navigation/Navigation";
 import { TopInfoBar } from "./components/TopInfoBar/TopInfoBar";
 
-// eslint-disable-next-line
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
   style: "normal",
@@ -32,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
         className={`${spaceGrotesk.variable} ${inter.variable} bg-dark-gunmetal`}
       >

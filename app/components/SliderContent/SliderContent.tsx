@@ -1,25 +1,19 @@
-import { Button } from "@/components/ui/button";
-import { ChartNoAxesColumn } from "lucide-react";
+import { ActionBtn } from "../AppButtons/AppBtns";
+import { TitleBox } from "../TitleBox/TitleBox";
 import { CoinSlider } from "./CoinSlider";
-
-// type Props = {};
+import { ChartNoAxesColumn } from "lucide-react";
 
 export const SliderContent = () => {
   return (
     <div className="slider">
       <div className="flex flex-col gap-5">
-        <div className="flex flex-col gap-3 sm:flex-row justify-between sm:items-end">
-          <p className="text-sm text-white/70">
-            Select the currency to view statistics
-          </p>
-          <Button className="bg-dark-gunmetal rounded-sm font-[400] cursor-pointer border border-transparent border-b-0 hover:border-b-0 hover:border-periwinkle-blue hover:bg-periwinkle-blue/60 hover:drop-shadow-periwinkle-blue/60 transition-all ease-in text-white h-10">
-            <ChartNoAxesColumn />
-            Compare
-          </Button>
-        </div>
-        <div className="bottomBox">
-          <CoinSlider />
-        </div>
+        <TitleBox
+          subtitle="Select the currency to view statistics"
+          actionBtn={
+            <ActionBtn btnIcon={<ChartNoAxesColumn />} btnTitle="Compare" />
+          }
+        />
+        <CoinSlider />
       </div>
     </div>
   );

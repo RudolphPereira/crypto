@@ -48,7 +48,7 @@ export const SearchBox = () => {
       <AutoComplete
         options={FRAMEWORKS}
         emptyMessage="No results."
-        placeholder="Search..."
+        placeholder="Search Coin"
         isLoading={isLoading}
         onValueChange={setValue}
         value={value}

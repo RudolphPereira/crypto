@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "../../assets/logo.svg";
+// import logo from "../../assets/logo.svg";
 import homeIcon from "../../assets/homeIcon.svg";
 import portfolioIcon from "../../assets/portfolioIcon.svg";
 import homeIconFull from "../../assets/homeIconFull.svg";
@@ -19,7 +19,9 @@ export const LinkBox = () => {
         >
           <div className="w-[2.3rem] h-[2.3rem]">
             <Image
-              src={logo}
+              src="/logo.svg"
+              width={0}
+              height={0}
               alt="logo"
               className="w-full h-full object-contain"
             />
@@ -49,13 +51,19 @@ export const LinkBox = () => {
           <Link
             href="/portfolio"
             className={`flex items-center gap-2 opacity-50 transition-all ease-in duration-75 hover:text-periwinkle-blue hover:opacity-100 ${
-              pathname === "/portfolio" ? "active" : ""
+              pathname === "/portfolio" ||
+              pathname === "/portfolio/coin-page/[coinId]"
+                ? "active"
+                : ""
             }`}
           >
             <div className="w-[1.2rem] h-[1.2rem]">
               <Image
                 src={
-                  pathname === "/portfolio" ? portfolioIconFull : portfolioIcon
+                  pathname === "/portfolio" ||
+                  pathname === "/portfolio/coin-page/[coinId]"
+                    ? portfolioIconFull
+                    : portfolioIcon
                 }
                 alt="portfolio"
                 className="w-full h-full object-contain transition-all ease-in duration-75"

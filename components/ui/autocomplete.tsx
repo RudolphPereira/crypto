@@ -93,7 +93,7 @@ export const AutoComplete = ({
 
   return (
     <CommandPrimitive onKeyDown={handleKeyDown}>
-      <div className="h-[100%] w-[100%]  text-sm">
+      <div className="h-[100%] w-[100%] text-sm border border-white/15 rounded-sm bg-black-russian">
         <CommandInput
           ref={inputRef}
           value={inputValue}
@@ -146,7 +146,7 @@ export const AutoComplete = ({
               </CommandGroup>
             ) : null}
             {!isLoading ? (
-              <CommandPrimitive.Empty className="select-none rounded-sm px-2 py-3 text-center text-sm">
+              <CommandPrimitive.Empty className="select-none rounded-sm px-2 py-3 text-center text-xs">
                 {emptyMessage}
               </CommandPrimitive.Empty>
             ) : null}
