@@ -5,7 +5,6 @@ import { Space_Grotesk, Inter } from "next/font/google";
 import { Navigation } from "./components/Navigation/Navigation";
 import { TopInfoBar } from "./components/TopInfoBar/TopInfoBar";
 
-// eslint-disable-next-line
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
   style: "normal",
