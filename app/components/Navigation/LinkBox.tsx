@@ -49,13 +49,19 @@ export const LinkBox = () => {
           <Link
             href="/portfolio"
             className={`flex items-center gap-2 opacity-50 transition-all ease-in duration-75 hover:text-periwinkle-blue hover:opacity-100 ${
-              pathname === "/portfolio" ? "active" : ""
+              pathname === "/portfolio" ||
+              pathname === "/portfolio/coin-page/[coinId]"
+                ? "active"
+                : ""
             }`}
           >
             <div className="w-[1.2rem] h-[1.2rem]">
               <Image
                 src={
-                  pathname === "/portfolio" ? portfolioIconFull : portfolioIcon
+                  pathname === "/portfolio" ||
+                  pathname === "/portfolio/coin-page/[coinId]"
+                    ? portfolioIconFull
+                    : portfolioIcon
                 }
                 alt="portfolio"
                 className="w-full h-full object-contain transition-all ease-in duration-75"
