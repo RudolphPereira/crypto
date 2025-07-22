@@ -15,7 +15,7 @@ export const LinkBox = () => {
       <div className="">
         <Link
           href="/"
-          className="flex items-center gap-2 font-inter font-[700] text-xl"
+          className="flex items-center gap-2 font-inter font-[700] text-xl text-background"
         >
           <div className="w-[2.3rem] h-[2.3rem]">
             <Image
@@ -33,7 +33,7 @@ export const LinkBox = () => {
         <li className="">
           <Link
             href="/"
-            className={`flex items-center gap-2 opacity-50 transition-all ease-in duration-75 hover:text-periwinkle-blue hover:opacity-100 ${
+            className={`flex items-center gap-2 opacity-50 transition-all ease-in duration-75 hover:text-periwinkle-blue hover:opacity-100 text-background ${
               pathname === "/" ? "active" : ""
             }`}
           >
@@ -41,7 +41,7 @@ export const LinkBox = () => {
               <Image
                 src={pathname === "/" ? homeIconFull : homeIcon}
                 alt="home"
-                className="w-full h-full object-contain transition-all ease-in duration-75"
+                className="w-full light:invert h-full object-contain transition-all ease-in duration-75"
               />
             </div>
             Home
@@ -50,7 +50,7 @@ export const LinkBox = () => {
         <li className="">
           <Link
             href="/portfolio"
-            className={`flex items-center gap-2 opacity-50 transition-all ease-in duration-75 hover:text-periwinkle-blue hover:opacity-100 ${
+            className={`flex items-center gap-2 opacity-50 transition-all ease-in duration-75 hover:text-periwinkle-blue hover:opacity-100 text-background ${
               pathname === "/portfolio" ||
               pathname === "/portfolio/coin-page/[coinId]"
                 ? "active"
@@ -66,7 +66,7 @@ export const LinkBox = () => {
                     : portfolioIcon
                 }
                 alt="portfolio"
-                className="w-full h-full object-contain transition-all ease-in duration-75"
+                className="w-full h-full light:invert object-contain transition-all ease-in duration-75"
               />
             </div>
             Portfolio

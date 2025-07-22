@@ -67,14 +67,14 @@ export function DataTable<TData, TValue>({
         {table.getRowModel().rows?.length ? (
           table.getRowModel().rows.map((row) => (
             <TableRow
-              className=" hover:shadow-lg hover:bg-violet-blue/15 transition-all ease-in duration-150"
+              className=" hover:shadow-lg light:hover:bg-periwinkle-blue/20 hover:bg-violet-blue/15 transition-all ease-in duration-150"
               key={row.id}
               data-state={row.getIsSelected() && "selected"}
             >
               {row.getVisibleCells().map((cell) => (
                 <TableCell
                   key={cell.id}
-                  className="p-4 text-sm font-[500] truncate"
+                  className="p-4 text-sm font-[500] truncate text-background"
                 >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </TableCell>

@@ -4,6 +4,7 @@ import "./globals.css";
 import { Space_Grotesk, Inter } from "next/font/google";
 import { Navigation } from "./components/Navigation/Navigation";
 import { TopInfoBar } from "./components/TopInfoBar/TopInfoBar";
+import { ThemeProvider } from "./components/Navigation/ThemeProvider";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -31,17 +32,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
         className={`${spaceGrotesk.variable} ${inter.variable} bg-dark-gunmetal`}
       >
-        <main className="main bg-app-background text-white font-space-grotesk min-h-[100vh] max-w-[1500px] m-auto">
-          <TopInfoBar />
-          <div className="content w-[90%] mx-auto">
-            <Navigation />
-            {children}
-          </div>
-        </main>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <main className="main bg-app-background text-white font-space-grotesk min-h-[100vh] max-w-[1500px] m-auto">
+            <TopInfoBar />
+            <div className="content w-[90%] mx-auto">
+              <Navigation />
+              {children}
+            </div>
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );

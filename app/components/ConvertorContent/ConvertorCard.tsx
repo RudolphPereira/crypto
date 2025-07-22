@@ -8,7 +8,7 @@ type Props = {
 
 export const ConvertorCard = ({ coinAbbName, baseCoinPrice }: Props) => {
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 text-background">
       <div className="flex flex-col justify-between md:flex-row gap-3">
         <CoinDropDown />
         <CoinInput />

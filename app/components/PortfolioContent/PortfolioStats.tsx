@@ -21,7 +21,7 @@ export const PortfolioStats = ({
   progressValue,
 }: Props) => {
   return (
-    <div className="border border-periwinkle-blue/20 rounded-sm p-2 flex flex-col gap-1 justify-center">
+    <div className="border border-periwinkle-blue/20 rounded-sm p-2 flex flex-col gap-1 justify-center text-background">
       {title && <p className="text-md font-[500]">{title}</p>}
       {percentage && (
         <div className="flex items-center gap-2">

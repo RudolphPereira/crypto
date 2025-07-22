@@ -46,7 +46,7 @@ export function CoinDropDown() {
         <Button
           role="combobox"
           aria-expanded={open}
-          className="min-w-[230px] justify-start items-center gap-2 cursor-pointer bg-transparent shadow-none text-3xl has-[>svg]:px-0 font-[500] hover:bg-transparent"
+          className="min-w-[230px] text-background justify-start items-center gap-2 cursor-pointer bg-transparent shadow-none text-3xl has-[>svg]:px-0 font-[500] hover:bg-transparent"
         >
           <div className="w-[1.8rem] h-[1.8rem]">
             <Image
@@ -56,7 +56,7 @@ export function CoinDropDown() {
                   : coinIcon
               }
               alt="coin icon"
-              className="w-full h-full"
+              className={`w-full h-full ${value === "" ? "light:invert" : ""}`}
             />
           </div>
           <div className="truncate flex-1 text-left">

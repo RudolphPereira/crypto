@@ -102,13 +102,13 @@ export const AutoComplete = ({
           onFocus={() => setOpen(true)}
           placeholder={placeholder}
           disabled={disabled}
-          className="text-sm"
+          className="text-sm text-background"
         />
       </div>
       <div className="relative">
         <div
           className={cn(
-            "animate-in fade-in-0 zoom-in-95 absolute -top-1 rounded-b-sm z-10 w-full bg-gradient-to-r from-black-russian to-dark-blue outline-none border border-white/15 text-white",
+            "animate-in fade-in-0 zoom-in-95 absolute shadow light:top-1 -top-1 rounded-b-sm z-10 w-full bg-gradient-to-r from-black-russian to-dark-blue outline-none border border-white/15 text-white",
             isOpen ? "block" : "hidden"
           )}
         >
@@ -134,7 +134,7 @@ export const AutoComplete = ({
                       }}
                       onSelect={() => handleSelectOption(option)}
                       className={cn(
-                        "flex w-full items-center gap-2 text-sm text-white cursor-pointer",
+                        "flex w-full items-center gap-2 text-sm text-background cursor-pointer",
                         !isSelected ? "pl-8" : null
                       )}
                     >

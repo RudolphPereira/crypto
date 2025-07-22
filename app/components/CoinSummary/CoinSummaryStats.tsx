@@ -21,7 +21,7 @@ export const CoinSummaryStats = ({
   progressBarValue,
 }: Props) => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 text-background">
       <div className="flex items-center justify-between">
         <div className="flex gap-3 items-center">
           <div className="flex items-center justify-center shadow w-[1.3rem] h-[1.3rem] border border-b-0 border-periwinkle-blue drop-shadow-periwinkle-blue rounded-full bg-periwinkle-blue/40">

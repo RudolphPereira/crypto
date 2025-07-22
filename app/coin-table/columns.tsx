@@ -60,7 +60,7 @@ export const columns: ColumnDef<CoinData>[] = [
               className="w-full h-full"
             />
           </div>
-          <p>{row.original.name}</p>
+          <p className="text-background">{row.original.name}</p>
         </div>
       );
     },

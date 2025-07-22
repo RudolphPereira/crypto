@@ -13,7 +13,7 @@ export const HeaderBtn = ({ btnName, column, disabled, icon }: BtnProps) => {
   return (
     <Button
       disabled={disabled}
-      className="group w-full justify-between hover:text-background cursor-pointer bg-transparent font-[400] border border-transparent border-b-0 hover:border-b-0 hover:border-periwinkle-blue hover:bg-periwinkle-blue/60 hover:drop-shadow-periwinkle-blue/60 transition-all ease-in text-background/70 duration-200 rounded-sm h-[1.8rem] disabled:opacity-100"
+      className="group light:shadow-none w-full justify-between hover:text-background cursor-pointer bg-transparent font-[400] border border-transparent border-b-0 hover:border-b-0 hover:border-periwinkle-blue hover:bg-periwinkle-blue/60 hover:drop-shadow-periwinkle-blue/60 transition-all ease-in text-background/70 duration-200 rounded-sm h-[1.8rem] disabled:opacity-100"
       onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
     >
       {btnName}

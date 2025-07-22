@@ -36,7 +36,7 @@ export const CoinDetails = ({
   hasMadeProfit,
 }: Props) => {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 text-background">
       {coinName && (
         <div className=" flex flex-col gap-2">
           <div className="flex items-center gap-3">
@@ -61,7 +61,7 @@ export const CoinDetails = ({
                   >
                     {coinUrl}
                   </a>
-                  <Button className="bg-transparent cursor-pointer p-0 has-[>svg]:px-0 h-auto mt-1">
+                  <Button className="bg-transparent hover:bg-transparent text-background cursor-pointer p-0 has-[>svg]:px-0 h-auto mt-1">
                     <Copy />
                   </Button>
                 </div>

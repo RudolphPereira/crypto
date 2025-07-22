@@ -16,7 +16,7 @@ export const CoinStats = ({
   highStatus,
 }: Props) => {
   return (
-    <div className="flex gap-3">
+    <div className="flex gap-3 text-background">
       {price && (
         <div className="flex gap-1 text-xs font-[400] opacity-70">
           <p>{price}</p>

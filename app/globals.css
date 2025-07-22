@@ -1,9 +1,9 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant light (&:is(.light *));
 
-@theme inline {
+@theme {
   --color-deep-plum: #1e1932;
   --color-app-background: #13121a;
   --color-black-russian: #191925;
@@ -89,9 +89,19 @@
   --sidebar-ring: oklch(0.704 0.04 256.788);
 }
 
-.dark {
+.light {
+  --color-deep-plum: #353570;
+  --color-app-background: #f2f4f5;
+  --color-dark-gunmetal: #fff;
+  --color-black-russian: #fff;
+  --color-dark-blue: #fff;
+  --color-mint-green: #00b1a7;
   --background: oklch(0.129 0.042 264.695);
   --foreground: oklch(0.984 0.003 247.858);
+}
+
+/* .dark {
+
   --card: oklch(0.208 0.042 265.755);
   --card-foreground: oklch(0.984 0.003 247.858);
   --popover: oklch(0.208 0.042 265.755);
@@ -121,7 +131,7 @@
   --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
-}
+} */
 
 @layer base {
   * {
@@ -140,6 +150,10 @@
   color: #fff;
 }
 
+.light .active:hover {
+  color: var(--background);
+}
+
 button {
   transition: all ease-in 0.2s;
 }
@@ -150,26 +164,4 @@ button:active {
 
 disabled {
   display: none;
-}
-
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #888;
-  border-radius: 5px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #000;
-  border-radius: 5px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
 }
