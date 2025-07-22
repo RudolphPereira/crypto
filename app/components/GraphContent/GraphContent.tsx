@@ -17,7 +17,7 @@ export const GraphContent = () => {
           />
           <ChartAreaGradient />
         </div>
-        <div className="flex-1 p-3 md:p-6 bg-deep-plum rounded-lg flex flex-col">
+        <div className="flex-1 p-3 md:p-6 bg-deep-plum light:bg-white rounded-lg flex flex-col">
           <CoinDetails
             titleName="Volume 24h"
             value="$807.243 bln"

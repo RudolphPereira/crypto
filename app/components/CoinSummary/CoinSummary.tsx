@@ -10,7 +10,7 @@ export const CoinSummary = () => {
   return (
     <div className="flex flex-col gap-6 w-full">
       <div className="flex md:flex-row flex-col gap-6 w-full">
-        <div className="flex-1 p-3 md:p-6 bg-deep-plum rounded-lg flex flex-col gap-4">
+        <div className="flex-1 p-3 md:p-6 bg-deep-plum light:bg-periwinkle-blue/20 rounded-lg flex flex-col gap-4">
           <CoinDetails
             coinName="Bitcoin (BTC)"
             coinImage={bitcoinImage}
@@ -71,12 +71,12 @@ export const CoinSummary = () => {
       </div>
 
       <div className="border-t-1 border-background/10 pt-6 grid sm:grid-cols-2 gap-6">
-        <div className="p-3 md:p-6 bg-deep-plum rounded-lg flex flex-col gap-4">
+        <div className="p-3 md:p-6 bg-deep-plum light:bg-periwinkle-blue/20 rounded-lg flex flex-col gap-4">
           <CoinSummaryStats title="Total Volume" value="1,192,352 BTC" />
           <CoinSummaryStats title="Volume 24h" value="$47,714,337,481" />
           <CoinSummaryStats title="Volume/Market" value="0.06363" />
         </div>
-        <div className="p-3 md:p-6 bg-deep-plum rounded-lg flex flex-col gap-4">
+        <div className="p-3 md:p-6 bg-deep-plum light:bg-periwinkle-blue/20 rounded-lg flex flex-col gap-4">
           <CoinSummaryStats title="Max Supply" value="21,000,000 BTC" />
           <CoinSummaryStats
             title="Circulating Supply"
@@ -88,7 +88,7 @@ export const CoinSummary = () => {
             progressBarValue={80}
           />
         </div>
-        <div className="p-3 md:p-6 bg-deep-plum rounded-lg flex flex-col gap-4">
+        <div className="p-3 md:p-6 bg-deep-plum light:bg-periwinkle-blue/20 rounded-lg flex flex-col gap-4">
           <CoinSummaryStats title="Market Cap" value="$749,864,345,056" />
           <CoinSummaryStats
             title="Fully Diluted Valuation"

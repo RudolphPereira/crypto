@@ -17,7 +17,7 @@ export const CoinHighsAndLows = ({
   amount,
 }: Props) => {
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between text-background">
       <div className="flex gap-2">
         <div className="iconBox w-[1rem] h-[1rem]">
           <Image

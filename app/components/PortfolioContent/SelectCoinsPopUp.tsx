@@ -47,7 +47,7 @@ export function SelectCoinsPopUp() {
               <Input
                 type="text"
                 placeholder="Purchased amount"
-                className="h-10 text-background rounded-sm border-0 bg-dark-gunmetal shadow-none outline-0 focus-visible:ring-0"
+                className="h-10 text-background light:bg-white rounded-sm border-0 dark:bg-dark-gunmetal outline-0 focus-visible:ring-0"
               />
             </div>
 

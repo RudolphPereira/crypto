@@ -22,8 +22,8 @@ export const CoinSlider = () => {
               className="md:basis-1/2 lg:basis-1/3 xl:basis-1/5  pl-0"
             >
               <div className="pl-2 ml-2">
-                <Button className="w-full h-full p-0">
-                  <Card className="rounded-sm py-4 w-full bg-black-russian border border-transparent border-b-0 text-white cursor-pointer hover:bg-periwinkle-blue/60 transition-all duration-200 ease-in">
+                <Button className="w-full h-full p-0 light:bg-white">
+                  <Card className="light:shadow-none light:bg-white rounded-sm py-4 w-full bg-black-russian border border-transparent border-b-0 text-background cursor-pointer hover:bg-periwinkle-blue/60 light:hover:bg-periwinkle-blue/70 transition-all duration-200 ease-in">
                     <CardContent className="flex items-center gap-4 px-4">
                       <div className="w-[2rem] h-[2rem]">
                         <Image
@@ -54,8 +54,8 @@ export const CoinSlider = () => {
               className="md:basis-1/2 lg:basis-1/3 xl:basis-1/5  pl-0"
             >
               <div className="pl-2 ml-2">
-                <Button className="w-full h-full p-0">
-                  <Card className="active [&.active]:bg-periwinkle-blue/30 [&.active]:border-periwinkle-blue [&.active]:drop-shadow [&.active]:drop-shadow-periwinkle-blue/40 rounded-sm py-4 w-full bg-black-russian border border-transparent border-b-0 text-white cursor-pointer hover:bg-periwinkle-blue/60 transition-all duration-200 ease-in">
+                <Button className="w-full h-full p-0 light:bg-white">
+                  <Card className="active light:[&.active]:bg-periwinkle-blue/30 [&.active]:bg-periwinkle-blue/70 [&.active]:border-periwinkle-blue rounded-sm py-4 w-full bg-black-russian border border-transparent border-b-0 text-background cursor-pointer hover:bg-periwinkle-blue/60 transition-all duration-200 ease-in">
                     <CardContent className="flex items-center gap-4 px-4">
                       <div className="w-[2rem] h-[2rem]">
                         <Image
@@ -64,9 +64,9 @@ export const CoinSlider = () => {
                           className="w-full h-full"
                         />
                       </div>
-                      <div className="flex flex-col items-start gap-1">
+                      <div className="flex flex-col items-start gap-1 ">
                         <div className="text-base font-[500]">
-                          <p>Bitcoin (BTC)</p>
+                          <p className="text-background">Bitcoin (BTC)</p>
                         </div>
                         <div className="flex gap-3">
                           <CoinStats
@@ -83,8 +83,8 @@ export const CoinSlider = () => {
               </div>
             </CarouselItem>
           </CarouselContent>
-          <CarouselPrevious className="group top-28 -left-0 sm:top-1/2 sm:-left-8 size-9 sm:size-12 cursor-pointer sm:disabled:hidden text-white border-b-0 bg-periwinkle-blue/30 hover:bg-periwinkle-blue/60 border-periwinkle-blue drop-shadow-md drop-shadow-periwinkle-blue/60" />
-          <CarouselNext className="group top-28 -right-0 sm:top-1/2  sm:-right-8 size-9 sm:size-12 cursor-pointer sm:disabled:hidden text-white border-b-0 bg-periwinkle-blue/30 hover:bg-periwinkle-blue/60 border-periwinkle-blue  drop-shadow-md drop-shadow-periwinkle-blue/60" />
+          <CarouselPrevious className="group top-28 -left-0 sm:top-1/2 sm:-left-8 size-9 sm:size-12 cursor-pointer sm:disabled:hidden text-white border-b-0 bg-periwinkle-blue/30 light:bg-periwinkle-blue/60 light:hover:bg-periwinkle-blue/90 hover:bg-periwinkle-blue/60 border-periwinkle-blue" />
+          <CarouselNext className="group top-28 -right-0 sm:top-1/2  sm:-right-8 size-9 sm:size-12 cursor-pointer sm:disabled:hidden text-white border-b-0 light:bg-periwinkle-blue/60 light:hover:bg-periwinkle-blue/90 bg-periwinkle-blue/30 hover:bg-periwinkle-blue/60 border-periwinkle-blue" />
         </Carousel>
       </div>
     </div>

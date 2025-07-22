@@ -22,7 +22,7 @@ export function PurchasedDatePicker() {
             id="date"
             className={`${
               date ? "text-background" : "text-muted-foreground"
-            } text-base md:text-sm h-10 cursor-pointer justify-between rounded-sm bg-dark-gunmetal hover:bg-dark-gunmetal p-3 flex items-center`}
+            } shadow-xs text-base md:text-sm h-10 cursor-pointer justify-between rounded-sm bg-dark-gunmetal hover:bg-dark-gunmetal p-3 flex items-center`}
           >
             {date ? date.toLocaleDateString() : "Purchased date"}
           </div>

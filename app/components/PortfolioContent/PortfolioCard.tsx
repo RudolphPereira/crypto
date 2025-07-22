@@ -9,7 +9,7 @@ type Props = {
 export const PortfolioCard = ({ coinDetails, portfolioStats }: Props) => {
   return (
     <div className="bg-black-russian flex lg:flex-row flex-col w-full rounded-lg">
-      <div className="bg-dark-blue p-3 md:p-6 rounded-t-lg lg:rounded-tr-none lg:rounded-l-lg flex-1 flex flex-col gap-3">
+      <div className="bg-dark-blue  light:bg-periwinkle-blue/20 p-3 md:p-6 rounded-t-lg lg:rounded-tr-none lg:rounded-l-lg flex-1 flex flex-col gap-3">
         {coinDetails}
         <ActionBtn
           btnTitle="Remove Coin"

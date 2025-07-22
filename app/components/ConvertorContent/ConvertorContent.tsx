@@ -22,7 +22,7 @@ export const ConvertorContent = () => {
           <CoinDetails titleName="You sell" />
           <ConvertorCard coinAbbName="BTC" baseCoinPrice="$26,250.15" />
         </div>
-        <div className="flex-1 p-3 md:p-6 bg-deep-plum rounded-lg flex flex-col gap-8">
+        <div className="flex-1 p-3 md:p-6 bg-deep-plum light:bg-white rounded-lg flex flex-col gap-8">
           <CoinDetails titleName="You buy" />
           <ConvertorCard coinAbbName="ETH" baseCoinPrice="$8,914.12" />
         </div>
@@ -31,7 +31,7 @@ export const ConvertorContent = () => {
             <Image
               src={switchIcon}
               alt="switchIcon"
-              className="object-contain group-hover:invert group-hover:brightness-10 group-hover:rotate-180 transition-all ease-in duration-300"
+              className="object-contain group-hover:invert light:invert light:brightness-10 group-hover:brightness-10 group-hover:rotate-180 transition-all ease-in duration-300"
             />
           </Button>
         </div>
