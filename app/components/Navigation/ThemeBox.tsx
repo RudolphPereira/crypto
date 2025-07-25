@@ -13,7 +13,7 @@ export const ThemeBox = () => {
     <div className="h-10 w-10">
       <div className="h-10">
         <Button
-          onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           size="icon"
           className="border h-[100%] w-[100%] border-white/15 text-sm cursor-pointer bg-black-russian rounded-sm group hover:bg-periwinkle-blue/60 hover:border-b-0 hover:border-periwinkle-blue hover:drop-shadow-periwinkle-blue/60"
         >
