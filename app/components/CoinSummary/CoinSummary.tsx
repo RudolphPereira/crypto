@@ -23,7 +23,7 @@ export const CoinSummary = () => {
             hasMadeProfit
           />
 
-          <div className="border-t-1 flex flex-col gap-4 pt-4 border-white/10">
+          <div className="border-t-1 border-background/10 flex flex-col gap-4 pt-4">
             <CoinHighsAndLows
               title="All time high"
               date="Wed, 14 Sep 2023 11:54:46 GMT"

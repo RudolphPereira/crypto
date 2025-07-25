@@ -93,7 +93,7 @@ export const AutoComplete = ({
 
   return (
     <CommandPrimitive onKeyDown={handleKeyDown}>
-      <div className="h-[100%] w-[100%] text-sm border border-white/15 rounded-sm bg-black-russian">
+      <div className="h-10 w-[100%] text-sm border border-white/15 rounded-sm bg-black-russian">
         <CommandInput
           ref={inputRef}
           value={inputValue}
@@ -102,7 +102,7 @@ export const AutoComplete = ({
           onFocus={() => setOpen(true)}
           placeholder={placeholder}
           disabled={disabled}
-          className="text-sm text-background"
+          className="text-sm text-background h-10"
         />
       </div>
       <div className="relative">
@@ -116,7 +116,7 @@ export const AutoComplete = ({
             {isLoading ? (
               <CommandPrimitive.Loading>
                 <div className="p-1">
-                  <Skeleton className="h-8 w-full" />
+                  <Skeleton className="h-10 w-full" />
                 </div>
               </CommandPrimitive.Loading>
             ) : null}
