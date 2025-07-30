@@ -9,24 +9,13 @@ type marketData = {
   coins: number;
   markets: number;
   percentages: {
-    btc: number;
-    eth: number;
+    [key: string]: number;
   };
   totalMarketCap: {
-    usd: number;
-    aed: number;
-    cad: number;
-    eur: number;
-    gbp: number;
-    inr: number;
+    [key: string]: number;
   };
   totalVolume: {
-    usd: number;
-    aed: number;
-    cad: number;
-    eur: number;
-    gbp: number;
-    inr: number;
+    [key: string]: number;
   };
 };
 
@@ -41,26 +30,9 @@ const initialState: InitialState = {
   marketData: {
     coins: 0,
     markets: 0,
-    percentages: {
-      btc: 0,
-      eth: 0,
-    },
-    totalMarketCap: {
-      usd: 0,
-      aed: 0,
-      cad: 0,
-      eur: 0,
-      gbp: 0,
-      inr: 0,
-    },
-    totalVolume: {
-      usd: 0,
-      aed: 0,
-      cad: 0,
-      eur: 0,
-      gbp: 0,
-      inr: 0,
-    },
+    percentages: {},
+    totalMarketCap: {},
+    totalVolume: {},
   },
   error: "",
 };
@@ -107,26 +79,9 @@ const marketDataSlice = createSlice({
       state.marketData = {
         coins: 0,
         markets: 0,
-        percentages: {
-          btc: 0,
-          eth: 0,
-        },
-        totalMarketCap: {
-          usd: 0,
-          aed: 0,
-          cad: 0,
-          eur: 0,
-          gbp: 0,
-          inr: 0,
-        },
-        totalVolume: {
-          usd: 0,
-          aed: 0,
-          cad: 0,
-          eur: 0,
-          gbp: 0,
-          inr: 0,
-        },
+        percentages: {},
+        totalMarketCap: {},
+        totalVolume: {},
       };
       state.error = action.error.message || "Something went wrong here";
     });

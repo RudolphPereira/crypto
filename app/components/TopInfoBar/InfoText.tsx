@@ -3,16 +3,16 @@ import Image from "next/image";
 
 type Props = {
   image?: string;
-  text?: string;
-  number: number | string | undefined;
+  title?: string;
+  value?: number | string;
   additionalClass?: string;
   iconSize?: string;
 };
 
 export const InfoText = ({
   image,
-  text,
-  number,
+  title,
+  value,
   additionalClass,
   iconSize,
 }: Props) => {
@@ -25,13 +25,13 @@ export const InfoText = ({
       )}
 
       <div className={`flex items-center gap-1.5 ${additionalClass}`}>
-        {text && (
+        {title && (
           <div className="text-white/80 font-[300]">
-            <span>{text}</span>
+            <span>{title}</span>
           </div>
         )}
         <div className="">
-          <span>{number}</span>
+          <span>{value}</span>
         </div>
       </div>
     </div>

@@ -37,31 +37,31 @@ export const TopInfoBar = () => {
         <InfoText
           image={coinIcon}
           iconSize="w-[1.15rem] h-[1.15rem]"
-          text="Coins"
-          number={data.marketData.coins.toLocaleString()}
+          title="Coins"
+          value={data.marketData.coins.toLocaleString()}
         />
         <InfoText
           image={exchangeIcon}
           iconSize="w-[1.15rem] h-[1.15rem]"
-          text="Markets"
-          number={data.marketData.markets.toLocaleString()}
+          title="Markets"
+          value={data.marketData.markets.toLocaleString()}
         />
-        <InfoText iconSize="w-[0.7rem] h-[0.7rem]" number={totalMarketCap} />
+        <InfoText iconSize="w-[0.7rem] h-[0.7rem]" value={totalMarketCap} />
 
         <InfoProgress
           progressValue={totalPercentage}
-          number={"$ " + totalVolume}
+          value={"$ " + totalVolume}
           progressColor="[&>div]:bg-white"
         />
         <InfoProgress
           image={bitcoinIcon}
-          number={btcPercentage.toString() + "%"}
+          value={btcPercentage + "%"}
           progressValue={btcPercentage}
           progressColor="[&>div]:bg-orange"
         />
         <InfoProgress
           image={ethIcon}
-          number={ethPercentage.toString() + "%"}
+          value={ethPercentage + "%"}
           progressValue={ethPercentage}
           progressColor="[&>div]:bg-pastel-blue"
         />

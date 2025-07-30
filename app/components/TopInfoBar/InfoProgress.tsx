@@ -4,14 +4,14 @@ import { Progress } from "@/components/ui/progress";
 
 type Props = {
   image?: string;
-  number: string | number | undefined;
+  value?: string | number;
   progressColor: string;
   progressValue?: number;
 };
 
 export const InfoProgress = ({
   image,
-  number,
+  value,
   progressColor,
   progressValue,
 }: Props) => {
@@ -24,7 +24,7 @@ export const InfoProgress = ({
           </div>
         )}
         <div className="">
-          <span>{number}</span>
+          <span>{value}</span>
         </div>
         <div className="">
           <Progress
