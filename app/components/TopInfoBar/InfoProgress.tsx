@@ -4,11 +4,17 @@ import { Progress } from "@/components/ui/progress";
 
 type Props = {
   image?: string;
-  number: string;
+  number: string | number | undefined;
   progressColor: string;
+  progressValue?: number;
 };
 
-export const InfoProgress = ({ image, number, progressColor }: Props) => {
+export const InfoProgress = ({
+  image,
+  number,
+  progressColor,
+  progressValue,
+}: Props) => {
   return (
     <div className="">
       <div className="text-xs flex items-center gap-1.5">
@@ -22,7 +28,7 @@ export const InfoProgress = ({ image, number, progressColor }: Props) => {
         </div>
         <div className="">
           <Progress
-            value={44}
+            value={progressValue}
             className={`w-[3.5rem] h-[0.4rem] ${progressColor} bg-white/40 rounded-xs [&>div]:rounded-xs`}
           />
         </div>
