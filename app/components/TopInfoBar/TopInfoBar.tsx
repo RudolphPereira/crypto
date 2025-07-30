@@ -40,28 +40,30 @@ export const TopInfoBar = () => {
           title="Coins"
           value={data.marketData.coins.toLocaleString()}
         />
+
         <InfoText
           image={exchangeIcon}
           iconSize="w-[1.15rem] h-[1.15rem]"
           title="Markets"
           value={data.marketData.markets.toLocaleString()}
         />
+
         <InfoText iconSize="w-[0.7rem] h-[0.7rem]" value={totalMarketCap} />
 
         <InfoProgress
           progressValue={totalPercentage}
-          value={"$ " + totalVolume}
+          value={`$ ${totalVolume}`}
           progressColor="[&>div]:bg-white"
         />
         <InfoProgress
           image={bitcoinIcon}
-          value={btcPercentage + "%"}
+          value={`${btcPercentage} %`}
           progressValue={btcPercentage}
           progressColor="[&>div]:bg-orange"
         />
         <InfoProgress
           image={ethIcon}
-          value={ethPercentage + "%"}
+          value={`${ethPercentage} %`}
           progressValue={ethPercentage}
           progressColor="[&>div]:bg-pastel-blue"
         />
