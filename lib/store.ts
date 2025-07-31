@@ -1,8 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
+import marketDataSlice from "./features/marketData/marketDataSlice";
 
 export const makeStore = () => {
   return configureStore({
-    reducer: {},
+    reducer: {
+      marketData: marketDataSlice,
+    },
   });
 };
 
