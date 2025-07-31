@@ -6,6 +6,7 @@ import { Navigation } from "./components/Navigation/Navigation";
 import { TopInfoBar } from "./components/TopInfoBar/TopInfoBar";
 import { ThemeProvider } from "./components/Navigation/ThemeProvider";
 import StoreProvider from "./StoreProvider";
+import { Toaster } from "@/components/ui/sonner";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -52,6 +53,7 @@ export default function RootLayout({
             </main>
           </ThemeProvider>
         </StoreProvider>
+        <Toaster richColors />
       </body>
     </html>
   );

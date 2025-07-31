@@ -26,7 +26,7 @@ type InitialState = {
 };
 
 const initialState: InitialState = {
-  loading: false,
+  loading: true,
   marketData: {
     coins: 0,
     markets: 0,
@@ -75,7 +75,7 @@ const marketDataSlice = createSlice({
       }
     );
     builder.addCase(fetchMarketData.rejected, (state, action) => {
-      state.loading = false;
+      state.loading = true;
       state.marketData = {
         coins: 0,
         markets: 0,
