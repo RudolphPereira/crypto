@@ -13,7 +13,7 @@ export function ToolTip({ toolTipTrigger, toolTipContent }: Props) {
   return (
     <Tooltip>
       <TooltipTrigger asChild>{toolTipTrigger}</TooltipTrigger>
-      <TooltipContent className="[&_svg]:bg-background [&_svg]:fill-background bg-background text-foreground rounded-sm hidden sm:flex">
+      <TooltipContent className="[&_svg]:bg-background [&_svg]:fill-background bg-background text-foreground rounded-sm hidden sm:flex shadow-md">
         <p>{toolTipContent}</p>
       </TooltipContent>
     </Tooltip>

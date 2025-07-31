@@ -1,9 +1,17 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import Axios from "axios";
+import { setupCache } from "axios-cache-interceptor";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+// Create your Axios instance
+const axiosInstance = Axios.create();
+// Apply the cache interceptor
+const axios = setupCache(axiosInstance);
+export default axios;
 
 export function formatCompactNumber(number: number) {
   if (number < 1000) {

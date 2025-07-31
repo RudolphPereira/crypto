@@ -3,7 +3,7 @@ import {
   createAsyncThunk,
   type PayloadAction,
 } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios from "../../utils";
 
 type marketData = {
   coins: number;
@@ -41,7 +41,11 @@ export const fetchMarketData = createAsyncThunk(
   "marketData/fetchMarketData",
   async () => {
     const response = await axios.get(
-      "https://api.coingecko.com/api/v3/global?x_cg_demo_api_key=CG-7741Ho5VUyT97d1HP9YfiiYs"
+      "https://api.coingecko.com/api/v3/global?x_cg_demo_api_key=CG-7741Ho5VUyT97d1HP9YfiiYs",
+      {
+        adapter: "fetch",
+        fetchOptions: { cache: "force-cache" },
+      }
     );
 
     const data = response.data.data;
