@@ -1,59 +1,60 @@
 "use client";
 import { AutoComplete, type Option } from "@/components/ui/autocomplete";
-import { useState } from "react";
-
-const FRAMEWORKS = [
-  {
-    value: "next.js",
-    label: "Next.js",
-  },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
-  {
-    value: "wordpress",
-    label: "WordPress",
-  },
-  {
-    value: "express.js",
-    label: "Express.js",
-  },
-  {
-    value: "nest.js",
-    label: "Nest.js",
-  },
-];
+import { useState, useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { fetchCoinList } from "@/lib/features/coinData/coinDataSlice";
+import { updateCoinName } from "@/lib/features/coinData/coinDataSlice";
+import { Toast } from "../Toast/Toast";
 
 export const SearchBox = () => {
-  // eslint-disable-next-line
-  const [isLoading, setLoading] = useState(false);
-  // eslint-disable-next-line
-  const [isDisabled, setDisabled] = useState(false);
   const [value, setValue] = useState<Option>();
+  const data = useAppSelector((state) => state.coinData.coinList);
+  const error = useAppSelector((state) => state.coinData.error);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCoinList());
+  }, []);
+
+  const setCoinName = (value: string | undefined) => {
+    return dispatch(updateCoinName(value));
+  };
+
+  useEffect(() => {
+    setCoinName(value?.value);
+  }, [value]);
+
+  const coinArr = data.map((coin) => ({
+    value: coin.id,
+    label: coin.name,
+  }));
+
+  type CoinList = {
+    value: string;
+    label: string;
+  };
+
+  const coinNameArr = coinArr as CoinList[];
+
   return (
     <div className="sm:min-w-[20rem]">
       <AutoComplete
-        options={FRAMEWORKS}
+        options={coinNameArr}
         emptyMessage="No results."
         placeholder="Search Coin"
-        isLoading={isLoading}
         onValueChange={setValue}
         value={value}
-        disabled={isDisabled}
       />
+      {error !== "" ? (
+        <div className="hidden">
+          <Toast
+            title="Error"
+            message={`${error}. Kindly refresh page.`}
+            btnLabel="Close"
+          />
+        </div>
+      ) : null}
     </div>
   );
 };
