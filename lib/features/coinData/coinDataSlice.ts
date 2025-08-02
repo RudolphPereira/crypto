@@ -3,6 +3,7 @@ import {
   createAsyncThunk,
   type PayloadAction,
 } from "@reduxjs/toolkit";
+import { RootState } from "../../store";
 import axios from "../../utils";
 
 type CoinList = [
@@ -27,9 +28,10 @@ const initialState: InitialState = {
 
 export const fetchCoinList = createAsyncThunk(
   "coinData/fetchCoinList",
-  async () => {
+  async (arg, { getState }) => {
+    const state = getState() as RootState;
     const response = await axios.get(
-      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&sparkline=true&price_change_percentage=1h%2C%2024h%2C%207d%2C%2014d%2C%2030d%2C%20200d%2C%201y&x_cg_demo_api_key=CG-7741Ho5VUyT97d1HP9YfiiYs",
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${state.currencyListData.currencyValue}&sparkline=true&price_change_percentage=1h%2C%2024h%2C%207d%2C%2014d%2C%2030d%2C%20200d%2C%201y&x_cg_demo_api_key=CG-7741Ho5VUyT97d1HP9YfiiYs`,
       {
         adapter: "fetch",
         fetchOptions: { cache: "force-cache" },

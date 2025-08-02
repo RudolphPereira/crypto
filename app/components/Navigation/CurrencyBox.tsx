@@ -22,6 +22,7 @@ import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { fetchCurrencyList } from "@/lib/features/currencyListData/currencyListSlice";
 import { updateCurrencyValue } from "@/lib/features/currencyListData/currencyListSlice";
 import { CurrencyBoxSkeleton } from "../Skeletons/CurrencyBoxSkeleton";
+import { fetchCoinList } from "@/lib/features/coinData/coinDataSlice";
 
 export function CurrencyBox() {
   const [open, setOpen] = useState(false);
@@ -36,6 +37,10 @@ export function CurrencyBox() {
   useEffect(() => {
     dispatch(fetchCurrencyList());
   }, []);
+
+  useEffect(() => {
+    dispatch(fetchCoinList());
+  }, [currencyValue]);
 
   const setCurrencyValue = (value: string) => {
     return dispatch(updateCurrencyValue(value));
