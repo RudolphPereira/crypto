@@ -45,6 +45,7 @@ export const SearchBox = () => {
         placeholder="Search Coin"
         onValueChange={setValue}
         value={value}
+        key={value?.label}
       />
       {error !== "" ? (
         <div className="hidden">
