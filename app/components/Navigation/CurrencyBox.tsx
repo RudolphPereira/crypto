@@ -37,6 +37,10 @@ export function CurrencyBox() {
     dispatch(fetchCurrencyList());
   }, []);
 
+  const setCurrencyValue = (value: string) => {
+    return dispatch(updateCurrencyValue(value));
+  };
+
   return (
     <>
       {loading ? (
@@ -76,12 +80,10 @@ export function CurrencyBox() {
                       key={currency}
                       value={currency}
                       onSelect={(currentValue) => {
-                        dispatch(
-                          updateCurrencyValue(
-                            currentValue === currencyValue
-                              ? currencyValue
-                              : currentValue
-                          )
+                        setCurrencyValue(
+                          currentValue === currencyValue
+                            ? currencyValue
+                            : currentValue
                         );
                         setOpen(false);
                       }}

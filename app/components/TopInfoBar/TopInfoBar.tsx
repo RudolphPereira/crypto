@@ -41,11 +41,11 @@ export const TopInfoBar = () => {
     Math.round(data.marketData.totalMarketCap[currencyValue]) /
     Math.round(data.marketData.totalVolume[currencyValue]);
 
-  const updatedTotalPercentage = Number(totalPercentage.toFixed(0));
+  const roundedTotalPercentage = Number(totalPercentage.toFixed(0));
 
   return (
     <div className="bg-deep-plum px-2 py-3 border-b border-b-white/10 text-white flex justify-center w-full min-h-14">
-      <div className="flex items-center sm:gap-7 gap-5 flex-wrap justify-center">
+      <div className="flex items-center sm:gap-7 gap-5 flex-wrap">
         {loading ? (
           <>
             <InfoTextSkeleton image title />
@@ -62,39 +62,39 @@ export const TopInfoBar = () => {
               iconSize="w-[1.15rem] h-[1.15rem]"
               title="Coins"
               value={data.marketData.coins.toLocaleString()}
-              toolTipContent="Number of active cryptocurrencies"
+              toolTipContent="Number of cryptocurrencies currently active on the market"
             />
             <InfoText
               image={exchangeIcon}
               iconSize="w-[1.15rem] h-[1.15rem]"
-              title="Markets"
+              title="Exchanges"
               value={data.marketData.markets.toLocaleString()}
-              toolTipContent="Number of exchanges"
+              toolTipContent="Number of cryptocurrency exchanges currently tracked"
             />
             <InfoText
               value={totalMarketCap}
-              toolTipContent="Cryptocurrencies total market cap"
+              toolTipContent={`Combined market capitalization of all cryptocurrencies, in ${currencyValue.toUpperCase()}`}
             />
 
             <InfoProgress
-              progressValue={updatedTotalPercentage}
+              progressValue={roundedTotalPercentage}
               value={`$ ${totalVolume}`}
               progressColor="[&>div]:bg-white"
-              toolTipContent="Cryptocurrencies total volume"
+              toolTipContent={`Total trading volume across all cryptocurrencies in the last 24 hours, in ${currencyValue.toUpperCase()}`}
             />
             <InfoProgress
               image={bitcoinIcon}
               value={`${btcPercentage} %`}
               progressValue={btcPercentage}
               progressColor="[&>div]:bg-orange"
-              toolTipContent="Bitcoin market cap percentage"
+              toolTipContent="Bitcoin's share of the total cryptocurrency market capitalization"
             />
             <InfoProgress
               image={ethIcon}
               value={`${ethPercentage} %`}
               progressValue={ethPercentage}
               progressColor="[&>div]:bg-pastel-blue"
-              toolTipContent="Ethereum market cap percentage"
+              toolTipContent="Ethereum's share of the total cryptocurrency market capitalization"
             />
           </>
         )}
