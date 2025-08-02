@@ -40,7 +40,7 @@ export const AutoComplete = ({
   const [selected, setSelected] = useState<Option>(value as Option);
   const [inputValue, setInputValue] = useState<string>(value?.label || "");
 
-  const handleKeyDown = useCallback(
+  const handleKeyUp = useCallback(
     (event: KeyboardEvent<HTMLDivElement>) => {
       const input = inputRef.current;
       if (!input) {
@@ -61,6 +61,13 @@ export const AutoComplete = ({
           setSelected(optionToSelect);
           onValueChange?.(optionToSelect);
         }
+      }
+
+      if (input.value === "") {
+        setSelected({
+          value: "",
+          label: "",
+        });
       }
 
       if (event.key === "Escape") {
@@ -92,7 +99,7 @@ export const AutoComplete = ({
   );
 
   return (
-    <CommandPrimitive onKeyDown={handleKeyDown}>
+    <CommandPrimitive onKeyUp={handleKeyUp}>
       <div className="h-10 w-[100%] text-sm border border-white/15 rounded-sm bg-black-russian">
         <CommandInput
           ref={inputRef}
@@ -108,7 +115,7 @@ export const AutoComplete = ({
       <div className="relative">
         <div
           className={cn(
-            "animate-in fade-in-0 zoom-in-95 absolute shadow light:top-1 -top-1 rounded-b-sm z-10 w-full bg-gradient-to-r from-black-russian to-dark-blue outline-none border border-white/15 text-white",
+            "animate-in fade-in-0 zoom-in-95 absolute shadow top-1 rounded-sm z-10 w-full bg-gradient-to-r from-black-russian to-dark-blue outline-none border border-white/15 text-white",
             isOpen ? "block" : "hidden"
           )}
         >
