@@ -32,6 +32,7 @@ export function CurrencyBox() {
   const currencyValue = useAppSelector(
     (state) => state.currencyData.currencyValue
   );
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -68,7 +69,7 @@ export function CurrencyBox() {
                   {currencyValue}
                 </span>
               </div>
-              <ChevronDown className="h-4 w-4 text-white" />
+              <ChevronDown className="h-4 w-4 text-background" />
             </div>
           </PopoverTrigger>
           <PopoverContent className="w-full p-0 border border-white/15 rounded-sm bg-black-russian">
