@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import marketDataSlice from "./features/marketData/marketDataSlice";
+import currencyListSlice from "./features/currencyListData/currencyListSlice";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       marketData: marketDataSlice,
+      currencyListData: currencyListSlice,
     },
   });
 };
