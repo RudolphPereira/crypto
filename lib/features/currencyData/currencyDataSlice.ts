@@ -38,7 +38,7 @@ export const fetchCurrencyList = createAsyncThunk(
   }
 );
 
-const currencyListSlice = createSlice({
+const currencyDataSlice = createSlice({
   name: "currencyList",
   initialState: initialState,
   reducers: {
@@ -66,5 +66,5 @@ const currencyListSlice = createSlice({
   },
 });
 
-export const { updateCurrencyValue } = currencyListSlice.actions;
-export default currencyListSlice.reducer;
+export const { updateCurrencyValue } = currencyDataSlice.actions;
+export default currencyDataSlice.reducer;

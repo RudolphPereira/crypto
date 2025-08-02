@@ -19,18 +19,18 @@ import {
 } from "@/components/ui/popover";
 import { Toast } from "../Toast/Toast";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { fetchCurrencyList } from "@/lib/features/currencyListData/currencyListSlice";
-import { updateCurrencyValue } from "@/lib/features/currencyListData/currencyListSlice";
+import { fetchCurrencyList } from "@/lib/features/currencyData/currencyDataSlice";
+import { updateCurrencyValue } from "@/lib/features/currencyData/currencyDataSlice";
 import { CurrencyBoxSkeleton } from "../Skeletons/CurrencyBoxSkeleton";
 import { fetchCoinList } from "@/lib/features/coinData/coinDataSlice";
 
 export function CurrencyBox() {
   const [open, setOpen] = useState(false);
-  const data = useAppSelector((state) => state.currencyListData.currencyList);
-  const loading = useAppSelector((state) => state.currencyListData.loading);
-  const error = useAppSelector((state) => state.currencyListData.error);
+  const data = useAppSelector((state) => state.currencyData.currencyList);
+  const loading = useAppSelector((state) => state.currencyData.loading);
+  const error = useAppSelector((state) => state.currencyData.error);
   const currencyValue = useAppSelector(
-    (state) => state.currencyListData.currencyValue
+    (state) => state.currencyData.currencyValue
   );
   const dispatch = useAppDispatch();
 
