@@ -6,7 +6,7 @@ import { formatNumberWithDecimals } from "@/lib/utils";
 type Props = {
   price?: string | number;
   currency?: string;
-  percentage: string | number;
+  percentage?: string | number;
   highStatus?: boolean;
 };
 

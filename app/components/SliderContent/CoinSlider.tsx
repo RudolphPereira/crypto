@@ -17,7 +17,9 @@ import { CoinSliderSkeleton } from "./CoinSliderSkeleton";
 
 export const CoinSlider = () => {
   const data = useAppSelector((state) => state.coinData.coinList);
-  const loading = useAppSelector((state) => state.coinData.loading);
+  const coinSliderSkeletonLoader = useAppSelector(
+    (state) => state.coinData.coinSliderSkeletonLoader
+  );
   const error = useAppSelector((state) => state.coinData.error);
   const currencyValue = useAppSelector(
     (state) => state.currencyData.currencyValue
@@ -28,7 +30,7 @@ export const CoinSlider = () => {
       <div className="w-full">
         <Carousel opts={{ align: "start" }} className="w-full">
           <CarouselContent className="">
-            {loading ? (
+            {coinSliderSkeletonLoader ? (
               <>
                 <CoinSliderSkeleton />
                 <CoinSliderSkeleton />

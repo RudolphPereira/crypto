@@ -14,6 +14,7 @@ type CoinList = [
 
 type InitialState = {
   coinName: string | undefined;
+  coinSliderSkeletonLoader: boolean;
   loading: boolean;
   coinList: CoinList;
   error: string;
@@ -21,6 +22,7 @@ type InitialState = {
 
 const initialState: InitialState = {
   coinName: "",
+  coinSliderSkeletonLoader: true,
   loading: true,
   coinList: [{}],
   error: "",
@@ -59,12 +61,14 @@ const coinDataSlice = createSlice({
       fetchCoinList.fulfilled,
       (state, action: PayloadAction<CoinList>) => {
         state.loading = false;
+        state.coinSliderSkeletonLoader = false;
         state.coinList = action.payload;
         state.error = "";
       }
     );
     builder.addCase(fetchCoinList.rejected, (state, action) => {
       state.loading = true;
+      state.coinSliderSkeletonLoader = true;
       state.coinList = [{}];
       state.error = action.error.message || "Something went wrong here";
     });

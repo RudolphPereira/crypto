@@ -13,8 +13,8 @@ export const CoinSliderSkeleton = () => {
         <Button className="w-full h-full p-0 light:bg-white">
           <Card className="min-h-19 light:shadow-none light:bg-periwinkle-blue/40 rounded-sm py-4 w-full bg-black-russian border border-transparent border-b-0 text-background cursor-pointer hover:bg-periwinkle-blue/30 light:hover:bg-periwinkle-blue/30 transition-all duration-200 ease-in">
             <CardContent className="flex items-center gap-4 px-4">
-              <div className="w-[2rem] h-[2rem]">
-                <Skeleton className="rounded-full h-full w-full" />
+              <div className="w-[2.2rem] h-[2.2rem] rounded-full group-hover:rotate-360 group-hover:scale-120 transition-all ease-in-out duration-600 bg-white p-0.5">
+                <Skeleton className="rounded-full h-full w-full shadow-md" />
               </div>
               <div className="flex flex-col items-start gap-2">
                 <div className="">
