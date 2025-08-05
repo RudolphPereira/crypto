@@ -19,7 +19,7 @@ export const TopInfoBar = () => {
   const loading = useAppSelector((state) => state.marketData.loading);
   const error = useAppSelector((state) => state.marketData.error);
   const currencyValue = useAppSelector(
-    (state) => state.currencyListData.currencyValue
+    (state) => state.currencyData.currencyValue
   );
   const dispatch = useAppDispatch();
 
