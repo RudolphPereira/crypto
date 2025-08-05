@@ -26,3 +26,13 @@ export function formatCompactNumber(number: number) {
     return (number / 1000000000000).toFixed(2) + " T";
   }
 }
+
+export function formatNumberWithDecimals(value: number) {
+  // eslint-disable-next-line
+  let formattedNumber = value.toLocaleString("en-US", {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+  });
+  // eslint-disable-next-line
+  return formattedNumber;
+}

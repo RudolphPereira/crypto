@@ -133,7 +133,7 @@ export const AutoComplete = ({
                   const isSelected = selected?.value === option.value;
                   return (
                     <CommandItem
-                      key={option.value}
+                      key={option.value || "1"}
                       value={option.label}
                       onMouseDown={(event) => {
                         event.preventDefault();

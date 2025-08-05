@@ -13,7 +13,7 @@
   --color-pastel-blue: #849dff;
   --color-periwinkle-blue: #7878fa;
   --color-violet-blue: #9d62d9;
-  --color-mint-green: #01f1e3;
+  --color-mint-green: #00b1a7;
   --color-deep-pink: #fe2264;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -95,7 +95,6 @@
   --color-dark-gunmetal: #fff;
   --color-black-russian: #fff;
   --color-dark-blue: #fff;
-  --color-mint-green: #00b1a7;
   --background: oklch(0.129 0.042 264.695);
   --foreground: oklch(0.984 0.003 247.858);
 }
