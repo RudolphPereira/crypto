@@ -6,6 +6,9 @@ import Image from "next/image";
 import { CoinStats } from "../components/CoinStats/CoinStats";
 import { ProgressStats } from "../components/TableContent/ProgressStats";
 import { TableChart } from "../components/TableContent/TableChart";
+import totheMoon from "../assets/tothemoon.svg";
+import { ToolTip } from "../components/ToolTip/ToolTip";
+import Link from "next/link";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -14,6 +17,7 @@ export type CoinData = {
   number: number;
   image: string;
   name: string;
+  currency: string;
   price: string;
   oneHourPercentage: string;
   twentyFourHourPercentage: string;
@@ -21,10 +25,12 @@ export type CoinData = {
   twentyFourHourVolumeByMarketCap: {
     twentyFourHourVolume: string;
     marketCap: string;
+    percentage: number;
   };
   circulatingByTotalSupply: {
     circulation: string;
     totalSupply: string;
+    percentage: number;
   };
   lastSevenDay: string;
 };
@@ -52,19 +58,49 @@ export const columns: ColumnDef<CoinData>[] = [
     },
     cell: ({ row }) => {
       return (
-        <div className="flex items-center gap-3">
-          <div className="w-[1.6rem] h-[1.6rem]">
-            <Image
-              src={row.original.image}
-              alt="coin-icon"
-              className="w-full h-full"
-            />
-          </div>
-          <p className="text-background">{row.original.name}</p>
+        <div className="">
+          <ToolTip
+            align="left"
+            sideOffset={8}
+            toolTipTrigger={
+              <Link href="#">
+                <div className="flex items-center gap-3 group cursor-pointer">
+                  <div className="w-[2rem] h-[2rem] bg-white rounded-full shadow-md group-hover:rotate-360 group-hover:scale-120 transition-all ease-in-out duration-600">
+                    <Image
+                      width={100}
+                      height={100}
+                      src={row.original.image || totheMoon}
+                      alt="coin-icon"
+                      className="w-full h-full rounded-full p-0.5 "
+                    />
+                  </div>
+                  <p className="text-background w-18 truncate">
+                    {row.original.name}
+                  </p>
+                </div>
+              </Link>
+            }
+            toolTipContent={row.original.name}
+          />
         </div>
       );
     },
   },
+
+  {
+    accessorKey: "currency",
+    header: ({ column }) => {
+      return (
+        <HeaderBtn
+          btnName="Currency"
+          column={column}
+          icon="icon"
+          disabled={true}
+        />
+      );
+    },
+  },
+
   {
     accessorKey: "price",
     header: ({ column }) => {
@@ -102,12 +138,7 @@ export const columns: ColumnDef<CoinData>[] = [
       );
     },
     cell: ({ row }) => {
-      return (
-        <CoinStats
-          highStatus
-          percentage={row.original.twentyFourHourPercentage}
-        />
-      );
+      return <CoinStats percentage={row.original.twentyFourHourPercentage} />;
     },
   },
   {
@@ -129,12 +160,13 @@ export const columns: ColumnDef<CoinData>[] = [
     cell: ({ row }) => {
       return (
         <ProgressStats
-          status="high"
           amount={
             row.original.twentyFourHourVolumeByMarketCap.twentyFourHourVolume
           }
           total={row.original.twentyFourHourVolumeByMarketCap.marketCap}
-          progressValue={60}
+          progressValue={
+            row.original.twentyFourHourVolumeByMarketCap.percentage
+          }
         />
       );
     },
@@ -147,10 +179,9 @@ export const columns: ColumnDef<CoinData>[] = [
     cell: ({ row }) => {
       return (
         <ProgressStats
-          status="low"
           amount={row.original.circulatingByTotalSupply.circulation}
           total={row.original.circulatingByTotalSupply.totalSupply}
-          progressValue={20}
+          progressValue={row.original.circulatingByTotalSupply.percentage}
         />
       );
     },

@@ -14,7 +14,7 @@ type CoinList = [
 
 type InitialState = {
   coinName: string | undefined;
-  coinSliderSkeletonLoader: boolean;
+  skeletonLoader: boolean;
   loading: boolean;
   coinList: CoinList;
   error: string;
@@ -22,7 +22,7 @@ type InitialState = {
 
 const initialState: InitialState = {
   coinName: "",
-  coinSliderSkeletonLoader: true,
+  skeletonLoader: true,
   loading: true,
   coinList: [{}],
   error: "",
@@ -33,7 +33,7 @@ export const fetchCoinList = createAsyncThunk(
   async (arg, { getState }) => {
     const state = getState() as RootState;
     const response = await axios.get(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${state.currencyData.currencyValue}&order=market_cap_desc&sparkline=true&price_change_percentage=1h%2C%2024h%2C%207d%2C%2014d%2C%2030d%2C%20200d%2C%201y&x_cg_demo_api_key=CG-7741Ho5VUyT97d1HP9YfiiYs`,
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${state.currencyData.currencyValue}&sparkline=true&price_change_percentage=1h%2C24h%2C7d%2C14d%2C30d%2C200d%2C1y&x_cg_demo_api_key=CG-7741Ho5VUyT97d1HP9YfiiYs`,
       {
         adapter: "fetch",
         fetchOptions: { cache: "force-cache" },
@@ -61,14 +61,14 @@ const coinDataSlice = createSlice({
       fetchCoinList.fulfilled,
       (state, action: PayloadAction<CoinList>) => {
         state.loading = false;
-        state.coinSliderSkeletonLoader = false;
+        state.skeletonLoader = false;
         state.coinList = action.payload;
         state.error = "";
       }
     );
     builder.addCase(fetchCoinList.rejected, (state, action) => {
       state.loading = true;
-      state.coinSliderSkeletonLoader = true;
+      state.skeletonLoader = true;
       state.coinList = [{}];
       state.error = action.error.message || "Something went wrong here";
     });
