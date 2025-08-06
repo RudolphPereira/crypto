@@ -8,12 +8,29 @@ import axios from "../../utils";
 
 type CoinList = [
   {
-    [key: string]: string;
+    id: string;
+    symbol: string;
+    name: string;
+    image: string;
+    current_price: string;
+    market_cap: string;
+    total_volume: string;
+    price_change_percentage_24h: string;
+    market_cap_change_24h: string;
+    market_cap_change_percentage_24h: string;
+    circulating_supply: string;
+    total_supply: string;
+    sparkline_in_7d: {
+      price: number[];
+    };
+    price_change_percentage_1h_in_currency: string;
+    price_change_percentage_24h_in_currency: string;
+    price_change_percentage_7d_in_currency: string;
   }
 ];
 
 type InitialState = {
-  coinName: string | undefined;
+  coinName: string;
   skeletonLoader: boolean;
   loading: boolean;
   coinList: CoinList;
@@ -24,7 +41,28 @@ const initialState: InitialState = {
   coinName: "",
   skeletonLoader: true,
   loading: true,
-  coinList: [{}],
+  coinList: [
+    {
+      id: "",
+      symbol: "",
+      name: "",
+      image: "",
+      current_price: "",
+      market_cap: "",
+      total_volume: "",
+      price_change_percentage_24h: "",
+      market_cap_change_24h: "",
+      market_cap_change_percentage_24h: "",
+      circulating_supply: "",
+      total_supply: "",
+      sparkline_in_7d: {
+        price: [],
+      },
+      price_change_percentage_1h_in_currency: "",
+      price_change_percentage_24h_in_currency: "",
+      price_change_percentage_7d_in_currency: "",
+    },
+  ],
   error: "",
 };
 
@@ -69,7 +107,28 @@ const coinDataSlice = createSlice({
     builder.addCase(fetchCoinList.rejected, (state, action) => {
       state.loading = true;
       state.skeletonLoader = true;
-      state.coinList = [{}];
+      state.coinList = [
+        {
+          id: "",
+          symbol: "",
+          name: "",
+          image: "",
+          current_price: "",
+          market_cap: "",
+          total_volume: "",
+          price_change_percentage_24h: "",
+          market_cap_change_24h: "",
+          market_cap_change_percentage_24h: "",
+          circulating_supply: "",
+          total_supply: "",
+          sparkline_in_7d: {
+            price: [],
+          },
+          price_change_percentage_1h_in_currency: "",
+          price_change_percentage_24h_in_currency: "",
+          price_change_percentage_7d_in_currency: "",
+        },
+      ];
       state.error = action.error.message || "Something went wrong here";
     });
   },

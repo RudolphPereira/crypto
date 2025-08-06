@@ -5,6 +5,7 @@ type Props = {
   amount?: string;
   total?: string;
   progressValue?: number;
+  status?: boolean;
 };
 
 export const ProgressStats = ({ amount, total, progressValue }: Props) => {

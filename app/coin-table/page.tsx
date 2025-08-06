@@ -16,56 +16,52 @@ export default function CoinTable() {
     (state) => state.currencyData.currencyValue
   );
 
-  const newDataArr: CoinData[] = data.map(
-    (coin: { [key: string]: string }, index: number) => {
-      const price = Number(coin.current_price).toFixed(0) || "";
-      const currency = currencyValue.toUpperCase() || "";
-      const oneHourPercentage =
-        coin.price_change_percentage_1h_in_currency || "";
-      const twentyFourHourPercentage = coin.price_change_percentage_24h || "";
-      const sevenDayPercentage =
-        coin.price_change_percentage_7d_in_currency || "";
-      const twentyFourHourVolume =
-        formatCompactNumber(Number(coin.total_volume))?.toString() || "";
-      const marketCap =
-        formatCompactNumber(Number(coin.market_cap))?.toString() || "";
-      const circulation =
-        formatCompactNumber(Number(coin.circulating_supply))?.toString() || "";
-      const totalSupply =
-        formatCompactNumber(Number(coin.total_supply))?.toString() || "";
-      const volumePercentage =
-        Math.round(
-          (100 * Number(coin.total_volume)) / Number(coin.market_cap)
-        ) || 0;
-      const circulationVolume =
-        Math.round(
-          (100 * Number(coin.circulating_supply)) / Number(coin.total_supply)
-        ) || 0;
+  const newDataArr: CoinData[] = data.map((coin, index: number) => {
+    const price = Number(coin.current_price).toFixed(0) || "";
+    const currency = currencyValue.toUpperCase() || "";
+    const oneHourPercentage = coin.price_change_percentage_1h_in_currency || "";
+    const twentyFourHourPercentage = coin.price_change_percentage_24h || "";
+    const sevenDayPercentage =
+      coin.price_change_percentage_7d_in_currency || "";
+    const twentyFourHourVolume =
+      formatCompactNumber(Number(coin.total_volume))?.toString() || "";
+    const marketCap =
+      formatCompactNumber(Number(coin.market_cap))?.toString() || "";
+    const circulation =
+      formatCompactNumber(Number(coin.circulating_supply))?.toString() || "";
+    const totalSupply =
+      formatCompactNumber(Number(coin.total_supply))?.toString() || "";
+    const volumePercentage =
+      Math.round((100 * Number(coin.total_volume)) / Number(coin.market_cap)) ||
+      0;
+    const circulationVolume =
+      Math.round(
+        (100 * Number(coin.circulating_supply)) / Number(coin.total_supply)
+      ) || 0;
 
-      return {
-        id: coin.id,
-        number: index + 1,
-        image: coin.image,
-        name: coin.name,
-        currency: currency,
-        price: price,
-        oneHourPercentage: oneHourPercentage,
-        twentyFourHourPercentage: twentyFourHourPercentage,
-        sevenDayPercentage: sevenDayPercentage,
-        twentyFourHourVolumeByMarketCap: {
-          twentyFourHourVolume: twentyFourHourVolume,
-          marketCap: marketCap,
-          percentage: volumePercentage,
-        },
-        circulatingByTotalSupply: {
-          circulation: circulation,
-          totalSupply: totalSupply,
-          percentage: circulationVolume,
-        },
-        lastSevenDay: "67",
-      };
-    }
-  );
+    return {
+      id: coin.id,
+      number: index + 1,
+      image: coin.image,
+      name: coin.name,
+      currency: currency,
+      price: price,
+      oneHourPercentage: oneHourPercentage,
+      twentyFourHourPercentage: twentyFourHourPercentage,
+      sevenDayPercentage: sevenDayPercentage,
+      twentyFourHourVolumeByMarketCap: {
+        twentyFourHourVolume: twentyFourHourVolume,
+        marketCap: marketCap,
+        percentage: volumePercentage,
+      },
+      circulatingByTotalSupply: {
+        circulation: circulation,
+        totalSupply: totalSupply,
+        percentage: circulationVolume,
+      },
+      lastSevenDay: coin.sparkline_in_7d.price,
+    };
+  });
 
   const coinsToLoad: number = 5;
   const [displayRows, setDisplayRows] = useState<CoinData[]>(newDataArr);

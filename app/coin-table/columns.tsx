@@ -32,7 +32,7 @@ export type CoinData = {
     totalSupply: string;
     percentage: number;
   };
-  lastSevenDay: string;
+  lastSevenDay: number[];
 };
 
 export const columns: ColumnDef<CoinData>[] = [
@@ -191,8 +191,8 @@ export const columns: ColumnDef<CoinData>[] = [
     header: () => {
       return <HeaderBtn btnName="Last 7d" disabled={true} />;
     },
-    cell: () => {
-      return <TableChart highStatus />;
+    cell: ({ row }) => {
+      return <TableChart lastSevenDay={row.original.lastSevenDay} />;
     },
   },
 ];
