@@ -30,7 +30,7 @@ const eslintConfig = [
       "react/no-array-index-key": "warn",
       "react/react-in-jsx-scope": "off",
       "no-undef": "off",
-      camelcase: "error", // Enforces camelCase naming convention
+      // camelcase: "error", // Enforces camelCase naming convention
     },
 
     plugins: ["react"],

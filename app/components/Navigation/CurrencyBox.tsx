@@ -57,7 +57,7 @@ export function CurrencyBox() {
             <div
               role="combobox"
               aria-expanded={open}
-              className="flex justify-between items-center gap-2 px-2 h-10 outline-none rounded-sm border border-white/15 bg-black-russian text-sm w-[7rem] cursor-pointer"
+              className="flex justify-between items-center gap-2 px-2 h-10 outline-none rounded-sm border border-white/15 bg-black-russian text-sm w-[7rem] cursor-pointer shadow-xs"
             >
               <Avatar className="rounded-sm h-6 w-6">
                 <AvatarFallback className="rounded-sm bg-background text-foreground  text-sm uppercase">

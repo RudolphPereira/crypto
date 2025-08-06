@@ -27,11 +27,32 @@ export function formatCompactNumber(number: number) {
   }
 }
 
-export function formatNumberWithDecimals(value: number) {
+export function formatNumberWithDecimals(
+  value: number,
+  minimumFractionDigits: number,
+  maximumFractionDigits: number
+) {
   // eslint-disable-next-line
   let formattedNumber = value.toLocaleString("en-US", {
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 2,
+    minimumFractionDigits: minimumFractionDigits,
+    maximumFractionDigits: maximumFractionDigits,
+  });
+  // eslint-disable-next-line
+  return formattedNumber;
+}
+
+export function formatNumberWithDecimalsAndCurrency(
+  value: number,
+  minimumFractionDigits: number,
+  maximumFractionDigits: number,
+  currencyValue: string | undefined
+) {
+  // eslint-disable-next-line
+  let formattedNumber = value.toLocaleString("en-US", {
+    minimumFractionDigits: minimumFractionDigits,
+    maximumFractionDigits: maximumFractionDigits,
+    style: "currency",
+    currency: currencyValue?.toUpperCase(),
   });
   // eslint-disable-next-line
   return formattedNumber;

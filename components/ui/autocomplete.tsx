@@ -100,7 +100,7 @@ export const AutoComplete = ({
 
   return (
     <CommandPrimitive onKeyUp={handleKeyUp}>
-      <div className="h-10 w-[100%] text-sm border border-white/15 rounded-sm bg-black-russian">
+      <div className="h-10 w-[100%] shadow-xs text-sm border border-white/15 rounded-sm bg-black-russian">
         <CommandInput
           ref={inputRef}
           value={inputValue}

@@ -13,12 +13,12 @@ import { CoinStats } from "../CoinStats/CoinStats";
 import { useAppSelector } from "@/lib/hooks";
 import { Toast } from "../Toast/Toast";
 import toTheMoon from "../../assets/tothemoon.svg";
-import { CoinSliderSkeleton } from "./CoinSliderSkeleton";
+import { CoinSliderSkeleton } from "../Skeletons/CoinSliderSkeleton";
 
 export const CoinSlider = () => {
   const data = useAppSelector((state) => state.coinData.coinList);
-  const coinSliderSkeletonLoader = useAppSelector(
-    (state) => state.coinData.coinSliderSkeletonLoader
+  const skeletonLoader = useAppSelector(
+    (state) => state.coinData.skeletonLoader
   );
   const error = useAppSelector((state) => state.coinData.error);
   const currencyValue = useAppSelector(
@@ -30,7 +30,7 @@ export const CoinSlider = () => {
       <div className="w-full">
         <Carousel opts={{ align: "start" }} className="w-full">
           <CarouselContent className="">
-            {coinSliderSkeletonLoader ? (
+            {skeletonLoader ? (
               <>
                 <CoinSliderSkeleton />
                 <CoinSliderSkeleton />
@@ -119,8 +119,8 @@ export const CoinSlider = () => {
               </div>
             </CarouselItem> */}
           </CarouselContent>
-          <CarouselPrevious className="group top-28 -left-0 sm:top-1/2 sm:-left-8 size-9 sm:size-12 cursor-pointer sm:disabled:hidden text-white border-b-0 dark:bg-periwinkle-blue/30 light:bg-periwinkle-blue/60 light:hover:bg-periwinkle-blue/90 dark:hover:bg-periwinkle-blue/60 dark:border-periwinkle-blue" />
-          <CarouselNext className="group top-28 -right-0 sm:top-1/2  sm:-right-8 size-9 sm:size-12 cursor-pointer sm:disabled:hidden text-white border-b-0 light:bg-periwinkle-blue/60 light:hover:bg-periwinkle-blue/90 dark:bg-periwinkle-blue/30 dark:hover:bg-periwinkle-blue/60 dark:border-periwinkle-blue" />
+          <CarouselPrevious className="group light:hover:drop-shadow-md top-28 -left-0 sm:top-1/2 sm:-left-8 size-9 sm:size-12 cursor-pointer sm:disabled:hidden text-white border-b-0 dark:bg-periwinkle-blue/30 light:bg-periwinkle-blue/60 light:hover:bg-periwinkle-blue/90 dark:hover:bg-periwinkle-blue/60 dark:border-periwinkle-blue" />
+          <CarouselNext className="group light:hover:drop-shadow-md top-28 -right-0 sm:top-1/2  sm:-right-8 size-9 sm:size-12 cursor-pointer sm:disabled:hidden text-white border-b-0 light:bg-periwinkle-blue/60 light:hover:bg-periwinkle-blue/90 dark:bg-periwinkle-blue/30 dark:hover:bg-periwinkle-blue/60 dark:border-periwinkle-blue" />
         </Carousel>
       </div>
       {error !== "" ? (

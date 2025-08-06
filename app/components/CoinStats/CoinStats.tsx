@@ -1,7 +1,10 @@
 import Image from "next/image";
 import increaseIcon from "../../assets/increase.svg";
 import decreaseIcon from "../../assets/decrease.svg";
-import { formatNumberWithDecimals } from "@/lib/utils";
+import {
+  formatNumberWithDecimals,
+  formatNumberWithDecimalsAndCurrency,
+} from "@/lib/utils";
 
 type Props = {
   price?: string | number;
@@ -17,10 +20,21 @@ export const CoinStats = ({
   highStatus,
 }: Props) => {
   const convertedPriceToNum = Number(price);
-  const finalPrice = formatNumberWithDecimals(convertedPriceToNum);
+
+  const finalPrice = formatNumberWithDecimalsAndCurrency(
+    convertedPriceToNum,
+    0,
+    2,
+    currency || "usd"
+  );
   const convertedPercentageToNum = Number(percentage);
   const convertedPercentageToAbs = Math.abs(convertedPercentageToNum);
-  const finalPercentage = formatNumberWithDecimals(convertedPercentageToAbs);
+  const convertedPercentageToDecimals = formatNumberWithDecimals(
+    convertedPercentageToAbs,
+    0,
+    2
+  );
+  const finalPercentage = Number(convertedPercentageToDecimals);
 
   if (convertedPercentageToNum < 0) {
     highStatus = false;
@@ -29,11 +43,11 @@ export const CoinStats = ({
   }
 
   return (
-    <div className="flex gap-3 text-background">
+    <div className="flex gap-3 text-background items-center">
       {price && (
         <div className="flex gap-1 text-xs font-[400] opacity-70">
           <p>{finalPrice}</p>
-          <p className="uppercase">{currency}</p>
+          {/* <p className="uppercase">{currency}</p> */}
         </div>
       )}
 
