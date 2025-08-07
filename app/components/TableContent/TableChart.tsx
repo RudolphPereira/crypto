@@ -32,7 +32,6 @@ type Props = {
 export function TableChart({ lastSevenDay }: Props) {
   const newData = lastSevenDay.map((item) => {
     const finalItem = item.toFixed(2);
-    console.log(finalItem, item);
     return { value: Number(finalItem) };
   });
 
@@ -78,7 +77,7 @@ export function TableChart({ lastSevenDay }: Props) {
           />
           <YAxis domain={domain} hide />
           <Area
-            strokeWidth={1.5}
+            strokeWidth={1.2}
             dataKey="value"
             type="natural"
             fill="url(#fillGraph)"
