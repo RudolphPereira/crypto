@@ -18,7 +18,7 @@ export type CoinData = {
   image: string;
   name: string;
   currency: string;
-  price: string;
+  price: number;
   oneHourPercentage: string;
   twentyFourHourPercentage: string;
   sevenDayPercentage: string;

@@ -18,6 +18,7 @@ export default function CoinTable() {
 
   const newDataArr: CoinData[] = data.map((coin, index: number) => {
     const price = Number(coin.current_price).toFixed(0) || "";
+    const finalPrice = Number(price);
     const currency = currencyValue.toUpperCase() || "";
     const oneHourPercentage = coin.price_change_percentage_1h_in_currency || "";
     const twentyFourHourPercentage = coin.price_change_percentage_24h || "";
@@ -45,7 +46,7 @@ export default function CoinTable() {
       image: coin.image,
       name: coin.name,
       currency: currency,
-      price: price,
+      price: finalPrice,
       oneHourPercentage: oneHourPercentage,
       twentyFourHourPercentage: twentyFourHourPercentage,
       sevenDayPercentage: sevenDayPercentage,
