@@ -68,7 +68,11 @@ export const CoinStats = ({
             {finalPercentage}%
           </p>
         </div>
-      ) : null}
+      ) : (
+        <div className="flex gap-1.5 text-xs font-[400] items-center">
+          <p>---</p>
+        </div>
+      )}
     </div>
   );
 };

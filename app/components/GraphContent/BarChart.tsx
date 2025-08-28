@@ -1,52 +1,42 @@
 "use client";
-
 import { Bar, BarChart, XAxis } from "recharts";
 
 import {
-  ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import { coinDomainMoreThanZero } from "@/lib/utils";
 
-const chartData = [
-  { month: "January", desktop: 186, mobile: 80, tab: 123 },
-  { month: "February", desktop: 1000, mobile: 200, tab: 400 },
-  { month: "March", desktop: 237, mobile: 120, tab: 200 },
-  { month: "April", desktop: 73, mobile: 190, tab: 250 },
-  { month: "May", desktop: 209, mobile: 130, tab: 100 },
-  { month: "June", desktop: 214, mobile: 140, tab: 150 },
-  { month: "June", desktop: 214, mobile: 140, tab: 150 },
-  { month: "January", desktop: 186, mobile: 80, tab: 123 },
-  { month: "February", desktop: 1000, mobile: 200, tab: 400 },
-  { month: "March", desktop: 237, mobile: 120, tab: 200 },
-  { month: "April", desktop: 73, mobile: 190, tab: 250 },
-  { month: "May", desktop: 209, mobile: 130, tab: 100 },
-  { month: "June", desktop: 214, mobile: 140, tab: 150 },
-  { month: "June", desktop: 214, mobile: 140, tab: 150 },
-  { month: "March", desktop: 237, mobile: 120, tab: 200 },
-  { month: "April", desktop: 73, mobile: 190, tab: 250 },
-  { month: "May", desktop: 209, mobile: 130, tab: 100 },
-  { month: "June", desktop: 214, mobile: 140, tab: 150 },
-  { month: "June", desktop: 214, mobile: 140, tab: 150 },
-];
+type Props = {
+  data: {
+    [key: string]: number | null | string;
+  }[];
+  coinNames: string[];
+  coinTwoVolumeDomain: number[] | undefined;
+  coinThreeVolumeDomain: number[] | undefined;
+  chartConfig: {
+    [key: string]: {
+      label: string;
+      color: string;
+    };
+  };
+};
 
-const chartConfig = {
-  coinOne: {
-    label: "Desktop",
-    color: "var(--chart-1)",
-  },
-  coinTwo: {
-    label: "Mobile",
-    color: "var(--chart-2)",
-  },
-  coinThree: {
-    label: "Tab",
-    color: "var(--chart-3)",
-  },
-} satisfies ChartConfig;
+export function ChartBarStacked({
+  data,
+  coinNames,
+  coinTwoVolumeDomain,
+  coinThreeVolumeDomain,
+  chartConfig,
+}: Props) {
+  const coinDomainTwo = coinDomainMoreThanZero(coinTwoVolumeDomain);
+  const coinDomainThree = coinDomainMoreThanZero(coinThreeVolumeDomain);
 
-export function ChartBarStacked() {
+  const coinOne = coinNames[0];
+  const coinTwo = coinNames[1] || "";
+  const coinThree = coinNames[2] || "";
+
   return (
     <div className="flex-1">
       <ChartContainer
@@ -56,30 +46,33 @@ export function ChartBarStacked() {
         <BarChart
           className="flex [&>svg]:flex-1"
           accessibilityLayer
-          data={chartData}
-          barGap={50}
-          barSize={20}
+          data={data}
+          barSize={25}
           margin={{
-            left: 12,
-            right: 12,
-            top: 12,
+            left: 6,
+            right: 6,
+            top: 10,
           }}
         >
           <ChartTooltip
             content={
-              <ChartTooltipContent className="rounded-sm" hideIndicator />
+              <ChartTooltipContent
+                hideIndicator
+                className="rounded-sm border-0 shadow-md flex flex-col gap-1 items-start"
+              />
             }
             cursor={false}
           />
+
           <defs>
             <linearGradient id="fillCoinOne" x1="0" y1="0" x2="0" y2="1">
               <stop
-                offset="5%"
+                offset="20%"
                 stopColor="var(--color-coinOne)"
                 stopOpacity={1}
               />
               <stop
-                offset="95%"
+                offset="100%"
                 stopColor="var(--color-coinOne)"
                 stopOpacity={0}
               />
@@ -91,7 +84,7 @@ export function ChartBarStacked() {
                 stopOpacity={1}
               />
               <stop
-                offset="95%"
+                offset="100%"
                 stopColor="var(--color-coinTwo)"
                 stopOpacity={0}
               />
@@ -103,45 +96,52 @@ export function ChartBarStacked() {
                 stopOpacity={1}
               />
               <stop
-                offset="95%"
+                offset="100%"
                 stopColor="var(--color-coinThree)"
                 stopOpacity={0}
               />
             </linearGradient>
           </defs>
+
           <Bar
-            dataKey="desktop"
-            type="natural"
+            isAnimationActive={true}
+            dataKey={coinOne}
             stackId="a"
             fill="url(#fillCoinOne)"
             fillOpacity={1}
             radius={[4, 4, 0, 0]}
           />
-          <Bar
-            dataKey="mobile"
-            type="natural"
-            stackId="a"
-            fill="url(#fillCoinTwo)"
-            fillOpacity={1}
-            radius={[4, 4, 0, 0]}
-          />
-          <Bar
-            dataKey="tab"
-            type="natural"
-            stackId="a"
-            fill="url(#fillCoinThree)"
-            fillOpacity={1}
-            radius={[4, 4, 0, 0]}
-          />
+
+          {coinDomainTwo && (
+            <Bar
+              isAnimationActive={true}
+              dataKey={coinTwo}
+              stackId="a"
+              fill="url(#fillCoinTwo)"
+              fillOpacity={1}
+              radius={[4, 4, 0, 0]}
+            />
+          )}
+
+          {coinDomainThree && (
+            <Bar
+              isAnimationActive={true}
+              dataKey={coinThree}
+              stackId="a"
+              fill="url(#fillCoinThree)"
+              fillOpacity={1}
+              radius={[4, 4, 0, 0]}
+            />
+          )}
 
           <XAxis
-            height={20}
-            className="flex-1"
-            dataKey="month"
+            height={17}
+            dataKey="timeLine"
             tickLine={false}
-            tickMargin={2}
             axisLine={false}
-            tickFormatter={(value) => value.slice(0, 3)}
+            tickSize={4}
+            interval="preserveStartEnd"
+            minTickGap={5}
           />
         </BarChart>
       </ChartContainer>

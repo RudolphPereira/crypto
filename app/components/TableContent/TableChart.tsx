@@ -6,6 +6,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import { formatDomain } from "@/lib/utils";
 
 const chartConfig = {
   high: {
@@ -36,14 +37,11 @@ export function TableChart({ lastSevenDay }: Props) {
   });
 
   const values = newData.map((item) => item.value);
-  const dataMin = Math.min(...values);
-  const dataMax = Math.max(...values);
-  const padding = (dataMax - dataMin) * 0.01;
-  const domain = [dataMin - padding, dataMax + padding];
+  const domain = formatDomain(values);
 
   return (
     <div className="flex-1">
-      <ChartContainer config={chartConfig} className="h-11 w-30">
+      <ChartContainer config={chartConfig} className="h-11 w-35">
         <AreaChart accessibilityLayer data={newData}>
           <defs>
             <linearGradient id="fillGraph" x1="0" y1="0" x2="0" y2="1">
@@ -69,7 +67,7 @@ export function TableChart({ lastSevenDay }: Props) {
             cursor={false}
             content={
               <ChartTooltipContent
-                className="z-50 border-0 rounded-sm"
+                className="border-0 rounded-sm shadow-md"
                 hideLabel
                 hideIndicator
               />

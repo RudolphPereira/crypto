@@ -23,10 +23,13 @@ import { fetchCurrencyList } from "@/lib/features/currencyData/currencyDataSlice
 import { updateCurrencyValue } from "@/lib/features/currencyData/currencyDataSlice";
 import { CurrencyBoxSkeleton } from "../Skeletons/CurrencyBoxSkeleton";
 import { fetchCoinList } from "@/lib/features/coinData/coinDataSlice";
+import { fetchGraphCoinList } from "@/lib/features/graphData/graphDataSlice";
 
 export function CurrencyBox() {
   const [open, setOpen] = useState(false);
   const data = useAppSelector((state) => state.currencyData.currencyList);
+  const graphData = useAppSelector((state) => state.graphData.graphCoinList);
+  const graphDataError = useAppSelector((state) => state.graphData.error);
   const loading = useAppSelector((state) => state.currencyData.loading);
   const error = useAppSelector((state) => state.currencyData.error);
   const currencyValue = useAppSelector(
@@ -41,6 +44,10 @@ export function CurrencyBox() {
 
   useEffect(() => {
     dispatch(fetchCoinList());
+    dispatch(fetchGraphCoinList());
+    graphData.forEach((coin) => {
+      dispatch(fetchGraphCoinList(coin.coinName));
+    });
   }, [currencyValue]);
 
   const setCurrencyValue = (value: string) => {
@@ -82,6 +89,7 @@ export function CurrencyBox() {
                 <CommandGroup>
                   {data.map((currency) => (
                     <CommandItem
+                      disabled={graphDataError !== ""}
                       className="text-background flex uppercase p-1 cursor-pointer"
                       key={currency}
                       value={currency}
@@ -113,7 +121,7 @@ export function CurrencyBox() {
         <div className="hidden">
           <Toast
             title="Error"
-            message={`${error}. Kindly refresh page.`}
+            message={`${error}. Kindly refresh the page.`}
             btnLabel="Close"
           />
         </div>

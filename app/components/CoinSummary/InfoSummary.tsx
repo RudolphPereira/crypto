@@ -6,8 +6,8 @@ type Props = {
 
 export const InfoSummary = ({ info }: Props) => {
   return (
-    <div className="h-[250px] overflow-scroll text-background">
-      <p className="text-sm h-full ">{info}</p>
+    <div className="text-background">
+      <p className="text-sm h-full">{info}</p>
     </div>
   );
 };

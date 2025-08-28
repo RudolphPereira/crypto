@@ -9,6 +9,7 @@ import { TableChart } from "../components/TableContent/TableChart";
 import totheMoon from "../assets/tothemoon.svg";
 import { ToolTip } from "../components/ToolTip/ToolTip";
 import Link from "next/link";
+import { formatCompactNumber } from "@/lib/utils";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -88,20 +89,6 @@ export const columns: ColumnDef<CoinData>[] = [
   },
 
   {
-    accessorKey: "currency",
-    header: ({ column }) => {
-      return (
-        <HeaderBtn
-          btnName="Currency"
-          column={column}
-          icon="icon"
-          disabled={true}
-        />
-      );
-    },
-  },
-
-  {
     accessorKey: "price",
     header: ({ column }) => {
       return (
@@ -110,6 +97,19 @@ export const columns: ColumnDef<CoinData>[] = [
           column={column}
           icon="icon"
           disabled={false}
+        />
+      );
+    },
+    cell: ({ row }) => {
+      return (
+        <ToolTip
+          align="bottom"
+          toolTipTrigger={
+            <span>
+              {formatCompactNumber(row.original.price, row.original.currency)}
+            </span>
+          }
+          toolTipContent={row.original.price.toLocaleString()}
         />
       );
     },

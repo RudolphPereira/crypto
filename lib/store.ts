@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import marketDataSlice from "./features/marketData/marketDataSlice";
 import currencyDataSlice from "./features/currencyData/currencyDataSlice";
 import coinListSlice from "./features/coinData/coinDataSlice";
+import graphDataSlice from "./features/graphData/graphDataSlice";
 
 export const makeStore = () => {
   return configureStore({
@@ -9,6 +10,7 @@ export const makeStore = () => {
       marketData: marketDataSlice,
       currencyData: currencyDataSlice,
       coinData: coinListSlice,
+      graphData: graphDataSlice,
     },
   });
 };

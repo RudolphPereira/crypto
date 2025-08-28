@@ -1,82 +1,76 @@
 "use client";
-import { Area, AreaChart, XAxis } from "recharts";
+import { Area, AreaChart, XAxis, YAxis } from "recharts";
 
 import {
-  ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import { coinDomainMoreThanZero } from "@/lib/utils";
 
-const chartData = [
-  { month: "January", coinOne: 186, coinTwo: 80, coinThree: 123 },
-  { month: "February", coinOne: 305, coinTwo: 200, coinThree: 400 },
-  { month: "March", coinOne: 237, coinTwo: 120, coinThree: 200 },
-  { month: "April", coinOne: 73, coinTwo: 190, coinThree: 250 },
-  { month: "May", coinOne: 209, coinTwo: 130, coinThree: 100 },
-  { month: "June", coinOne: 214, coinTwo: 140, coinThree: 150 },
-  { month: "March", coinOne: 237, coinTwo: 120, coinThree: 200 },
-  { month: "January", coinOne: 186, coinTwo: 80, coinThree: 123 },
-  { month: "February", coinOne: 305, coinTwo: 200, coinThree: 400 },
-  { month: "March", coinOne: 237, coinTwo: 120, coinThree: 200 },
-  { month: "April", coinOne: 73, coinTwo: 190, coinThree: 250 },
-  { month: "May", coinOne: 209, coinTwo: 130, coinThree: 100 },
-  { month: "June", coinOne: 214, coinTwo: 140, coinThree: 150 },
-  { month: "March", coinOne: 237, coinTwo: 120, coinThree: 200 },
-  { month: "January", coinOne: 186, coinTwo: 80, coinThree: 123 },
-  { month: "February", coinOne: 305, coinTwo: 200, coinThree: 400 },
-  { month: "March", coinOne: 237, coinTwo: 120, coinThree: 200 },
-  { month: "April", coinOne: 73, coinTwo: 190, coinThree: 250 },
-  { month: "May", coinOne: 209, coinTwo: 130, coinThree: 100 },
-  { month: "June", coinOne: 214, coinTwo: 140, coinThree: 150 },
-];
+type Props = {
+  data: {
+    [key: string]: number | null | string;
+  }[];
+  coinNames: string[];
+  coinOnePriceDomain?: number[] | undefined;
+  coinTwoPriceDomain?: number[] | undefined;
+  coinThreePriceDomain?: number[] | undefined;
+  chartConfig: {
+    [key: string]: {
+      label: string;
+      color: string;
+    };
+  };
+};
 
-const chartConfig = {
-  coinOne: {
-    label: "Coin One",
-    color: "var(--chart-1)",
-  },
-  coinTwo: {
-    label: "Coin Two",
-    color: "var(--chart-2)",
-  },
-  coinThree: {
-    label: "Coin Three",
-    color: "var(--chart-3)",
-  },
-} satisfies ChartConfig;
+export function ChartAreaGradient({
+  data,
+  coinNames,
+  coinOnePriceDomain,
+  coinTwoPriceDomain,
+  coinThreePriceDomain,
+  chartConfig,
+}: Props) {
+  const coinOne = coinNames[0] || "";
+  const coinTwo = coinNames[1] || "";
+  const coinThree = coinNames[2] || "";
+  const coinDomainTwo = coinDomainMoreThanZero(coinTwoPriceDomain);
+  const coinDomainThree = coinDomainMoreThanZero(coinThreePriceDomain);
 
-export function ChartAreaGradient() {
   return (
     <div className="flex-1">
       <ChartContainer
         config={chartConfig}
-        className="aspect-auto md:h-[250px] h-[200px] w-full"
+        className="md:h-[250px] h-[200px] w-[100%]"
       >
         <AreaChart
           accessibilityLayer
-          data={chartData}
+          data={data}
           margin={{
-            left: 12,
-            right: 12,
-            top: 12,
+            left: 6,
+            right: 6,
+            top: 10,
           }}
         >
           <ChartTooltip
             cursor={false}
             content={
-              <ChartTooltipContent className="rounded-sm" hideIndicator />
+              <ChartTooltipContent
+                hideIndicator
+                className="rounded-sm border-0 shadow-md flex flex-col gap-1 items-start"
+              />
             }
           />
           <defs>
             <linearGradient id="fillCoinOne" x1="0" y1="0" x2="0" y2="1">
               <stop
-                offset="5%"
+                offset="20%"
                 stopColor="var(--color-coinOne)"
                 stopOpacity={1}
               />
               <stop
-                offset="95%"
+                offset="100%"
                 stopColor="var(--color-coinOne)"
                 stopOpacity={0}
               />
@@ -88,7 +82,7 @@ export function ChartAreaGradient() {
                 stopOpacity={1}
               />
               <stop
-                offset="95%"
+                offset="100%"
                 stopColor="var(--color-coinTwo)"
                 stopOpacity={0}
               />
@@ -100,7 +94,7 @@ export function ChartAreaGradient() {
                 stopOpacity={1}
               />
               <stop
-                offset="95%"
+                offset="100%"
                 stopColor="var(--color-coinThree)"
                 stopOpacity={0}
               />
@@ -108,39 +102,80 @@ export function ChartAreaGradient() {
           </defs>
 
           <Area
-            dataKey="coinOne"
+            isAnimationActive={true}
+            animationBegin={0}
+            animationDuration={1000}
+            dataKey={coinOne}
             type="natural"
             fill="url(#fillCoinOne)"
-            fillOpacity={0.6}
+            fillOpacity={0.8}
             stroke="var(--color-coinOne)"
-            stackId="a"
-            strokeWidth={2}
+            strokeWidth={1.5}
+            yAxisId="left"
+            connectNulls={true}
           />
-          <Area
-            dataKey="coinTwo"
-            type="natural"
-            fill="url(#fillCoinTwo)"
-            fillOpacity={0.6}
-            stroke="var(--color-coinTwo)"
-            stackId="a"
-            strokeWidth={2}
-          />
-          <Area
-            dataKey="coinThree"
-            type="natural"
-            fill="url(#fillCoinThree)"
-            fillOpacity={0.6}
-            stroke="var(--color-coinThree)"
-            stackId="a"
-            strokeWidth={2}
-          />
+
+          {coinDomainTwo && (
+            <Area
+              isAnimationActive={true}
+              animationBegin={0}
+              animationDuration={1000}
+              dataKey={coinTwo}
+              type="natural"
+              fill="url(#fillCoinTwo)"
+              fillOpacity={0.8}
+              stroke="var(--color-coinTwo)"
+              strokeWidth={1.5}
+              yAxisId="right"
+              connectNulls={true}
+            />
+          )}
+
+          {coinDomainThree && (
+            <Area
+              isAnimationActive={true}
+              animationBegin={0}
+              animationDuration={1000}
+              dataKey={coinThree}
+              type="natural"
+              fill="url(#fillCoinThree)"
+              fillOpacity={0.8}
+              stroke="var(--color-coinThree)"
+              strokeWidth={1.5}
+              yAxisId="right2"
+              connectNulls={true}
+            />
+          )}
+
           <XAxis
-            height={27}
-            dataKey="month"
+            height={30}
+            dataKey="timeLine"
             tickLine={false}
             axisLine={false}
-            tickMargin={8}
-            tickFormatter={(value) => value.slice(0, 3)}
+            tickMargin={11}
+            interval="preserveStartEnd"
+            minTickGap={5}
+          />
+
+          <YAxis
+            domain={coinOnePriceDomain}
+            dataKey={coinOne}
+            yAxisId="left"
+            hide
+          />
+
+          <YAxis
+            domain={coinTwoPriceDomain}
+            dataKey={coinTwo}
+            yAxisId="right"
+            hide
+          />
+
+          <YAxis
+            domain={coinThreePriceDomain}
+            dataKey={coinThree}
+            yAxisId="right2"
+            hide
           />
         </AreaChart>
       </ChartContainer>

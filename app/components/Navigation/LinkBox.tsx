@@ -33,7 +33,7 @@ export const LinkBox = () => {
         <li className="">
           <Link
             href="/"
-            className={`flex items-center gap-2 opacity-50 transition-all ease-in duration-75 hover:text-periwinkle-blue hover:opacity-100 text-background ${
+            className={`[&.active]:opacity-100 flex items-center gap-2 opacity-50 transition-all ease-in duration-75 hover:text-periwinkle-blue hover:opacity-100 text-background ${
               pathname === "/" ? "active" : ""
             }`}
           >
@@ -50,7 +50,7 @@ export const LinkBox = () => {
         <li className="">
           <Link
             href="/portfolio"
-            className={`flex items-center gap-2 opacity-50 transition-all ease-in duration-75 hover:text-periwinkle-blue hover:opacity-100 text-background ${
+            className={`[&.active]:opacity-100 flex items-center gap-2 opacity-50 transition-all ease-in duration-75 hover:text-periwinkle-blue hover:opacity-100 text-background ${
               pathname === "/portfolio" ||
               pathname === "/portfolio/coin-page/[coinId]"
                 ? "active"
