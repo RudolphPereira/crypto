@@ -122,7 +122,7 @@ export function CurrencyBox() {
           <Toast
             title="Error"
             message={`${error}. Kindly refresh the page.`}
-            btnLabel="Close"
+            btnLabel="Refresh"
           />
         </div>
       ) : null}

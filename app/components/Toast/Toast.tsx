@@ -13,7 +13,10 @@ export function Toast({ title, message, btnLabel }: Props) {
     id: "1",
     action: {
       label: btnLabel,
-      onClick: () => toast.dismiss,
+      onClick: () => {
+        window.location.reload();
+        // toast.dismiss;
+      },
     },
   });
 }

@@ -103,7 +103,7 @@ export default function CoinTable() {
           <Toast
             title="Error"
             message={`${error}. Kindly refresh page.`}
-            btnLabel="Close"
+            btnLabel="Refresh"
           />
         </div>
       ) : null}

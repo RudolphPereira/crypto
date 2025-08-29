@@ -164,7 +164,7 @@ export const CoinSlider = () => {
                 ? "Too many requests made! Kindly refresh the page and try once again after a minute."
                 : ""
             }`}
-            btnLabel="Close"
+            btnLabel="Refresh"
           />
         </div>
       ) : null}
