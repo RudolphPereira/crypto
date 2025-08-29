@@ -82,7 +82,6 @@ export const CoinSummary = () => {
             title="Circulating Supply"
             value="18,734,943 BTC"
             progressBar
-            status="high"
             amount="56%"
             total="100%"
             progressBarValue={80}

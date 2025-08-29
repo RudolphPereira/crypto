@@ -7,7 +7,7 @@ import bitcoinIcon from "../../assets/Currency-icon-02.svg";
 import ethCoinIcon from "../../assets/Currency-icon-01.svg";
 
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+
 import {
   Command,
   CommandEmpty,
@@ -42,19 +42,19 @@ export function SelectCoinsDropDown() {
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <Button
+        <div
           role="combobox"
           aria-expanded={open}
           className={`${
             value ? "text-background" : "text-muted-foreground"
-          } w-full font-[400] text-base md:text-sm h-10 cursor-pointer rounded-sm bg-dark-gunmetal hover:bg-dark-gunmetal p-3`}
+          } w-full font-[400] shadow-xs text-base md:text-sm h-10 cursor-pointer rounded-sm bg-dark-gunmetal hover:bg-dark-gunmetal p-3`}
         >
           <div className="truncate flex-1 text-left">
             {value
               ? coins.find((coin) => coin.value === value)?.label
               : "Select Coin"}
           </div>
-        </Button>
+        </div>
       </PopoverTrigger>
       <PopoverContent
         className="w-full p-0 border border-white/15 rounded-sm bg-black-russian "

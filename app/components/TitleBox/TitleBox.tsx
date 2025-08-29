@@ -1,3 +1,4 @@
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 type Props = {
@@ -25,8 +26,9 @@ export const TitleBox = ({
           <div className="flex gap-2 items-center">
             <Link
               href="/portfolio"
-              className="text-background font-[500] text-lg transition-all ease-in duration-200 hover:text-periwinkle-blue"
+              className="flex items-center gap-1 text-background font-[500] text-lg transition-all ease-in duration-200 hover:text-periwinkle-blue"
             >
+              <ArrowLeft />
               {title}
             </Link>
             <h2 className="text-background font-[500] text-lg flex gap-2 items-center">

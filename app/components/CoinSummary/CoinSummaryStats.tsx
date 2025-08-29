@@ -5,7 +5,6 @@ type Props = {
   title: string;
   value: string;
   progressBar?: boolean;
-  status?: string;
   amount?: string;
   total?: string;
   progressBarValue?: number | undefined;
@@ -15,7 +14,6 @@ export const CoinSummaryStats = ({
   title,
   value,
   progressBar,
-  status,
   amount,
   total,
   progressBarValue,
@@ -33,7 +31,6 @@ export const CoinSummaryStats = ({
       </div>
       {progressBar && (
         <ProgressStats
-          status={status}
           amount={amount}
           total={total}
           progressValue={progressBarValue}

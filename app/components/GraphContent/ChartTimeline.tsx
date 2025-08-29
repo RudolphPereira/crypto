@@ -4,20 +4,20 @@ import React from "react";
 export const ChartTimeline = () => {
   return (
     <div className="chartTimeline ">
-      <div className="bg-dark-gunmetal light:bg-periwinkle-blue/40 p-1 flex justify-center md:justify-start gap-2 w-full md:w-fit rounded-sm ">
-        <Button className="light:shadow-none text-background cursor-pointer font-[500] border border-transparent border-b-0 hover:border-b-0 hover:border-periwinkle-blue hover:bg-periwinkle-blue/60 hover:drop-shadow-periwinkle-blue/60 transition-all ease-in  duration-200 rounded-sm w-[3.5rem] h-[1.8rem] text-xs bg-dark-gunmetal">
+      <div className="shadow-xs bg-dark-gunmetal light:bg-white p-1 flex justify-center md:justify-start gap-2 w-full md:w-fit rounded-sm ">
+        <Button className="light:hover:drop-shadow-md light:shadow-none text-background cursor-pointer font-[500] border border-transparent border-b-0 hover:border-b-0 hover:border-periwinkle-blue hover:bg-periwinkle-blue/60  transition-all ease-in  duration-200 rounded-sm w-[3.5rem] h-[1.8rem] text-xs bg-dark-gunmetal">
           1D
         </Button>
-        <Button className="light:shadow-none text-background cursor-pointer font-[500]   border border-transparent border-b-0 hover:border-b-0 hover:border-periwinkle-blue hover:bg-periwinkle-blue/60 hover:drop-shadow-periwinkle-blue/60 transition-all ease-in   duration-200 rounded-sm w-[3.5rem] h-[1.8rem] text-xs bg-dark-gunmetal ">
+        <Button className="light:hover:drop-shadow-md light:shadow-none text-background cursor-pointer font-[500]   border border-transparent border-b-0 hover:border-b-0 hover:border-periwinkle-blue hover:bg-periwinkle-blue/60  transition-all ease-in   duration-200 rounded-sm w-[3.5rem] h-[1.8rem] text-xs bg-dark-gunmetal ">
           7D
         </Button>
-        <Button className="light:shadow-none text-background cursor-pointer font-[500]   border border-transparent border-b-0 hover:border-b-0 hover:border-periwinkle-blue hover:bg-periwinkle-blue/60 hover:drop-shadow-periwinkle-blue/60 transition-all ease-in   duration-200 rounded-sm w-[3.5rem] h-[1.8rem] text-xs bg-dark-gunmetal ">
+        <Button className="light:hover:drop-shadow-md light:shadow-none text-background cursor-pointer font-[500]   border border-transparent border-b-0 hover:border-b-0 hover:border-periwinkle-blue hover:bg-periwinkle-blue/60  transition-all ease-in   duration-200 rounded-sm w-[3.5rem] h-[1.8rem] text-xs bg-dark-gunmetal ">
           14D
         </Button>
-        <Button className="light:shadow-none text-background cursor-pointer font-[500]   border border-transparent border-b-0 hover:border-b-0 hover:border-periwinkle-blue hover:bg-periwinkle-blue/60 hover:drop-shadow-periwinkle-blue/60 transition-all ease-in   duration-200 rounded-sm w-[3.5rem] h-[1.8rem] text-xs bg-dark-gunmetal ">
+        <Button className="light:hover:drop-shadow-md light:shadow-none text-background cursor-pointer font-[500]   border border-transparent border-b-0 hover:border-b-0 hover:border-periwinkle-blue hover:bg-periwinkle-blue/60  transition-all ease-in   duration-200 rounded-sm w-[3.5rem] h-[1.8rem] text-xs bg-dark-gunmetal ">
           1M
         </Button>
-        <Button className="light:shadow-none text-background cursor-pointer font-[500]   border border-transparent border-b-0 hover:border-b-0 hover:border-periwinkle-blue hover:bg-periwinkle-blue/60 hover:drop-shadow-periwinkle-blue/60 transition-all ease-in   duration-200 rounded-sm w-[3.5rem] h-[1.8rem] text-xs bg-dark-gunmetal ">
+        <Button className="light:hover:drop-shadow-md light:shadow-none text-background cursor-pointer font-[500]   border border-transparent border-b-0 hover:border-b-0 hover:border-periwinkle-blue hover:bg-periwinkle-blue/60  transition-all ease-in   duration-200 rounded-sm w-[3.5rem] h-[1.8rem] text-xs bg-dark-gunmetal ">
           1Y
         </Button>
       </div>

@@ -5,11 +5,15 @@ import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { fetchCoinList } from "@/lib/features/coinData/coinDataSlice";
 import { updateCoinName } from "@/lib/features/coinData/coinDataSlice";
 import { Toast } from "../Toast/Toast";
+import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 export const SearchBox = () => {
   const [value, setValue] = useState<Option>();
   const data = useAppSelector((state) => state.coinData.coinList);
   const error = useAppSelector((state) => state.coinData.error);
+  const router = useRouter();
+  const pathname = usePathname();
 
   const dispatch = useAppDispatch();
 
@@ -17,13 +21,22 @@ export const SearchBox = () => {
     dispatch(fetchCoinList());
   }, []);
 
+  useEffect(() => {
+    setCoinName(value?.value);
+    if (value !== undefined) {
+      router.push(`/coin-page/${value.value}`);
+    }
+  }, [value]);
+
+  useEffect(() => {
+    if (value !== undefined && pathname !== `/coin-page/${value.value}`) {
+      setValue(undefined);
+    }
+  }, [pathname]);
+
   const setCoinName = (value: string | undefined) => {
     return dispatch(updateCoinName(value));
   };
-
-  useEffect(() => {
-    setCoinName(value?.value);
-  }, [value]);
 
   const coinArr = data.map((coin) => ({
     value: coin.id,
