@@ -83,14 +83,11 @@ export function DataTable<TData, TValue>({
             ></div>
           </div>
         ) : (
-          // <h4 className="text-background pt-4 text-sm text-center">
-          //   All available coins are now visible to you.
-          // </h4>
           <></>
         )
       }
     >
-      <div className="flex items-center justify-end">
+      <div className="flex items-center md:justify-end justify-center mb-1">
         <div className="flex shadow-xs items-center light:border-0 rounded-sm pl-3 border border-white/15 light:bg-white dark:bg-black-russian">
           <Label htmlFor="coinTableSearch">
             <SearchIcon className="size-4 shrink-0 opacity-50 text-background" />

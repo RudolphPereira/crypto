@@ -31,7 +31,8 @@ export const TopInfoBar = () => {
   const ethPercentage = Math.ceil(data.marketData.percentages.eth);
 
   const totalVolume = formatCompactNumber(
-    data.marketData.totalVolume[currencyValue]
+    data.marketData.totalVolume[currencyValue],
+    currencyValue
   );
   const totalMarketCap = formatCompactNumber(
     data.marketData.totalMarketCap[currencyValue]
@@ -78,7 +79,7 @@ export const TopInfoBar = () => {
 
             <InfoProgress
               progressValue={roundedTotalPercentage}
-              value={`$ ${totalVolume}`}
+              value={`${totalVolume}`}
               progressColor="[&>div]:bg-white"
               toolTipContent={`Total trading volume across all cryptocurrencies in the last 24 hours, in ${currencyValue.toUpperCase()}`}
             />

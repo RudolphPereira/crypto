@@ -25,13 +25,13 @@ export default function CoinTable() {
     const sevenDayPercentage =
       coin.price_change_percentage_7d_in_currency || "";
     const twentyFourHourVolume =
-      formatCompactNumber(Number(coin.total_volume))?.toString() || "";
+      formatCompactNumber(Number(coin.total_volume), currency) || "";
     const marketCap =
-      formatCompactNumber(Number(coin.market_cap))?.toString() || "";
+      formatCompactNumber(Number(coin.market_cap), currency) || "";
     const circulation =
-      formatCompactNumber(Number(coin.circulating_supply))?.toString() || "";
+      formatCompactNumber(Number(coin.circulating_supply), currency) || "";
     const totalSupply =
-      formatCompactNumber(Number(coin.total_supply))?.toString() || "";
+      formatCompactNumber(Number(coin.total_supply), currency) || "";
     const volumePercentage =
       Math.round((100 * Number(coin.total_volume)) / Number(coin.market_cap)) ||
       0;

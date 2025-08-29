@@ -1,5 +1,4 @@
 "use client";
-
 import { toast } from "sonner";
 
 type Props = {
@@ -11,6 +10,7 @@ type Props = {
 export function Toast({ title, message, btnLabel }: Props) {
   return toast(title, {
     description: message,
+    id: "1",
     action: {
       label: btnLabel,
       onClick: () => toast.dismiss,

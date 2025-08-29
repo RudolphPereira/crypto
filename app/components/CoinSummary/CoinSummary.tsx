@@ -37,7 +37,7 @@ export const CoinSummary = () => {
             />
           </div>
         </div>
-        <div className="flex-1/4 flex justify-between flex-col gap-4">
+        <div className="flex-1/4 flex flex-col gap-4">
           <InfoSummary
             info="Bitcoin is the first successful internet money based on peer-to-peer
         technology; whereby no central bank or authority is involved in the
