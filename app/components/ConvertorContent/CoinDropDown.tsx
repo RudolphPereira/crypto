@@ -1,10 +1,7 @@
 "use client";
-
 import * as React from "react";
 import { Check, ChevronDown } from "lucide-react";
 import Image from "next/image";
-import bitcoinIcon from "../../assets/Currency-icon-02.svg";
-import ethCoinIcon from "../../assets/Currency-icon-01.svg";
 import coinIcon from "../../assets/flash-circle.svg";
 
 import { cn } from "@/lib/utils";
@@ -22,23 +19,31 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { useState, SetStateAction, Dispatch } from "react";
 
-const coins = [
-  {
-    value: "bitcoin",
-    label: "Bitcoin",
-    icon: bitcoinIcon,
-  },
-  {
-    value: "eth",
-    label: "Eth",
-    icon: ethCoinIcon,
-  },
-];
+type Props = {
+  coinArr?:
+    | {
+        value: string;
+        label: string;
+        icon: string;
+        symbol: string;
+        price: string | number;
+        [key: string]: string | number;
+      }[]
+    | undefined;
+  value: string;
+  setValue: Dispatch<SetStateAction<string>>;
+  dropDownDisabled?: boolean;
+};
 
-export function CoinDropDown() {
-  const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
+export function CoinDropDown({
+  coinArr,
+  value,
+  setValue,
+  dropDownDisabled,
+}: Props) {
+  const [open, setOpen] = useState(false);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -46,39 +51,47 @@ export function CoinDropDown() {
         <Button
           role="combobox"
           aria-expanded={open}
-          className="min-w-[230px] text-background justify-start items-center gap-2 cursor-pointer bg-transparent shadow-none text-3xl has-[>svg]:px-0 font-[500] hover:bg-transparent"
+          className="text-background justify-start items-center gap-2 cursor-pointer bg-transparent shadow-none text-3xl has-[>svg]:px-0 font-[500] hover:bg-transparent"
         >
-          <div className="w-[1.8rem] h-[1.8rem]">
+          <div className="w-[1.8rem] h-[1.8rem] rounded-full shadow-xl">
             <Image
               src={
                 value
-                  ? coins.find((coin) => coin.value === value)?.icon
+                  ? coinArr?.find((coin) => coin.value === value)?.icon
                   : coinIcon
               }
               alt="coin icon"
-              className={`w-full h-full ${value === "" ? "light:invert" : ""}`}
+              className={`w-full h-full rounded-full  ${
+                value === "" ? "light:invert" : "bg-white p-0.5"
+              }`}
+              width={100}
+              height={100}
             />
           </div>
-          <div className="truncate flex-1 text-left">
+          <div className="truncate flex-1 text-left min-w-auto max-w-[250px]">
             {value
-              ? coins.find((coin) => coin.value === value)?.label
+              ? coinArr?.find((coin) => coin.value === value)?.label
               : "Select Coin"}
           </div>
 
-          <ChevronDown className="opacity-50" />
+          <ChevronDown className="opacity-50 mt-2" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0 border border-white/15 rounded-sm bg-black-russian">
-        <Command className="bg-black-russian">
+      <PopoverContent
+        align="start"
+        className="w-[200px] p-0 border border-white/15 rounded-sm bg-black-russian"
+      >
+        <Command className="bg-black-russian max-h-[290px]">
           <CommandInput placeholder="Search Coin" className="text-background" />
-          <CommandList className="p-0.5 border-white/15 border-t-1 bg-gradient-to-r from-black-russian to-dark-blue">
+          <CommandList className="p-0.5 h-full border-white/15 border-t-1 bg-gradient-to-r from-black-russian to-dark-blue">
             <CommandEmpty className="text-background text-center p-2 text-xs">
               No results.
             </CommandEmpty>
             <CommandGroup>
-              {coins.map((coin) => (
+              {coinArr?.map((coin) => (
                 <CommandItem
-                  className="text-background flex"
+                  disabled={dropDownDisabled}
+                  className="text-background flex cursor-pointer"
                   key={coin.value}
                   value={coin.value}
                   onSelect={(currentValue) => {
@@ -86,11 +99,13 @@ export function CoinDropDown() {
                     setOpen(false);
                   }}
                 >
-                  <div className="w-[1.4rem] h-[1.4rem]">
+                  <div className="w-[1.4rem] h-[1.4rem] rounded-full bg-white shadow-lg flex items-center justify-center">
                     <Image
+                      width={100}
+                      height={100}
                       src={coin.icon}
                       alt="coin icon"
-                      className="w-full h-full"
+                      className="w-full h-full rounded-full p-[0.08rem]"
                     />
                   </div>
                   <div className="truncate flex-1">{coin.label}</div>

@@ -29,7 +29,7 @@ export const SliderContent = () => {
                     ? "Selection at full capacity"
                     : `Select ${
                         3 - graphData.length
-                      } more currency to compare statistics`
+                      } more currencies to compare statistics`
                 }`
               : "Select the currency to view statistics"
           }

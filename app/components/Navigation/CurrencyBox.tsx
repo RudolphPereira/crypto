@@ -30,6 +30,9 @@ export function CurrencyBox() {
   const data = useAppSelector((state) => state.currencyData.currencyList);
   const graphData = useAppSelector((state) => state.graphData.graphCoinList);
   const graphDataError = useAppSelector((state) => state.graphData.error);
+  const convertorGraphError = useAppSelector(
+    (state) => state.convertorGraphData.error
+  );
   const loading = useAppSelector((state) => state.currencyData.loading);
   const error = useAppSelector((state) => state.currencyData.error);
   const currencyValue = useAppSelector(
@@ -89,7 +92,9 @@ export function CurrencyBox() {
                 <CommandGroup>
                   {data.map((currency) => (
                     <CommandItem
-                      disabled={graphDataError !== ""}
+                      disabled={
+                        graphDataError !== "" || convertorGraphError !== ""
+                      }
                       className="text-background flex uppercase p-1 cursor-pointer"
                       key={currency}
                       value={currency}

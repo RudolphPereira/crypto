@@ -2,21 +2,35 @@
 import { Button } from "@/components/ui/button";
 import { useAppSelector, useAppDispatch } from "@/lib/hooks";
 import { MouseEvent } from "react";
-// import { Toast } from "../Toast/Toast";
 import {
   fetchGraphCoinList,
   updateNumOfDays,
 } from "@/lib/features/graphData/graphDataSlice";
+import {
+  fetchConvertorGraphCoin,
+  updateConvertorNumOfDays,
+} from "@/lib/features/convertorGraphData/convertorGraphDataSlice";
+
+type Props = {
+  convertor?: boolean;
+};
 
 type DataArr = string[];
 
 const data: DataArr = ["1", "7", "14", "30", "365"];
 
-export const ChartTimeline = () => {
+export const ChartTimeline = ({ convertor }: Props) => {
   const numOfDaysData = useAppSelector(
     (state) => state.graphData.numOfDaysData
   );
+  const numOfDaysDataConvertor = useAppSelector(
+    (state) => state.convertorGraphData.numOfDaysData
+  );
   const graphDataError = useAppSelector((state) => state.graphData.error);
+  const convertorGraphDataError = useAppSelector(
+    (state) => state.convertorGraphData.error
+  );
+
   const graphData = useAppSelector((state) => state.graphData.graphCoinList);
   const compareStatus = useAppSelector(
     (state) => state.graphData.compareStatus
@@ -33,11 +47,22 @@ export const ChartTimeline = () => {
     }
   };
 
+  const updateConvertorGraphData = () => {
+    dispatch(fetchConvertorGraphCoin());
+  };
+
   const handleTimeLine = (
     e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
   ) => {
     dispatch(updateNumOfDays(e.currentTarget.value));
     updateGraphData();
+  };
+
+  const handleConvertorTimeLine = (
+    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+  ) => {
+    dispatch(updateConvertorNumOfDays(e.currentTarget.value));
+    updateConvertorGraphData();
   };
 
   return (
@@ -49,11 +74,25 @@ export const ChartTimeline = () => {
               key={btn}
               value={btn}
               defaultValue="1"
-              onClick={handleTimeLine}
-              disabled={btn === numOfDaysData || graphDataError !== ""}
+              onClick={convertor ? handleConvertorTimeLine : handleTimeLine}
+              disabled={
+                convertor
+                  ? btn === numOfDaysDataConvertor ||
+                    convertorGraphDataError !== ""
+                  : btn === numOfDaysData || graphDataError !== ""
+              }
               className={`
-                ${btn === numOfDaysData ? "active" : ""} ${
-                graphDataError !== ""
+                ${
+                  convertor
+                    ? btn === numOfDaysDataConvertor
+                      ? "active"
+                      : ""
+                    : btn === numOfDaysData
+                    ? "active"
+                    : ""
+                } ${
+                graphDataError !== "" ||
+                (convertor && convertorGraphDataError !== "")
                   ? "[&.active]:disabled:opacity-40"
                   : "[&.active]:disabled:opacity-100"
               }  text-background cursor-pointer font-[500] border border-transparent border-b-0 hover:border-b-0 shadow-xs disabled:drop-shadow-md light:hover:drop-shadow-md  [&.active]:border-periwinkle-blue [&.active]:bg-periwinkle-blue/60 hover:border-periwinkle-blue hover:bg-periwinkle-blue/60 light:hover:bg-periwinkle-blue/60 transition-all duration-150 rounded-sm w-[3.5rem] h-[1.8rem] text-xs light:bg-white bg-dark-gunmetal`}
@@ -63,19 +102,6 @@ export const ChartTimeline = () => {
           );
         })}
       </div>
-      {/* {graphDataError !== "" ? (
-        <div className="hidden">
-          <Toast
-            title="Error"
-            message={`${graphDataError}. ${
-              graphDataError === "Network Error"
-                ? "Too many requests made! kindly wait and try again after a minute."
-                : ""
-            }`}
-            btnLabel="Close"
-          />
-        </div>
-      ) : null} */}
     </div>
   );
 };

@@ -55,7 +55,7 @@ export const SearchBox = () => {
       <AutoComplete
         options={coinNameArr}
         emptyMessage="No results."
-        placeholder="Search Coin"
+        placeholder="Search a coin"
         onValueChange={setValue}
         value={value}
         key={value?.label}
