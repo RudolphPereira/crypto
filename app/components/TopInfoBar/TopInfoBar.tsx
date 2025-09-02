@@ -5,8 +5,6 @@ import { InfoProgress } from "./InfoProgress";
 import coinIcon from "../../assets/flash-circle.svg";
 import exchangeIcon from "../../assets/recovery-convert.svg";
 // import increaseIcon from "../../assets/increase.svg";
-import bitcoinIcon from "../../assets/Currency-icon-02.svg";
-import ethIcon from "../../assets/Currency-icon-01.svg";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { fetchMarketData } from "@/lib/features/marketData/marketDataSlice";
 import { formatCompactNumber } from "@/lib/utils";
@@ -16,6 +14,7 @@ import { Toast } from "../Toast/Toast";
 
 export const TopInfoBar = () => {
   const data = useAppSelector((state) => state.marketData);
+  const coinData = useAppSelector((state) => state.coinData.coinList);
   const loading = useAppSelector((state) => state.marketData.loading);
   const error = useAppSelector((state) => state.marketData.error);
   const currencyValue = useAppSelector(
@@ -43,6 +42,10 @@ export const TopInfoBar = () => {
     Math.round(data.marketData.totalVolume[currencyValue]);
 
   const roundedTotalPercentage = Number(totalPercentage.toFixed(0));
+
+  const coinImages = coinData
+    .filter((coin) => coin.id === "bitcoin" || coin.id === "ethereum")
+    .map((coin) => coin.image);
 
   return (
     <div className="bg-deep-plum px-2 py-3 border-b border-b-white/10 text-white flex justify-center w-full min-h-14">
@@ -84,14 +87,14 @@ export const TopInfoBar = () => {
               toolTipContent={`Total trading volume across all cryptocurrencies in the last 24 hours, in ${currencyValue.toUpperCase()}`}
             />
             <InfoProgress
-              image={bitcoinIcon}
+              image={coinImages[0] || coinIcon}
               value={`${btcPercentage} %`}
               progressValue={btcPercentage}
               progressColor="[&>div]:bg-orange"
               toolTipContent="Bitcoin's share of the total cryptocurrency market capitalization"
             />
             <InfoProgress
-              image={ethIcon}
+              image={coinImages[1] || coinIcon}
               value={`${ethPercentage} %`}
               progressValue={ethPercentage}
               progressColor="[&>div]:bg-pastel-blue"

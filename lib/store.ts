@@ -3,6 +3,7 @@ import marketDataSlice from "./features/marketData/marketDataSlice";
 import currencyDataSlice from "./features/currencyData/currencyDataSlice";
 import coinListSlice from "./features/coinData/coinDataSlice";
 import graphDataSlice from "./features/graphData/graphDataSlice";
+import convertorGraphDataSlice from "./features/convertorGraphData/convertorGraphDataSlice";
 
 export const makeStore = () => {
   return configureStore({
@@ -11,6 +12,7 @@ export const makeStore = () => {
       currencyData: currencyDataSlice,
       coinData: coinListSlice,
       graphData: graphDataSlice,
+      convertorGraphData: convertorGraphDataSlice,
     },
   });
 };

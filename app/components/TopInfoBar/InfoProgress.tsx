@@ -23,8 +23,14 @@ export const InfoProgress = ({
       toolTipTrigger={
         <div className="text-xs flex items-center gap-1.5">
           {image && (
-            <div className="w-[1.3rem] h-[1.3rem] overflow-visible">
-              <Image src={image} alt="coin icon" className="w-full h-full" />
+            <div className="w-[1.3rem] h-[1.3rem] bg-white rounded-full">
+              <Image
+                src={image}
+                alt="coin icon"
+                className="w-full h-full"
+                width={100}
+                height={100}
+              />
             </div>
           )}
           <div className="">
