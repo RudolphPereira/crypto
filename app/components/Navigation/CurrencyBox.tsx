@@ -24,6 +24,7 @@ import { updateCurrencyValue } from "@/lib/features/currencyData/currencyDataSli
 import { CurrencyBoxSkeleton } from "../Skeletons/CurrencyBoxSkeleton";
 import { fetchCoinList } from "@/lib/features/coinData/coinDataSlice";
 import { fetchGraphCoinList } from "@/lib/features/graphData/graphDataSlice";
+import { fetchCoin } from "@/lib/features/coinPageData/coinPageDataSlice";
 
 export function CurrencyBox() {
   const [open, setOpen] = useState(false);
@@ -38,6 +39,7 @@ export function CurrencyBox() {
   const currencyValue = useAppSelector(
     (state) => state.currencyData.currencyValue
   );
+  const coinId = useAppSelector((state) => state.coinPageData.coinName);
 
   const dispatch = useAppDispatch();
 
@@ -48,6 +50,7 @@ export function CurrencyBox() {
   useEffect(() => {
     dispatch(fetchCoinList());
     dispatch(fetchGraphCoinList());
+    dispatch(fetchCoin(coinId));
     graphData.forEach((coin) => {
       dispatch(fetchGraphCoinList(coin.coinName));
     });

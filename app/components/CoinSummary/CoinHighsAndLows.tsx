@@ -7,7 +7,7 @@ type Props = {
   highStatus?: boolean;
   title: string;
   date: string;
-  amount: string;
+  amount: string | number;
 };
 
 export const CoinHighsAndLows = ({
