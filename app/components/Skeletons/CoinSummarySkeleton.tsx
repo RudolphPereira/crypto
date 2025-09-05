@@ -4,7 +4,7 @@ export const CoinSummarySkeleton = () => {
   return (
     <>
       <div className="flex md:flex-row flex-col gap-6 w-full">
-        <div className="flex-1 h-fit sm:sticky sm:top-50 p-3 md:p-6 bg-deep-plum light:bg-periwinkle-blue/20 rounded-lg flex flex-col gap-10">
+        <div className="flex-1 h-fit sm:sticky sm:top-50 p-3 md:p-6 bg-deep-plum light:bg-periwinkle-blue/20 rounded-lg flex flex-col gap-6">
           <div className="flex w-full h-full items-center justify-center gap-2">
             <Skeleton className="w-[2.5rem] h-[2.5rem] rounded-full flex-shrink-0" />
             <div className="w-full h-full flex flex-col justify-center gap-3 flex-auto">
@@ -66,7 +66,7 @@ export const CoinSummarySkeleton = () => {
 
         <div className="p-3 md:p-6 bg-deep-plum light:bg-periwinkle-blue/20 rounded-lg flex flex-col gap-4">
           <div className="flex justify-between items-center">
-            <div className="flex items-center gap-3 flex-1">
+            <div className="flex items-center gap-4 flex-1">
               <Skeleton className="rounded-full h-5 w-5" />
               <Skeleton className="rounded-xs h-4 w-[25%]" />
             </div>
@@ -74,14 +74,14 @@ export const CoinSummarySkeleton = () => {
           </div>
 
           <div className="flex justify-between items-center">
-            <div className="flex items-center gap-3 flex-1">
+            <div className="flex items-center gap-4 flex-1">
               <Skeleton className="rounded-full h-5 w-5" />
               <Skeleton className="rounded-xs h-4 w-[30%]" />
             </div>
             <Skeleton className="rounded-xs h-4 w-[20%]" />
           </div>
         </div>
-        <div className="p-3 md:p-6 bg-deep-plum light:bg-periwinkle-blue/20 rounded-lg flex flex-col gap-4">
+        <div className="p-3 md:p-6 bg-deep-plum light:bg-periwinkle-blue/20 rounded-lg flex flex-col gap-7">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-3 flex-1">
               <Skeleton className="rounded-full h-5 w-5" />

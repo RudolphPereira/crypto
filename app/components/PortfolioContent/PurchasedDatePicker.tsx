@@ -9,13 +9,24 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { Dispatch, SetStateAction } from "react";
 
-export function PurchasedDatePicker() {
+type Props = {
+  date: Date | undefined;
+  setDate: Dispatch<SetStateAction<Date | undefined>>;
+};
+
+export function PurchasedDatePicker({ date, setDate }: Props) {
   const [open, setOpen] = React.useState(false);
-  const [date, setDate] = React.useState<Date | undefined>(undefined);
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const start = new Date();
+  start.setDate(start.getDate() - 365);
+  start.setHours(0, 0, 0, 0);
 
   return (
-    <div className="flex flex-col gap-3 h-10 rounded-sm border-0 bg-dark-gunmetal shadow-none text-background outline-0 focus-visible:ring-0">
+    <div className="flex flex-col gap-3 h-10 rounded-sm border-0  bg-dark-gunmetal shadow-none text-background outline-0 focus-visible:ring-0">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <div
@@ -28,8 +39,9 @@ export function PurchasedDatePicker() {
           </div>
         </PopoverTrigger>
         <PopoverContent
-          className="w-auto overflow-hidden p-0 bg-gradient-to-r from-black-russian to-dark-blue border-0 text-background"
+          className="w-auto p-0 dark:border dark:border-white/20 bg-gradient-to-r from-black-russian to-dark-blue border-0 text-background"
           align="start"
+          side="bottom"
         >
           <Calendar
             mode="single"
@@ -39,6 +51,7 @@ export function PurchasedDatePicker() {
               setDate(date);
               setOpen(false);
             }}
+            disabled={[{ before: start }, { after: today }]}
           />
         </PopoverContent>
       </Popover>
