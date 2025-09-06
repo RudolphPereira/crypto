@@ -25,6 +25,17 @@ export function PurchasedDatePicker({ date, setDate }: Props) {
   start.setDate(start.getDate() - 365);
   start.setHours(0, 0, 0, 0);
 
+  const startMonth = new Date(today);
+  startMonth.setFullYear(
+    startMonth.getFullYear(),
+    startMonth.getMonth() - 12,
+    1
+  );
+  startMonth.setHours(0, 0, 0, 0);
+
+  const endMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+  endMonth.setHours(0, 0, 0, 0);
+
   return (
     <div className="flex flex-col gap-3 h-10 rounded-sm border-0  bg-dark-gunmetal shadow-none text-background outline-0 focus-visible:ring-0">
       <Popover open={open} onOpenChange={setOpen}>
@@ -47,6 +58,8 @@ export function PurchasedDatePicker({ date, setDate }: Props) {
             mode="single"
             selected={date}
             captionLayout="dropdown"
+            startMonth={startMonth}
+            endMonth={endMonth}
             onSelect={(date) => {
               setDate(date);
               setOpen(false);
