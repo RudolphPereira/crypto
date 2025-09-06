@@ -30,7 +30,7 @@ const initialState: InitialState = {
   date: "",
   noOfCoins: "",
   coinList: [],
-  skeletonLoader: true,
+  skeletonLoader: false,
   loading: true,
   error: "",
 };
@@ -106,6 +106,7 @@ const portfolioDataSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchPortfolioCoinList.pending, (state) => {
       state.loading = true;
+      state.skeletonLoader = true;
     });
 
     builder.addCase(

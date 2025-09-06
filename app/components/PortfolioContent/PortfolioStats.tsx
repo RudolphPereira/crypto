@@ -34,9 +34,13 @@ export const PortfolioStats = ({
             </div>
           )}
           <p
-            className={`${
-              Number(percentage) >= 0 ? "text-mint-green" : "text-deep-pink"
-            } ${
+            className={` ${
+              Number(percentage) > 0
+                ? "text-mint-green"
+                : Number(percentage) < 0
+                ? "text-deep-pink"
+                : "text-background"
+            }  ${
               progressValue ? "text-periwinkle-blue" : ""
             } text-md font-[500]`}
           >

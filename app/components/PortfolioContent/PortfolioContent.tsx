@@ -6,6 +6,8 @@ import { PortfolioStats } from "./PortfolioStats";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { ActionBtn } from "../AppButtons/AppBtns";
 import { removeCoin } from "@/lib/features/portfolioData/portfolioDataSlice";
+import { PortfolioCardSkeleton } from "../Skeletons/PortfolioCardSkeleton";
+import { Toast } from "../Toast/Toast";
 
 export const PortfolioContent = () => {
   const dispatch = useAppDispatch();
@@ -14,6 +16,10 @@ export const PortfolioContent = () => {
   const currencyValue = useAppSelector(
     (state) => state.currencyData.currencyValue
   );
+  const portfolioSkeletonLoader = useAppSelector(
+    (state) => state.portfolioData.skeletonLoader
+  );
+  const error = useAppSelector((state) => state.portfolioData.error);
 
   const handleRemoveCoin = (coinId: string | undefined) => {
     if (!coinId) return;
@@ -110,58 +116,75 @@ export const PortfolioContent = () => {
             );
 
             return (
-              <PortfolioCard
-                key={coin.id}
-                coinDetails={
-                  <CoinDetails
-                    coinName={`${coin.name} (${coin.symbol?.toUpperCase()})`}
-                    coinImage={coin.image}
-                    titleName="Total Value"
-                    value={purchaseValue}
-                    date={`Purchased on ${coin.date}`}
-                    numberOfCoins={`${
-                      coin.noOfCoins
-                    } ${coin.symbol?.toUpperCase()}`}
-                    percentage={totalPercentageValue}
-                    additionalImageBoxClass="w-[2.2rem] h-[2.2rem]"
-                  />
-                }
-                removeBtn={
-                  <ActionBtn
-                    handleOnCLick={() => handleRemoveCoin(coin.id)}
+              <>
+                {portfolioSkeletonLoader ? (
+                  <PortfolioCardSkeleton />
+                ) : (
+                  <PortfolioCard
                     key={coin.id}
-                    btnTitle="Remove Coin"
-                    additionalClass="w-fit hover:bg-deep-pink/40 hover:border-deep-pink/50"
+                    coinDetails={
+                      <CoinDetails
+                        coinName={`${
+                          coin.name
+                        } (${coin.symbol?.toUpperCase()})`}
+                        coinImage={coin.image}
+                        titleName="Total Value"
+                        value={purchaseValue}
+                        date={`Purchased on ${coin.date}`}
+                        numberOfCoins={`${
+                          coin.noOfCoins
+                        } ${coin.symbol?.toUpperCase()}`}
+                        percentage={totalPercentageValue}
+                        additionalImageBoxClass="w-[2.2rem] h-[2.2rem]"
+                      />
+                    }
+                    removeBtn={
+                      <ActionBtn
+                        handleOnCLick={() => handleRemoveCoin(coin.id)}
+                        key={coin.id}
+                        btnTitle="Remove Coin"
+                        additionalClass="w-fit hover:bg-deep-pink/40 hover:border-deep-pink/50"
+                      />
+                    }
+                    portfolioStats={
+                      <>
+                        <PortfolioStats
+                          title={latestCurrPrice}
+                          subTitle="Current price"
+                        />
+                        <PortfolioStats
+                          subTitle="24h%"
+                          icon
+                          percentage={coin.twentyFourHour}
+                        />
+                        <PortfolioStats
+                          subTitle="Market cap vs volume"
+                          percentage={marketByVolume}
+                          progressValue={Number(marketByVolume)}
+                        />
+                        <PortfolioStats
+                          subTitle="Circ supply vs max supply"
+                          icon
+                          percentage={cirBySupply}
+                        />
+                      </>
+                    }
                   />
-                }
-                portfolioStats={
-                  <>
-                    <PortfolioStats
-                      title={latestCurrPrice}
-                      subTitle="Current price"
-                    />
-                    <PortfolioStats
-                      subTitle="24h%"
-                      icon
-                      percentage={coin.twentyFourHour}
-                    />
-                    <PortfolioStats
-                      subTitle="Market cap vs volume"
-                      percentage={marketByVolume}
-                      progressValue={Number(marketByVolume)}
-                    />
-                    <PortfolioStats
-                      subTitle="Circ supply vs max supply"
-                      icon
-                      percentage={cirBySupply}
-                    />
-                  </>
-                }
-              />
+                )}
+              </>
             );
           })}
         </div>
       )}
+      {error ? (
+        <div className="hidden">
+          <Toast
+            title="Error"
+            message={`${error}. Kindly refresh the page.`}
+            btnLabel="Refresh"
+          />
+        </div>
+      ) : null}
     </>
   );
 };
