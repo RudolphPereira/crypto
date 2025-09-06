@@ -93,7 +93,7 @@ export function SelectCoinsPopUp() {
           <form className="flex flex-col gap-5">
             <DialogHeader className="flex flex-row justify-between">
               <DialogTitle className="text-background font-[500] text-base text-left">
-                Add new or edit existing asset
+                Add new or Edit existing asset
               </DialogTitle>
               <DialogClose ref={closeRef} className="cursor-pointer">
                 <CircleX className="text-background" size={20} />

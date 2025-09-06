@@ -165,10 +165,12 @@ export const CoinSummary = ({ coinId }: Props) => {
     const purchasedPrice = Number(coin.currentPrice || 0);
     const ledgerData = latestPrice * noOfCoins - purchasedPrice * noOfCoins;
 
-    ledgerNum = Math.abs(ledgerData).toFixed(0);
+    ledgerNum = ledgerData.toFixed(0);
+
+    const ledgerNumAbs = Math.abs(Number(ledgerNum));
 
     ledgerText = formatNumberWithDecimalsAndCurrency(
-      Number(ledgerNum),
+      Number(ledgerNumAbs),
       0,
       0,
       currencyValue

@@ -1,5 +1,4 @@
 import React from "react";
-
 type Props = {
   coinDetails: React.ReactNode;
   portfolioStats: React.ReactNode;
