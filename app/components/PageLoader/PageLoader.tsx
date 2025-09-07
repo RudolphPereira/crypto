@@ -2,6 +2,8 @@
 import RotatingText from "@/components/ui/rotatingText";
 import { motion } from "motion/react";
 import React, { useEffect, useState } from "react";
+import logo from "../../../public/logo.svg";
+import Image from "next/image";
 
 export const PageLoader = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -35,25 +37,42 @@ export const PageLoader = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeIn" }}
-        className="flex flex-col sm:flex-row gap-3 sm:gap-5 items-center"
+        className="flex flex-col sm:flex-row gap-3 sm:gap-5 items-center w-full justify-center"
       >
-        <h2 className="font-[400] text-[2rem] sm:text-[4rem] text-background">
-          Crypto Vault
-        </h2>
+        <div className="flex flex-1 items-center justify-end gap-2 sm:gap-3">
+          <div className="w-[3rem] h-[3rem] sm:w-[6rem] sm:h-[6rem]">
+            <Image
+              src={logo}
+              width={100}
+              height={100}
+              alt="logo"
+              className="w-full h-full object-contain"
+            />
+          </div>
 
-        <RotatingText
-          texts={["Bitcoin", "Ethereum", "Dogecoin", "Hyperliquid"]}
-          mainClassName="shadow-md font-space-grotesk px-4 font-[800] text-[2rem] sm:text-[4rem] sm:px-4 md:px-6 bg-periwinkle-blue overflow-hidden justify-center rounded-md"
-          staggerFrom={"last"}
-          initial={{ y: "100%" }}
-          animate={{ y: 0 }}
-          exit={{ y: "-120%" }}
-          staggerDuration={0.03}
-          splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
-          transition={{ type: "spring", damping: 30, stiffness: 300 }}
-          rotationInterval={1500}
-          auto={true}
-        />
+          <h2 className="font-[500] text-[2rem] sm:text-[4rem] text-background">
+            Crypto Vault
+          </h2>
+        </div>
+
+        <div className="flex-1 flex justify-start">
+          <RotatingText
+            texts={["Hyperliquid", "Bitcoin", "Ethereum", "Dogecoin"]}
+            mainClassName="shadow-md font-space-grotesk px-4 font-[800] text-[2rem] sm:text-[4rem] sm:px-4 md:px-6 bg-periwinkle-blue overflow-hidden justify-center rounded-lg"
+            staggerFrom={"last"}
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "-120%" }}
+            staggerDuration={0.03}
+            splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+            transition={{ type: "spring", damping: 30, stiffness: 250 }}
+            rotationInterval={1500}
+            loop
+            auto={!isAnimating}
+            animatePresenceMode="wait"
+            animatePresenceInitial={false}
+          />
+        </div>
       </motion.div>
     </div>
   );
