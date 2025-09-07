@@ -63,11 +63,11 @@ export const PortfolioContent = () => {
     };
   });
 
-  displayData.push(...data);
+  const displayArr = [...displayData, ...data];
 
   return (
     <>
-      {displayData.length === 0 ? (
+      {displayArr.length === 0 ? (
         <div className="bg-dark-blue light:bg-periwinkle-blue/20 p-3 md:p-6 rounded-lg h-[15rem] flex justify-center items-center shadow-xs">
           <p className="text-background text-center text-base">
             The portfolio is currently empty.
@@ -75,7 +75,7 @@ export const PortfolioContent = () => {
         </div>
       ) : (
         <div className="flex flex-col-reverse gap-6">
-          {displayData.map((coin) => {
+          {displayArr.map((coin) => {
             const totalPurchaseValue =
               Number(coin.currentPrice) * Number(coin.noOfCoins) || 0;
 
@@ -118,7 +118,7 @@ export const PortfolioContent = () => {
             return (
               <>
                 {portfolioSkeletonLoader ? (
-                  <PortfolioCardSkeleton />
+                  <PortfolioCardSkeleton key={coin.id} />
                 ) : (
                   <PortfolioCard
                     key={coin.id}

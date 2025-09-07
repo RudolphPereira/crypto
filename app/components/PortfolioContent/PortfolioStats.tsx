@@ -23,7 +23,7 @@ export const PortfolioStats = ({
     <div className="border border-periwinkle-blue/20 rounded-sm p-2 flex flex-col gap-1 justify-center text-background">
       {title && <p className="text-md font-[500]">{title}</p>}
       {percentage != null && (
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           {icon && (
             <div className="w-3.5 h-3.5">
               <Image

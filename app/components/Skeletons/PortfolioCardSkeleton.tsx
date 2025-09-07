@@ -19,10 +19,10 @@ export const PortfolioCardSkeleton = () => {
                   <Skeleton className="w-[45%] h-6 rounded-xs light:bg-white" />
                 </div>
 
-                <p className="text-xs flex gap-3 flex-col">
+                <div className="text-xs flex gap-3 flex-col">
                   <Skeleton className="w-[70%] h-3 rounded-xs light:bg-white" />
                   <Skeleton className="w-[60%] h-3 rounded-xs light:bg-white" />
-                </p>
+                </div>
 
                 <Skeleton className="w-[40%] h-9 rounded-xs light:bg-white" />
               </div>
