@@ -35,7 +35,7 @@ export function formatNumberWithDecimalsAndCurrency(
 ) {
   if (currencyValue) {
     // eslint-disable-next-line
-    let formattedNumber = value.toLocaleString("en-US", {
+    const formattedNumber = value.toLocaleString("en-US", {
       minimumFractionDigits: minimumFractionDigits,
       maximumFractionDigits: maximumFractionDigits,
       style: "currency",
