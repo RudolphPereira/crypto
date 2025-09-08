@@ -103,7 +103,7 @@ export const CoinSummary = ({ coinId }: Props) => {
   const volumeByMarket =
     data.totalVolume && data.marketCap
       ? (data.totalVolume / data.marketCap).toFixed(5)
-      : "0";
+      : "-";
 
   const marketCap =
     formatNumberWithDecimalsAndCurrency(data.marketCap, 0, 2, currencyValue) ||

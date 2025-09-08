@@ -18,6 +18,7 @@ export function formatNumberWithDecimals(
   minimumFractionDigits: number,
   maximumFractionDigits: number
 ) {
+  if (value == null) return "-";
   // eslint-disable-next-line
   let formattedNumber = value.toLocaleString("en-US", {
     minimumFractionDigits: minimumFractionDigits,
@@ -33,6 +34,7 @@ export function formatNumberWithDecimalsAndCurrency(
   maximumFractionDigits: number,
   currencyValue?: string | undefined
 ) {
+  if (value == null) return "-";
   if (currencyValue) {
     // eslint-disable-next-line
     const formattedNumber = value.toLocaleString("en-US", {
@@ -57,6 +59,7 @@ export function formatCompactNumber(
   number: number,
   currencyValue?: string | undefined
 ) {
+  if (number == null) return "-";
   if (number < 1000) {
     return formatNumberWithDecimalsAndCurrency(number, 0, 2, currencyValue);
   } else if (number >= 1000 && number < 1000000) {
