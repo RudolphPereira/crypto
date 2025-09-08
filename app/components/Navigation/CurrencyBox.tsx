@@ -47,6 +47,11 @@ export function CurrencyBox() {
 
   useEffect(() => {
     dispatch(fetchCurrencyList());
+    // local storage
+    const storedCurrency = localStorage.getItem("currency");
+    if (storedCurrency && currencyValue !== storedCurrency) {
+      dispatch(updateCurrencyValue(storedCurrency));
+    }
   }, []);
 
   useEffect(() => {
@@ -59,6 +64,10 @@ export function CurrencyBox() {
     graphData.forEach((coin) => {
       dispatch(fetchGraphCoinList(coin.coinName));
     });
+    // local storage
+    if (currencyValue) {
+      localStorage.setItem("currency", currencyValue);
+    }
   }, [currencyValue]);
 
   const setCurrencyValue = (value: string) => {
