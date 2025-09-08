@@ -55,6 +55,7 @@ export function CurrencyBox() {
   }, []);
 
   useEffect(() => {
+    if (!currencyValue) return;
     dispatch(fetchCoinList());
     dispatch(fetchGraphCoinList());
     dispatch(fetchCoin(coinId));

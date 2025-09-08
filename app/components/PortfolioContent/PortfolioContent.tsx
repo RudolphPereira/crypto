@@ -46,9 +46,7 @@ export const PortfolioContent = () => {
     totalSupply?: string;
   };
 
-  const displayData: DisplayCoins[] = [];
-
-  const data = portfolioData?.map((coin) => {
+  const data: DisplayCoins[] = portfolioData?.map((coin) => {
     const coinDetails = mainCoinData?.find((item) => item.id === coin.id);
     return {
       id: coin?.id,
@@ -66,8 +64,6 @@ export const PortfolioContent = () => {
       totalSupply: coinDetails?.total_supply,
     };
   });
-
-  const displayArr = [...displayData, ...data];
 
   // Local storage
   const [savedDisplayArr, setSavedDisplayArr] = useState<DisplayCoins[]>([]);
@@ -97,15 +93,15 @@ export const PortfolioContent = () => {
         };
       });
 
-      const displayArr = [...displayData, ...newData];
+      const displayArr = [...newData];
       setSavedDisplayArr(displayArr);
     }
   }, [mainCoinData]);
 
   useEffect(() => {
-    if (displayArr.length > 0) {
+    if (data.length > 0) {
       localStorage.setItem("portfolioArr", JSON.stringify(portfolioData));
-      setSavedDisplayArr(displayArr);
+      setSavedDisplayArr(data);
     } else {
       localStorage.removeItem("portfolioArr");
       setSavedDisplayArr([]);
@@ -185,7 +181,6 @@ export const PortfolioContent = () => {
                 removeBtn={
                   <ActionBtn
                     handleOnCLick={() => handleRemoveCoin(coin.id)}
-                    key={coin.id}
                     btnTitle="Remove Coin"
                     additionalClass="w-fit hover:bg-deep-pink/40 hover:border-deep-pink/50"
                   />

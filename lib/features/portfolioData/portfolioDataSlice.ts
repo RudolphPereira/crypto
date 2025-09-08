@@ -45,7 +45,7 @@ export const fetchPortfolioCoinList = createAsyncThunk(
     const noOfCoins = state.portfolioData.noOfCoins;
     const currencyValue = state.currencyData.currencyValue;
 
-    if (!targetCoin && !targetDate && !noOfCoins) {
+    if (!targetCoin || !targetDate || !noOfCoins || !currencyValue) {
       return;
     }
 
