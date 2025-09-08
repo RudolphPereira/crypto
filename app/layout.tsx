@@ -7,7 +7,8 @@ import { TopInfoBar } from "./components/TopInfoBar/TopInfoBar";
 import { ThemeProvider } from "./components/Navigation/ThemeProvider";
 import StoreProvider from "./StoreProvider";
 import { Toaster } from "@/components/ui/sonner";
-import PageLoader from "./components/PageLoader/PageLoader";
+import { BrandLoader } from "./components/PageLoaders/BrandLoader";
+import { PageLoader } from "./components/PageLoaders/PageLoader";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -45,6 +46,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <BrandLoader />
             <PageLoader />
             <main className="main bg-app-background text-white font-space-grotesk min-h-[100vh] max-w-[1500px] m-auto">
               <TopInfoBar />
