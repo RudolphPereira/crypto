@@ -8,12 +8,12 @@ export default async function CoinPage({
 }) {
   const { coinId } = await params;
 
-  function capitalizeWords(str: string) {
+  const capitalizeWords = (str: string) => {
     return str
       .split(/[\s-]+/)
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(" ");
-  }
+  };
 
   const title = capitalizeWords(coinId.replace(/-/g, " "));
 
