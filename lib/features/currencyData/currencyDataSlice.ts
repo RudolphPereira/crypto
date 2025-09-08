@@ -15,8 +15,11 @@ type InitialState = {
   error: string;
 };
 
+const storedCurrency =
+  typeof window !== "undefined" ? localStorage.getItem("currency") : null;
+
 const initialState: InitialState = {
-  currencyValue: "usd",
+  currencyValue: storedCurrency || "usd",
   loading: true,
   currencyList: [],
   error: "",

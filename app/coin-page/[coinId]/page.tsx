@@ -8,15 +8,24 @@ export default async function CoinPage({
 }) {
   const { coinId } = await params;
 
+  const capitalizeWords = (str: string) => {
+    return str
+      .split(/[\s-]+/)
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  };
+
+  const title = capitalizeWords(coinId.replace(/-/g, " "));
+
   return (
     <div className="pb-10">
       <div className="flex flex-col gap-8 pt-8">
         <TitleBox
           title="Portfolio"
-          breadCrumbTitle={`${coinId} summary`}
+          breadCrumbTitle={`${title} Summary`}
           hasBreadCrumb
         />
-        <CoinSummary />
+        <CoinSummary coinId={coinId} />
       </div>
     </div>
   );

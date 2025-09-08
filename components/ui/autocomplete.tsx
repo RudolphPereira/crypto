@@ -109,7 +109,7 @@ export const AutoComplete = ({
           onFocus={() => setOpen(true)}
           placeholder={placeholder}
           disabled={disabled}
-          className="text-sm text-background h-10"
+          className="text-sm text-background h-10 truncate"
         />
       </div>
       <div className="relative">

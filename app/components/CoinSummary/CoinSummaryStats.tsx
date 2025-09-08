@@ -3,7 +3,7 @@ import { ProgressStats } from "../TableContent/ProgressStats";
 
 type Props = {
   title: string;
-  value: string;
+  value: string | number;
   progressBar?: boolean;
   amount?: string;
   total?: string;
