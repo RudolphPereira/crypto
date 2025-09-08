@@ -113,7 +113,7 @@ export const PortfolioContent = () => {
   }, [portfolioData]);
 
   return (
-    <>
+    <div>
       {savedDisplayArr.length === 0 ? (
         <div className="bg-dark-blue light:bg-periwinkle-blue/20 p-3 md:p-6 rounded-lg h-[15rem] flex justify-center items-center shadow-xs">
           <p className="text-background text-center text-base">
@@ -162,64 +162,58 @@ export const PortfolioContent = () => {
               currencyValue
             );
 
-            return (
-              <>
-                {portfolioSkeletonLoader ? (
-                  <PortfolioCardSkeleton key={coin.id} />
-                ) : (
-                  <PortfolioCard
-                    key={coin.id}
-                    coinDetails={
-                      <CoinDetails
-                        coinName={`${
-                          coin.name
-                        } (${coin.symbol?.toUpperCase()})`}
-                        coinImage={coin.image}
-                        titleName="Total Value"
-                        value={purchaseValue}
-                        date={`Purchased on ${coin.date}`}
-                        numberOfCoins={`${
-                          coin.noOfCoins
-                        } ${coin.symbol?.toUpperCase()}`}
-                        percentage={totalPercentageValue}
-                        additionalImageBoxClass="w-[2.2rem] h-[2.2rem]"
-                        pageLink={coin.id}
-                      />
-                    }
-                    removeBtn={
-                      <ActionBtn
-                        handleOnCLick={() => handleRemoveCoin(coin.id)}
-                        key={coin.id}
-                        btnTitle="Remove Coin"
-                        additionalClass="w-fit hover:bg-deep-pink/40 hover:border-deep-pink/50"
-                      />
-                    }
-                    portfolioStats={
-                      <>
-                        <PortfolioStats
-                          title={latestCurrPrice}
-                          subTitle="Current price"
-                        />
-                        <PortfolioStats
-                          subTitle="24h%"
-                          icon
-                          percentage={coin.twentyFourHour}
-                        />
-                        <PortfolioStats
-                          subTitle="Market cap vs volume"
-                          percentage={marketByVolume}
-                          progressValue={Number(marketByVolume)}
-                        />
-                        <PortfolioStats
-                          subTitle="Circ supply vs max supply"
-                          icon
-                          percentage={cirBySupply}
-                        />
-                      </>
-                    }
+            return portfolioSkeletonLoader ? (
+              <PortfolioCardSkeleton key={coin.id} />
+            ) : (
+              <PortfolioCard
+                key={coin.id}
+                coinDetails={
+                  <CoinDetails
+                    coinName={`${coin.name} (${coin.symbol?.toUpperCase()})`}
+                    coinImage={coin.image}
+                    titleName="Total Value"
+                    value={purchaseValue}
+                    date={`Purchased on ${coin.date}`}
+                    numberOfCoins={`${
+                      coin.noOfCoins
+                    } ${coin.symbol?.toUpperCase()}`}
+                    percentage={totalPercentageValue}
+                    additionalImageBoxClass="w-[2.2rem] h-[2.2rem]"
+                    pageLink={coin.id}
                   />
-                )}
-              </>
+                }
+                removeBtn={
+                  <ActionBtn
+                    handleOnCLick={() => handleRemoveCoin(coin.id)}
+                    key={coin.id}
+                    btnTitle="Remove Coin"
+                    additionalClass="w-fit hover:bg-deep-pink/40 hover:border-deep-pink/50"
+                  />
+                }
+                portfolioStats={
+                  <>
+                    <PortfolioStats
+                      title={latestCurrPrice}
+                      subTitle="Current price"
+                    />
+                    <PortfolioStats
+                      subTitle="24h%"
+                      icon
+                      percentage={coin.twentyFourHour}
+                    />
+                    <PortfolioStats
+                      subTitle="Market cap vs volume"
+                      percentage={marketByVolume}
+                      progressValue={Number(marketByVolume)}
+                    />
+                    <PortfolioStats
+                      subTitle="Circ supply vs max supply"
+                      icon
+                      percentage={cirBySupply}
+                    />
+                  </>
+                }
+              />
             );
           })}
         </div>
@@ -233,6 +227,6 @@ export const PortfolioContent = () => {
           />
         </div>
       ) : null}
-    </>
+    </div>
   );
 };
