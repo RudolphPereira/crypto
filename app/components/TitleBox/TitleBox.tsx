@@ -23,7 +23,7 @@ export const TitleBox = ({
           <h2 className="text-background font-[500] text-lg">{title}</h2>
         )}
         {title && hasBreadCrumb && (
-          <div className="flex gap-2 items-center">
+          <div className="flex gap-2 items-center flex-wrap">
             <Link
               href="/portfolio"
               className="flex items-center gap-1 text-background font-[500] text-lg transition-all ease-in duration-200 hover:text-periwinkle-blue"
