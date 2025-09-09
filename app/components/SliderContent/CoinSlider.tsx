@@ -88,7 +88,7 @@ export const CoinSlider = () => {
                   return (
                     <CarouselItem
                       key={coin.id || "1"}
-                      className="md:basis-1/2 lg:basis-1/3 xl:basis-1/5 pl-0"
+                      className="basis-1/3 md:basis-1/2 lg:basis-1/3 xl:basis-1/5 pl-0"
                     >
                       <div className="pl-2 ml-2">
                         <Button
@@ -107,10 +107,10 @@ export const CoinSlider = () => {
                           <Card
                             className={`${
                               isActive ? "active" : ""
-                            } group/scaleImage min-h-19 light:[&.active]:bg-periwinkle-blue/30 [&.active]:bg-periwinkle-blue/40 [&.active]:border-periwinkle-blue light:shadow-none light:bg-white rounded-sm py-4 w-full bg-black-russian border border-transparent border-b-0 text-background cursor-pointer hover:bg-periwinkle-blue/30 light:hover:bg-periwinkle-blue/30 transition-all duration-150 ease `}
+                            } group/scaleImage sm:min-h-19 light:[&.active]:bg-periwinkle-blue/30 [&.active]:bg-periwinkle-blue/40 [&.active]:border-periwinkle-blue light:shadow-none light:bg-white rounded-sm py-3 sm:py-4 w-full bg-black-russian border border-transparent border-b-0 text-background cursor-pointer hover:bg-periwinkle-blue/30 light:hover:bg-periwinkle-blue/30 transition-all duration-150 ease flex justify-center items-center sm:items-start`}
                           >
-                            <CardContent className="flex items-center gap-4 px-4">
-                              <div className="w-[2.2rem] h-[2.2rem] rounded-full group-hover:rotate-360 group-hover:scale-120 group-[&.active]/scaleImage:scale-120 group-[&.active]/scaleImage:rotate-360  transition-all ease-in-out duration-600 bg-white p-0.5">
+                            <CardContent className="flex items-center gap-2 sm:gap-4 px-3 sm:px-4">
+                              <div className="w-[1.5rem] h-[1.5rem] sm:w-[2.2rem] sm:h-[2.2rem] rounded-full group-hover:rotate-360 group-hover:scale-120 group-[&.active]/scaleImage:scale-120 group-[&.active]/scaleImage:rotate-360  transition-all ease-in-out duration-600 bg-white p-[.08rem] sm:p-0.5 ">
                                 <Image
                                   width={100}
                                   height={100}
@@ -119,16 +119,19 @@ export const CoinSlider = () => {
                                   className="w-full h-full object-contain shadow-md rounded-full"
                                 />
                               </div>
-                              <div className="flex flex-col items-start gap-1">
-                                <div className="text-base font-[500]">
-                                  <p className="text-left truncate w-40">
+                              <div className="flex flex-col items-start gap-1 justify-start">
+                                <div className="text-base font-[500] flex">
+                                  <p className="text-left truncate w-40 hidden sm:block">
                                     {coin.name}
                                     <span className="uppercase ml-2 inline-block">
                                       ({coin.symbol})
                                     </span>
                                   </p>
+                                  <p className="sm:hidden truncate w-[50px]">
+                                    {coin.symbol.toUpperCase()}
+                                  </p>
                                 </div>
-                                <div className="flex gap-3">
+                                <div className="gap-3 hidden sm:flex">
                                   <CoinStats
                                     price={coin.current_price}
                                     currency={currencyValue}
@@ -149,8 +152,8 @@ export const CoinSlider = () => {
               </>
             )}
           </CarouselContent>
-          <CarouselPrevious className="group light:hover:drop-shadow-md top-28 -left-0 sm:top-1/2 sm:-left-8 size-9 sm:size-12 cursor-pointer sm:disabled:hidden text-white border-b-0 dark:bg-periwinkle-blue/30 light:bg-periwinkle-blue/60 light:hover:bg-periwinkle-blue/90 dark:hover:bg-periwinkle-blue/60 dark:border-periwinkle-blue" />
-          <CarouselNext className="group light:hover:drop-shadow-md top-28 -right-0 sm:top-1/2  sm:-right-8 size-9 sm:size-12 cursor-pointer sm:disabled:hidden text-white border-b-0 light:bg-periwinkle-blue/60 light:hover:bg-periwinkle-blue/90 dark:bg-periwinkle-blue/30 dark:hover:bg-periwinkle-blue/60 dark:border-periwinkle-blue" />
+          <CarouselPrevious className="group light:hover:drop-shadow-md top-21 left-0 sm:top-1/2 sm:-left-8 size-9 sm:size-12 cursor-pointer sm:disabled:hidden text-white border-b-0 dark:bg-periwinkle-blue/30 light:bg-periwinkle-blue/60 light:hover:bg-periwinkle-blue/90 dark:hover:bg-periwinkle-blue/60 dark:border-periwinkle-blue" />
+          <CarouselNext className="group light:hover:drop-shadow-md top-21 -right-0 sm:top-1/2  sm:-right-8 size-9 sm:size-12 cursor-pointer sm:disabled:hidden text-white border-b-0 light:bg-periwinkle-blue/60 light:hover:bg-periwinkle-blue/90 dark:bg-periwinkle-blue/30 dark:hover:bg-periwinkle-blue/60 dark:border-periwinkle-blue" />
         </Carousel>
       </div>
       {error || graphDataError !== "" ? (

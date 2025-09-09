@@ -88,7 +88,7 @@ export function DataTable<TData, TValue>({
       }
     >
       <div className="flex items-center md:justify-end justify-center mb-1">
-        <div className="flex shadow-xs items-center light:border-0 rounded-sm pl-3 border border-white/15 light:bg-white dark:bg-black-russian">
+        <div className="flex w-[100%] md:w-auto shadow-xs items-center light:border-0 rounded-sm pl-3 border border-white/15 light:bg-white dark:bg-black-russian">
           <Label htmlFor="coinTableSearch">
             <SearchIcon className="size-4 shrink-0 opacity-50 text-background" />
           </Label>

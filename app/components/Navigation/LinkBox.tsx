@@ -11,7 +11,7 @@ import { usePathname } from "next/navigation";
 export const LinkBox = () => {
   const pathname = usePathname();
   return (
-    <div className="flex justify-center sm:justify-between items-center flex-wrap gap-5">
+    <div className="flex justify-between items-center flex-wrap gap-5">
       <div className="">
         <Link
           href="/"
@@ -20,13 +20,13 @@ export const LinkBox = () => {
           <div className="w-[2.3rem] h-[2.3rem]">
             <Image
               src="/logo.svg"
-              width={0}
-              height={0}
+              width={100}
+              height={100}
               alt="logo"
               className="w-full h-full object-contain"
             />
           </div>
-          Crypto Vault
+          <span className="sm:block hidden">Crypto Vault</span>
         </Link>
       </div>
       <ul className="flex gap-5 text-sm">

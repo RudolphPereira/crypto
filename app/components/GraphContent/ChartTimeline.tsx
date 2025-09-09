@@ -66,8 +66,8 @@ export const ChartTimeline = ({ convertor }: Props) => {
   };
 
   return (
-    <div className="chartTimeline">
-      <div className="shadow-xs bg-dark-gunmetal light:bg-white p-1 flex justify-center md:justify-start gap-2 w-full md:w-fit rounded-sm">
+    <div className="chartTimeline flex justify-center sm:justify-start">
+      <div className="shadow-xs bg-dark-gunmetal light:bg-white p-1 flex justify-center md:justify-start gap-2 w-fit rounded-sm">
         {data.map((btn: string) => {
           return (
             <Button
