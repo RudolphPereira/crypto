@@ -21,7 +21,7 @@ export const CoinInput = ({
         placeholder="0"
         value={inputValue}
         readOnly={inputReadOnly ? true : false}
-        className="light:bg-white dark:bg-transparent w-full border-0 outline-none focus-visible:ring-0 p-0 text-right shadow-none md:text-2xl font-[700] [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+        className="light:bg-white dark:bg-transparent w-full border-0 outline-none focus-visible:ring-0 p-0 text-right shadow-none text-3xl  md:text-2xl font-[700] [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
       />
     </div>
   );
