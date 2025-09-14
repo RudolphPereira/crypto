@@ -11,10 +11,21 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export const ThemeBox = () => {
   const { theme, setTheme } = useTheme();
-
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme && savedTheme !== theme) {
+      setTheme(savedTheme);
+    }
+  }, [theme, setTheme]);
+
+  const handleTheme = () => {
+    const appTheme = theme === "dark" ? "light" : "dark";
+    setTheme(appTheme);
+    localStorage.setItem("theme", appTheme);
+  };
 
   if (!mounted) {
     return (
@@ -34,7 +45,7 @@ export const ThemeBox = () => {
           aria-labelledby={
             theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
           }
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          onClick={handleTheme}
           size="icon"
           className="border h-[100%] w-[100%] border-white/15 text-sm cursor-pointer bg-black-russian rounded-sm group hover:bg-periwinkle-blue/60 hover:border-b-0 hover:border-periwinkle-blue hover:drop-shadow-periwinkle-blue/60"
         >

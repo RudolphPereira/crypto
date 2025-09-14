@@ -29,7 +29,13 @@ import { fetchPortfolioCoinList } from "@/lib/features/portfolioData/portfolioDa
 
 export function CurrencyBox() {
   const [open, setOpen] = useState(false);
-  const data = useAppSelector((state) => state.currencyData.currencyList);
+  const allCurrencies = useAppSelector(
+    (state) => state.currencyData.currencyList
+  );
+  const data = allCurrencies.filter(
+    (currency) =>
+      currency !== "link" && currency !== "bits" && currency !== "sats"
+  );
   const graphData = useAppSelector((state) => state.graphData.graphCoinList);
   const portfolioData = useAppSelector((state) => state.portfolioData.coinList);
   const graphDataError = useAppSelector((state) => state.graphData.error);
@@ -47,9 +53,15 @@ export function CurrencyBox() {
 
   useEffect(() => {
     dispatch(fetchCurrencyList());
+    // local storage
+    const storedCurrency = localStorage.getItem("currency");
+    if (storedCurrency && currencyValue !== storedCurrency) {
+      dispatch(updateCurrencyValue(storedCurrency));
+    }
   }, []);
 
   useEffect(() => {
+    if (!currencyValue) return;
     dispatch(fetchCoinList());
     dispatch(fetchGraphCoinList());
     dispatch(fetchCoin(coinId));
@@ -59,6 +71,10 @@ export function CurrencyBox() {
     graphData.forEach((coin) => {
       dispatch(fetchGraphCoinList(coin.coinName));
     });
+    // local storage
+    if (currencyValue) {
+      localStorage.setItem("currency", currencyValue);
+    }
   }, [currencyValue]);
 
   const setCurrencyValue = (value: string) => {

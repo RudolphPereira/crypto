@@ -45,7 +45,7 @@ export const fetchPortfolioCoinList = createAsyncThunk(
     const noOfCoins = state.portfolioData.noOfCoins;
     const currencyValue = state.currencyData.currencyValue;
 
-    if (!targetCoin && !targetDate && !noOfCoins) {
+    if (!targetCoin || !targetDate || !noOfCoins || !currencyValue) {
       return;
     }
 
@@ -101,6 +101,10 @@ const portfolioDataSlice = createSlice({
         (item) => item.id !== action.payload
       );
     },
+
+    updateLocalData(state, action) {
+      state.coinList = action.payload;
+    },
   },
 
   extraReducers: (builder) => {
@@ -145,6 +149,11 @@ const portfolioDataSlice = createSlice({
   },
 });
 
-export const { updateCoinName, updateDate, updateNoOfCoins, removeCoin } =
-  portfolioDataSlice.actions;
+export const {
+  updateCoinName,
+  updateDate,
+  updateNoOfCoins,
+  removeCoin,
+  updateLocalData,
+} = portfolioDataSlice.actions;
 export default portfolioDataSlice.reducer;

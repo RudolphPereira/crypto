@@ -2,6 +2,7 @@
 import {
   DialogClose,
   DialogContent,
+  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -99,6 +100,7 @@ export function SelectCoinsPopUp() {
                 <CircleX className="text-background" size={20} />
               </DialogClose>
             </DialogHeader>
+            <DialogDescription className="hidden"></DialogDescription>
             <div className="flex sm:flex-row flex-col gap-6">
               <div className="sm:flex-1 rounded-lg sm:h-auto h-[12rem] bg-dark-blue w-full flex justify-center items-center shadow-xs">
                 <div className="flex flex-col justify-center items-center gap-3">

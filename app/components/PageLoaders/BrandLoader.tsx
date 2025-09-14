@@ -5,19 +5,28 @@ import React, { useEffect, useState } from "react";
 import logo from "../../../public/logo.svg";
 import Image from "next/image";
 
-export const PageLoader = () => {
+export const BrandLoader = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
+    const hasSeenLoader = sessionStorage.getItem("hasSeenLoader");
+
+    if (hasSeenLoader) {
+      setIsVisible(false);
+      return;
+    }
+
     document.body.style.overflow = "hidden";
+
     const timer = setTimeout(() => {
       setIsAnimating(true);
       setTimeout(() => {
         document.body.style.overflow = "";
         setIsVisible(false);
+        sessionStorage.setItem("hasSeenLoader", "true");
       }, 500);
-    }, 6000);
+    }, 4500);
 
     return () => {
       clearTimeout(timer);
@@ -50,32 +59,29 @@ export const PageLoader = () => {
             />
           </div>
 
-          <h2 className="font-[500] text-[2rem] sm:text-[4rem] text-background">
+          <h2 className="font-[600] text-[2rem] sm:text-[4rem] text-background">
             Crypto Vault
           </h2>
         </div>
 
         <div className="flex-1 flex justify-start">
           <RotatingText
-            texts={["Hyperliquid", "Bitcoin", "Ethereum", "Dogecoin"]}
-            mainClassName="shadow-md font-space-grotesk px-4 font-[800] text-[2rem] sm:text-[4rem] sm:px-4 md:px-6 bg-periwinkle-blue overflow-hidden justify-center rounded-lg"
+            texts={["Hyperliquid", "Bitcoin", "Ethereum"]}
+            mainClassName="shadow-md font-space-grotesk px-4 font-[900] text-[2rem] sm:text-[4rem] py-0.5 md:py-1 sm:px-4 md:px-6 bg-periwinkle-blue overflow-hidden justify-center rounded-lg"
             staggerFrom={"last"}
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "-120%" }}
             staggerDuration={0.03}
-            splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+            splitLevelClassName="overflow-hidden"
             transition={{ type: "spring", damping: 30, stiffness: 250 }}
             rotationInterval={1500}
             loop
             auto={!isAnimating}
-            animatePresenceMode="wait"
-            animatePresenceInitial={false}
+            // splitBy="words"
           />
         </div>
       </motion.div>
     </div>
   );
 };
-
-export default PageLoader;
