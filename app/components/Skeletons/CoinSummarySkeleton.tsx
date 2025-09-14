@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export const CoinSummarySkeleton = () => {
   return (
-    <>
+    <div className="flex gap-6 flex-col">
       <div className="flex md:flex-row flex-col gap-6 w-full">
         <div className="flex-1 h-fit sm:sticky sm:top-50 p-3 md:p-6 bg-deep-plum light:bg-periwinkle-blue/20 rounded-lg flex flex-col gap-6">
           <div className="flex w-full h-full items-center justify-center gap-2">
@@ -32,15 +32,30 @@ export const CoinSummarySkeleton = () => {
             </div>
           </div>
         </div>
+
         <div className="flex-1/4 flex flex-col gap-4">
-          <Skeleton className="rounded-sm h-20 w-[100%] light:bg-periwinkle-blue/30" />
+          <div className="rounded-sm w-[100%] light:bg-periwinkle-blue/20 dark:bg-deep-plum flex flex-col justify-center gap-2.5 p-4">
+            <Skeleton className="rounded-xs h-3 w-[80%] light:bg-white" />
+            <Skeleton className="rounded-xs h-3 w-[60%] light:bg-white" />
+            <Skeleton className="rounded-xs h-3 w-[40%] light:bg-white" />
+          </div>
 
           <div className="flex gap-3 flex-wrap">
-            <Skeleton className="rounded-sm h-10 w-[20%] light:bg-periwinkle-blue/30" />
-            <Skeleton className="rounded-sm h-10 w-[15%] light:bg-periwinkle-blue/30" />
-            <Skeleton className="rounded-sm h-10 w-[40%] light:bg-periwinkle-blue/30" />
-            <Skeleton className="rounded-sm h-10 w-[30%] light:bg-periwinkle-blue/30" />
-            <Skeleton className="rounded-sm h-10 w-[35%] light:bg-periwinkle-blue/30" />
+            <div className="rounded-sm h-10 w-[40%] light:bg-periwinkle-blue/20 dark:bg-deep-plum flex items-center">
+              <Skeleton className="rounded-xs h-3 w-[80%] mx-4 light:bg-white" />
+            </div>
+            <div className="rounded-sm h-10 w-[15%] light:bg-periwinkle-blue/20 dark:bg-deep-plum flex items-center">
+              <Skeleton className="rounded-xs h-3 w-[80%] mx-4 light:bg-white" />
+            </div>
+            <div className="rounded-sm h-10 w-[40%] light:bg-periwinkle-blue/20 dark:bg-deep-plum flex items-center">
+              <Skeleton className="rounded-xs h-3 w-[80%] mx-4 light:bg-white" />
+            </div>
+            <div className="rounded-sm h-10 w-[30%] light:bg-periwinkle-blue/20 dark:bg-deep-plum flex items-center">
+              <Skeleton className="rounded-xs h-3 w-[80%] mx-4 light:bg-white" />
+            </div>
+            <div className="rounded-sm h-10 w-[35%] light:bg-periwinkle-blue/20 dark:bg-deep-plum flex items-center">
+              <Skeleton className="rounded-xs h-3 w-[80%] mx-4 light:bg-white" />
+            </div>
           </div>
         </div>
       </div>
@@ -81,6 +96,7 @@ export const CoinSummarySkeleton = () => {
             <Skeleton className="rounded-xs h-4 w-[20%]" />
           </div>
         </div>
+
         <div className="p-3 md:p-6 bg-deep-plum light:bg-periwinkle-blue/20 rounded-lg flex flex-col gap-7">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-3 flex-1">
@@ -101,6 +117,6 @@ export const CoinSummarySkeleton = () => {
           <Skeleton className="rounded-xs h-2 w-[100%]" />
         </div>
       </div>
-    </>
+    </div>
   );
 };

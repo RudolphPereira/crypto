@@ -2,19 +2,24 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../../public/logo.svg";
 import Image from "next/image";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { updatePageLoader } from "@/lib/features/pageLoaderData/pageLoaderSlice";
 
 export const PageLoader = () => {
-  const [isVisible, setIsVisible] = useState(true);
   const [isAnimating, setIsAnimating] = useState(false);
+  const pageLoader = useAppSelector((state) => state.pageLoaderData.pageLoader);
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
+    if (!pageLoader) return;
     document.body.style.overflow = "hidden";
 
     const timer = setTimeout(() => {
       setIsAnimating(true);
       setTimeout(() => {
         document.body.style.overflow = "";
-        setIsVisible(false);
+        dispatch(updatePageLoader(false));
       }, 400);
     }, 450);
 
@@ -24,7 +29,7 @@ export const PageLoader = () => {
     };
   }, []);
 
-  if (!isVisible) return null;
+  if (!pageLoader) return null;
 
   return (
     <div

@@ -30,18 +30,18 @@ export const PortfolioCardSkeleton = () => {
           </div>
         </div>
       </div>
-      <div className="flex-1/2 p-3 md:p-6 sm:rounded-r-lg grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
-        <div className="border border-periwinkle-blue/20 rounded-sm p-2 flex flex-col gap-1 justify-center text-background">
-          <Skeleton className="w-[100%] h-[100%] rounded-sm light:bg-periwinkle-blue/40" />
+      <div className="flex-1/2 p-3 md:p-6 sm:rounded-r-lg grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6 ">
+        <div className="border border-periwinkle-blue/20 rounded-sm p-2 flex flex-col gap-1 justify-center text-background ">
+          <Skeleton className="w-[100%] h-10 lg:h-[100%] rounded-sm light:bg-periwinkle-blue/40 " />
         </div>
-        <div className="border border-periwinkle-blue/20 rounded-sm p-2 flex flex-col gap-1 justify-center text-background">
-          <Skeleton className="w-[100%] h-[100%] rounded-sm light:bg-periwinkle-blue/40" />
+        <div className="border  border-periwinkle-blue/20 rounded-sm p-2 flex flex-col gap-1 justify-center text-background">
+          <Skeleton className="w-[100%] h-10 lg:h-[100%] rounded-sm light:bg-periwinkle-blue/40 " />
         </div>
-        <div className="border border-periwinkle-blue/20 rounded-sm p-2 flex flex-col gap-1 justify-center text-background">
-          <Skeleton className="w-[100%] h-[100%] rounded-sm light:bg-periwinkle-blue/40" />
+        <div className="border  border-periwinkle-blue/20 rounded-sm p-2 flex flex-col gap-1 justify-center text-background">
+          <Skeleton className="w-[100%] h-10 lg:h-[100%] rounded-sm light:bg-periwinkle-blue/40 " />
         </div>
-        <div className="border border-periwinkle-blue/20 rounded-sm p-2 flex flex-col gap-1 justify-center text-background">
-          <Skeleton className="w-[100%] h-[100%] rounded-sm light:bg-periwinkle-blue/40" />
+        <div className="border  border-periwinkle-blue/20 rounded-sm p-2 flex flex-col gap-1 justify-center text-background">
+          <Skeleton className="w-[100%] h-10 lg:h-[100%] rounded-sm light:bg-periwinkle-blue/40 " />
         </div>
       </div>
     </div>

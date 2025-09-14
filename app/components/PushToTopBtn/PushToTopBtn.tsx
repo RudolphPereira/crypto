@@ -32,7 +32,7 @@ export const PushToTopBtn = () => {
   return (
     <>
       {showBtn && (
-        <div className="fixed bottom-10 right-13 ">
+        <div className="fixed bottom-6 right-4 sm:bottom-10 sm:right-13">
           <Button
             onClick={handleScrollUp}
             size="icon"

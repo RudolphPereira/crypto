@@ -25,7 +25,7 @@ export const BrandLoader = () => {
         document.body.style.overflow = "";
         setIsVisible(false);
         sessionStorage.setItem("hasSeenLoader", "true");
-      }, 500);
+      }, 400);
     }, 4500);
 
     return () => {
@@ -40,12 +40,12 @@ export const BrandLoader = () => {
     <div
       className={`${
         isAnimating ? "translate-y-[-100%] " : ""
-      } fixed inset-0 z-[9999] overflow-hidden bg-app-background transition-transform duration-500 ease-linear text-white min-h-[100vh] max-w-[1500px] m-auto flex items-center justify-center`}
+      } fixed inset-0 z-[9999] overflow-hidden bg-app-background transition-transform duration-400 ease-linear text-white min-h-[100vh] max-w-[1500px] m-auto flex items-center justify-center`}
     >
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeIn" }}
+        transition={{ duration: 0.4, ease: "easeIn" }}
         className="flex flex-col sm:flex-row gap-3 sm:gap-5 items-center w-full justify-center"
       >
         <div className="flex flex-1 items-center justify-end gap-2 sm:gap-3">

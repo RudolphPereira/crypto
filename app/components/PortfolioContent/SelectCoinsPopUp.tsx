@@ -72,9 +72,11 @@ export function SelectCoinsPopUp() {
     e.preventDefault();
     dispatch(fetchPortfolioCoinList());
     closeRef.current?.click();
-    setDropDownValue("");
-    setNoOfCoins("");
-    setDate(undefined);
+    setTimeout(() => {
+      setDropDownValue("");
+      setNoOfCoins("");
+      setDate(undefined);
+    }, 200);
   };
 
   const cancelDialog = () => {
@@ -142,7 +144,7 @@ export function SelectCoinsPopUp() {
                     coinArr={coinArr}
                   />
                 </div>
-                <div className="">
+                <div className="pointer-events-auto">
                   <Input
                     onChange={handleNoOfCoins}
                     value={noOfCoins}
@@ -152,11 +154,11 @@ export function SelectCoinsPopUp() {
                   />
                 </div>
 
-                <div className="">
+                <div className="pointer-events-auto">
                   <PurchasedDatePicker date={date} setDate={setDate} />
                 </div>
 
-                <DialogFooter className="flex sm:flex-row  flex-col-reverse w-full">
+                <DialogFooter className="flex sm:flex-row flex-col-reverse w-full mt-3 gap-3 sm:gap-2.5 sm:mt-0">
                   <ActionBtn
                     handleOnCLick={cancelDialog}
                     type="button"

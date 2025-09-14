@@ -12,6 +12,8 @@ import {
 import { PortfolioCardSkeleton } from "../Skeletons/PortfolioCardSkeleton";
 import { Toast } from "../Toast/Toast";
 import { useEffect, useState } from "react";
+import { FadeIn } from "../FadeIn/FadeIn";
+import { AnimatePresence } from "motion/react";
 
 export const PortfolioContent = () => {
   const dispatch = useAppDispatch();
@@ -23,6 +25,7 @@ export const PortfolioContent = () => {
   const portfolioSkeletonLoader = useAppSelector(
     (state) => state.portfolioData.skeletonLoader
   );
+
   const error = useAppSelector((state) => state.portfolioData.error);
 
   const handleRemoveCoin = (coinId: string | undefined) => {
@@ -93,7 +96,7 @@ export const PortfolioContent = () => {
         };
       });
 
-      const displayArr = [...newData];
+      const displayArr = [...newData].reverse();
       setSavedDisplayArr(displayArr);
     }
   }, [mainCoinData]);
@@ -101,118 +104,156 @@ export const PortfolioContent = () => {
   useEffect(() => {
     if (data.length > 0) {
       localStorage.setItem("portfolioArr", JSON.stringify(portfolioData));
-      setSavedDisplayArr(data);
+      setSavedDisplayArr([...data].reverse());
     } else {
       localStorage.removeItem("portfolioArr");
       setSavedDisplayArr([]);
     }
   }, [portfolioData]);
 
+  // Animation
+  const pageLoader = useAppSelector((state) => state.pageLoaderData.pageLoader);
+
   return (
-    <div>
-      {savedDisplayArr.length === 0 ? (
-        <div className="bg-dark-blue light:bg-periwinkle-blue/20 p-3 md:p-6 rounded-lg h-[15rem] flex justify-center items-center shadow-xs">
-          <p className="text-background text-center text-base">
-            The portfolio is currently empty.
-          </p>
+    <div className="">
+      <AnimatePresence mode="wait">
+        <div className="flex flex-col gap-6">
+          {portfolioSkeletonLoader && (
+            <FadeIn initialY={-20} key="skeleton">
+              <div className="flex flex-col gap-6">
+                <PortfolioCardSkeleton />
+              </div>
+            </FadeIn>
+          )}
+
+          {!pageLoader && (
+            <>
+              {savedDisplayArr.length === 0 ? (
+                <>
+                  {!portfolioSkeletonLoader && (
+                    <FadeIn initialY={-20}>
+                      <div className="bg-dark-blue light:bg-periwinkle-blue/20 p-3 md:p-6 rounded-lg h-[15rem] flex justify-center items-center shadow-xs">
+                        <p className="text-background text-center text-base">
+                          The portfolio is currently empty.
+                        </p>
+                      </div>
+                    </FadeIn>
+                  )}
+                </>
+              ) : (
+                savedDisplayArr.map((coin, index) => {
+                  const totalPurchaseValue =
+                    Number(coin.currentPrice) * Number(coin.noOfCoins) || 0;
+
+                  const totalPercentageValue =
+                    Number(
+                      (
+                        ((Number(coin?.latestCurrentPrice) -
+                          Number(coin?.currentPrice)) /
+                          Number(coin?.currentPrice)) *
+                        100
+                      ).toFixed(0)
+                    ) || 0;
+
+                  const totalPercentageValueChecked =
+                    !isFinite(totalPercentageValue) ||
+                    isNaN(totalPercentageValue)
+                      ? undefined
+                      : totalPercentageValue;
+
+                  const marketByVolume =
+                    (
+                      (Number(coin.totalVolume) / Number(coin.marketCap)) *
+                      100
+                    ).toFixed(0) || "";
+
+                  const cirBySupply =
+                    (
+                      (Number(coin.cirSupply) / Number(coin.totalSupply)) *
+                      100
+                    ).toFixed(0) || "";
+
+                  const purchaseValue = formatNumberWithDecimalsAndCurrency(
+                    Number(totalPurchaseValue),
+                    0,
+                    0,
+                    currencyValue
+                  );
+
+                  const latestCurrPrice = formatNumberWithDecimalsAndCurrency(
+                    Number(coin.latestCurrentPrice),
+                    0,
+                    0,
+                    currencyValue
+                  );
+
+                  const delay = index * 0.05;
+
+                  return (
+                    <FadeIn
+                      delay={delay}
+                      initialY={-20}
+                      key={coin.id}
+                      disableExit
+                    >
+                      <PortfolioCard
+                        coinDetails={
+                          <CoinDetails
+                            coinName={`${
+                              coin.name
+                            } (${coin.symbol?.toUpperCase()})`}
+                            coinImage={coin.image}
+                            titleName="Total Value"
+                            value={purchaseValue}
+                            date={`Purchased on ${coin.date}`}
+                            numberOfCoins={`${
+                              coin.noOfCoins
+                            } ${coin.symbol?.toUpperCase()}`}
+                            percentage={totalPercentageValueChecked}
+                            additionalImageBoxClass="w-[2.2rem] h-[2.2rem]"
+                            pageLink={coin.id}
+                          />
+                        }
+                        removeBtn={
+                          <ActionBtn
+                            handleOnCLick={() => handleRemoveCoin(coin.id)}
+                            btnTitle="Remove Coin"
+                            additionalClass="w-fit hover:bg-deep-pink/40 hover:border-deep-pink/50"
+                          />
+                        }
+                        portfolioStats={
+                          <>
+                            <PortfolioStats
+                              title={latestCurrPrice}
+                              subTitle="Current price"
+                            />
+                            <PortfolioStats
+                              subTitle="24h%"
+                              icon
+                              percentage={coin.twentyFourHour}
+                            />
+                            <PortfolioStats
+                              subTitle="Market cap vs volume"
+                              percentage={marketByVolume}
+                              progressValue={Number(marketByVolume)}
+                            />
+                            <PortfolioStats
+                              subTitle="Circ supply vs max supply"
+                              icon
+                              percentage={cirBySupply}
+                            />
+                          </>
+                        }
+                      />
+                    </FadeIn>
+                  );
+                })
+              )}
+            </>
+          )}
         </div>
-      ) : (
-        <div className="flex flex-col-reverse gap-6">
-          {savedDisplayArr.map((coin) => {
-            const totalPurchaseValue =
-              Number(coin.currentPrice) * Number(coin.noOfCoins) || 0;
+      </AnimatePresence>
 
-            const totalPercentageValue =
-              Number(
-                (
-                  ((Number(coin?.latestCurrentPrice) -
-                    Number(coin?.currentPrice)) /
-                    Number(coin?.currentPrice)) *
-                  100
-                ).toFixed(0)
-              ) || 0;
-
-            const marketByVolume =
-              (
-                (Number(coin.totalVolume) / Number(coin.marketCap)) *
-                100
-              ).toFixed(0) || "";
-
-            const cirBySupply =
-              (
-                (Number(coin.cirSupply) / Number(coin.totalSupply)) *
-                100
-              ).toFixed(0) || "";
-
-            const purchaseValue = formatNumberWithDecimalsAndCurrency(
-              Number(totalPurchaseValue),
-              0,
-              0,
-              currencyValue
-            );
-
-            const latestCurrPrice = formatNumberWithDecimalsAndCurrency(
-              Number(coin.latestCurrentPrice),
-              0,
-              0,
-              currencyValue
-            );
-
-            return portfolioSkeletonLoader ? (
-              <PortfolioCardSkeleton key={coin.id} />
-            ) : (
-              <PortfolioCard
-                key={coin.id}
-                coinDetails={
-                  <CoinDetails
-                    coinName={`${coin.name} (${coin.symbol?.toUpperCase()})`}
-                    coinImage={coin.image}
-                    titleName="Total Value"
-                    value={purchaseValue}
-                    date={`Purchased on ${coin.date}`}
-                    numberOfCoins={`${
-                      coin.noOfCoins
-                    } ${coin.symbol?.toUpperCase()}`}
-                    percentage={totalPercentageValue}
-                    additionalImageBoxClass="w-[2.2rem] h-[2.2rem]"
-                    pageLink={coin.id}
-                  />
-                }
-                removeBtn={
-                  <ActionBtn
-                    handleOnCLick={() => handleRemoveCoin(coin.id)}
-                    btnTitle="Remove Coin"
-                    additionalClass="w-fit hover:bg-deep-pink/40 hover:border-deep-pink/50"
-                  />
-                }
-                portfolioStats={
-                  <>
-                    <PortfolioStats
-                      title={latestCurrPrice}
-                      subTitle="Current price"
-                    />
-                    <PortfolioStats
-                      subTitle="24h%"
-                      icon
-                      percentage={coin.twentyFourHour}
-                    />
-                    <PortfolioStats
-                      subTitle="Market cap vs volume"
-                      percentage={marketByVolume}
-                      progressValue={Number(marketByVolume)}
-                    />
-                    <PortfolioStats
-                      subTitle="Circ supply vs max supply"
-                      icon
-                      percentage={cirBySupply}
-                    />
-                  </>
-                }
-              />
-            );
-          })}
-        </div>
-      )}
       {error ? (
         <div className="hidden">
           <Toast

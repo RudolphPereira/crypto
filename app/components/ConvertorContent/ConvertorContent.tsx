@@ -18,6 +18,8 @@ import {
   fetchConvertorGraphCoin,
 } from "@/lib/features/convertorGraphData/convertorGraphDataSlice";
 import { Toast } from "../Toast/Toast";
+import { FadeIn } from "../FadeIn/FadeIn";
+import { AnimatePresence } from "motion/react";
 
 export const ConvertorContent = () => {
   // Current Date Time
@@ -275,7 +277,7 @@ export const ConvertorContent = () => {
           coinError !== "" || graphError !== ""
             ? "pointer-events-none opacity-60"
             : ""
-        } flex md:flex-row flex-col gap-6 w-full mt-10 md:mt-0 relative`}
+        } flex md:flex-row flex-col gap-6 w-full relative`}
       >
         <div className="flex-1 p-3 md:p-6 bg-dark-blue rounded-lg flex flex-col gap-8">
           <CoinDetails titleName="You sell" />
@@ -315,30 +317,36 @@ export const ConvertorContent = () => {
         </div>
       </div>
 
-      {inputValue && valueTwo && (
-        <>
-          <div
-            className={`${
-              coinError !== "" || graphError !== ""
-                ? "pointer-events-none opacity-60"
-                : ""
-            } flex-1 p-3 md:p-6 bg-dark-blue rounded-lg flex flex-col gap-8`}
+      <AnimatePresence mode="wait">
+        {inputValue && valueTwo && valueOne && (
+          <FadeIn
+            delay={0.3}
+            key="skeleton"
+            additionalClass="flex flex-col gap-8"
           >
-            <CoinDetails
-              titleName={`${coinOneName} to ${coinTwoName}`}
-              date={renderDate}
-            />
-            <ConvertorAreaChart
-              data={priceData}
-              coinOnePriceDomain={coinOnePriceDomain}
-            />
-          </div>
+            <div
+              className={`${
+                coinError !== "" || graphError !== ""
+                  ? "pointer-events-none opacity-60"
+                  : ""
+              } flex-1 p-3 md:p-6 bg-dark-blue rounded-lg`}
+            >
+              <CoinDetails
+                titleName={`${coinOneName} to ${coinTwoName}`}
+                date={renderDate}
+              />
 
-          <div className="">
+              <ConvertorAreaChart
+                data={priceData}
+                coinOnePriceDomain={coinOnePriceDomain}
+              />
+            </div>
+
             <ChartTimeline convertor />
-          </div>
-        </>
-      )}
+          </FadeIn>
+        )}
+      </AnimatePresence>
+
       {graphError !== "" || coinError !== "" ? (
         <div className="hidden">
           <Toast
