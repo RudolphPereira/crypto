@@ -25,11 +25,13 @@ import { CurrencyBoxSkeleton } from "../Skeletons/CurrencyBoxSkeleton";
 import { fetchCoinList } from "@/lib/features/coinData/coinDataSlice";
 import { fetchGraphCoinList } from "@/lib/features/graphData/graphDataSlice";
 import { fetchCoin } from "@/lib/features/coinPageData/coinPageDataSlice";
+import { fetchPortfolioCoinList } from "@/lib/features/portfolioData/portfolioDataSlice";
 
 export function CurrencyBox() {
   const [open, setOpen] = useState(false);
   const data = useAppSelector((state) => state.currencyData.currencyList);
   const graphData = useAppSelector((state) => state.graphData.graphCoinList);
+  const portfolioData = useAppSelector((state) => state.portfolioData.coinList);
   const graphDataError = useAppSelector((state) => state.graphData.error);
   const convertorGraphError = useAppSelector(
     (state) => state.convertorGraphData.error
@@ -51,6 +53,9 @@ export function CurrencyBox() {
     dispatch(fetchCoinList());
     dispatch(fetchGraphCoinList());
     dispatch(fetchCoin(coinId));
+    portfolioData.forEach((coin) => {
+      dispatch(fetchPortfolioCoinList(coin.id));
+    });
     graphData.forEach((coin) => {
       dispatch(fetchGraphCoinList(coin.coinName));
     });

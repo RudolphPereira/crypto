@@ -29,6 +29,10 @@ export const CoinSummary = ({ coinId }: Props) => {
   }, [coinId]);
 
   const data = useAppSelector((state) => state.coinPageData.coin);
+  const portfolioData = useAppSelector((state) => state.portfolioData.coinList);
+
+  // console.log(data);
+
   const skeletonLoader = useAppSelector(
     (state) => state.coinPageData.skeletonLoader
   );
@@ -149,6 +153,30 @@ export const CoinSummary = ({ coinId }: Props) => {
     }
   };
 
+  // Ledger
+  const coin = portfolioData.find((coin) => coin.id === data.id);
+
+  let ledgerNum = "";
+  let ledgerText = "";
+
+  if (coin) {
+    const latestPrice = Number(data.currentPrice || 0);
+    const noOfCoins = Number(coin.noOfCoins || 0);
+    const purchasedPrice = Number(coin.currentPrice || 0);
+    const ledgerData = latestPrice * noOfCoins - purchasedPrice * noOfCoins;
+
+    ledgerNum = ledgerData.toFixed(0);
+
+    const ledgerNumAbs = Math.abs(Number(ledgerNum));
+
+    ledgerText = formatNumberWithDecimalsAndCurrency(
+      Number(ledgerNumAbs),
+      0,
+      0,
+      currencyValue
+    );
+  }
+
   return (
     <div
       className={`${
@@ -169,6 +197,8 @@ export const CoinSummary = ({ coinId }: Props) => {
                 percentage={finalPriceChangePercentage}
                 handleCopyLink={() => handleCopyLink(coinUrl)}
                 additionalImageBoxClass="w-[2.5rem] h-[2.5rem]"
+                ledgerNum={Number(ledgerNum)}
+                ledgerText={ledgerText}
               />
 
               <div className="border-t-1 border-background/10 flex flex-col gap-4 pt-4">

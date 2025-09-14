@@ -15,12 +15,12 @@ interface Props {
   titleName?: string;
   value?: string | number;
   date?: string;
-  balance?: string;
-  ledger?: boolean;
+  numberOfCoins?: string;
+  ledgerNum?: number | undefined;
+  ledgerText?: string | undefined;
   percentage?: number;
   highStatus?: boolean;
   hasAddAsset?: boolean;
-  hasMadeProfit?: boolean;
   handleCopyLink?: () => void | Promise<void>;
   additionalImageBoxClass?: string;
 }
@@ -32,18 +32,18 @@ export const CoinDetails = ({
   titleName,
   value,
   date,
-  balance,
-  ledger,
+  numberOfCoins,
+  ledgerNum,
+  ledgerText,
   percentage,
   hasAddAsset,
-  hasMadeProfit,
   handleCopyLink,
   additionalImageBoxClass,
 }: Props) => {
   return (
-    <div className="flex flex-col gap-6 text-background">
+    <div className="flex flex-col gap-4 text-background">
       {coinName && (
-        <div className=" flex flex-col gap-2">
+        <div className="flex flex-col gap-2">
           <div className="flex items-center gap-3">
             {coinImage && (
               <div
@@ -61,7 +61,7 @@ export const CoinDetails = ({
             <div className="flex flex-col gap-1">
               <ToolTip
                 toolTipTrigger={
-                  <h2 className="text-xl font-[700] truncate block max-w-[300px]">
+                  <h2 className="text-xl font-[700] truncate block max-w-[250px]">
                     {coinName}
                   </h2>
                 }
@@ -103,14 +103,14 @@ export const CoinDetails = ({
           </div>
         </div>
       )}
-      <div className="flex flex-col gap-3 flex-1">
+      <div className="flex flex-col gap-1 flex-1">
         <p className="text-base opacity-70">{titleName}</p>
 
         <div className="flex flex-col gap-1">
-          <div className="flex gap-2">
+          <div className="flex gap-3">
             {value && <p className="text-2xl font-[700]">{value}</p>}
             {percentage != null && (
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1">
                 <div className="w-[1rem] h-[1rem]">
                   <Image
                     src={percentage >= 0 ? increaseIcon : decreaseIcon}
@@ -128,20 +128,29 @@ export const CoinDetails = ({
               </div>
             )}
           </div>
-          {ledger && (
+          {ledgerNum !== undefined && ledgerNum !== 0 && (
             <div className="flex gap-2 items-center">
-              <p className="text-base">{hasMadeProfit ? "Profit" : "Loss"}:</p>
+              <p className="text-base">
+                {ledgerNum >= 0 ? "Profit acquired" : "Loss incurred"}:
+              </p>
               <p
                 className={`text-lg ${
-                  hasMadeProfit ? "text-mint-green" : "text-deep-pink"
+                  ledgerNum >= 0 ? "text-mint-green" : "text-deep-pink"
                 }`}
               >
-                $1,504
+                {ledgerText}
               </p>
             </div>
           )}
 
-          {balance && <p className="text-xs opacity-70">{balance}</p>}
+          {numberOfCoins && (
+            <p className="text-xs flex gap-1">
+              <span className="opacity-70 inline-block">
+                Number of coins purchased:
+              </span>
+              <span className="inline-block">{numberOfCoins}</span>
+            </p>
+          )}
           {date && <p className="text-xs opacity-70">{date}</p>}
         </div>
         {hasAddAsset && (
