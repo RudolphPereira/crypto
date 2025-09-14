@@ -20,3 +20,14 @@ export function Toast({ title, message, btnLabel }: Props) {
     },
   });
 }
+
+export function ToastSec({ title, message, btnLabel }: Props) {
+  return toast(title, {
+    description: message,
+    id: "2",
+    action: {
+      label: btnLabel,
+      onClick: () => toast.dismiss,
+    },
+  });
+}

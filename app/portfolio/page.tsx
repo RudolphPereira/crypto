@@ -35,7 +35,7 @@ export default function Portfolio() {
                 titleName="Total Value"
                 value="$29,850 USD"
                 date="Purchased 03.23.2023"
-                percentage="6.76%"
+                percentage={3}
                 highStatus
               />
             }
@@ -66,7 +66,7 @@ export default function Portfolio() {
                 titleName="Total Value"
                 value="$29,850 USD"
                 date="Purchased 03.23.2023"
-                percentage="6.76%"
+                percentage={2}
               />
             }
             portfolioStats={

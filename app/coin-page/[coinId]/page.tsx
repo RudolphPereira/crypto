@@ -16,7 +16,7 @@ export default async function CoinPage({
           breadCrumbTitle={`${coinId} summary`}
           hasBreadCrumb
         />
-        <CoinSummary />
+        <CoinSummary coinId={coinId} />
       </div>
     </div>
   );
