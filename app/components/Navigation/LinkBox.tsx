@@ -20,8 +20,8 @@ export const LinkBox = () => {
           <div className="w-[2.3rem] h-[2.3rem]">
             <Image
               src="/logo.svg"
-              width={0}
-              height={0}
+              width={100}
+              height={100}
               alt="logo"
               className="w-full h-full object-contain"
             />

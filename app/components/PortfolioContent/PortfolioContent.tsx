@@ -136,6 +136,7 @@ export const PortfolioContent = () => {
                         } ${coin.symbol?.toUpperCase()}`}
                         percentage={totalPercentageValue}
                         additionalImageBoxClass="w-[2.2rem] h-[2.2rem]"
+                        pageLink={coin.id}
                       />
                     }
                     removeBtn={

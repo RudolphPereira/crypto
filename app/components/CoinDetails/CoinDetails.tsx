@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { ActionBtn } from "../AppButtons/AppBtns";
 import { ExternalLink } from "lucide-react";
 import { ToolTip } from "../ToolTip/ToolTip";
+import Link from "next/link";
 
 interface Props {
   coinName?: string;
@@ -23,6 +24,7 @@ interface Props {
   hasAddAsset?: boolean;
   handleCopyLink?: () => void | Promise<void>;
   additionalImageBoxClass?: string;
+  pageLink?: string;
 }
 
 export const CoinDetails = ({
@@ -39,6 +41,7 @@ export const CoinDetails = ({
   hasAddAsset,
   handleCopyLink,
   additionalImageBoxClass,
+  pageLink,
 }: Props) => {
   return (
     <div className="flex flex-col gap-4 text-background">
@@ -59,14 +62,30 @@ export const CoinDetails = ({
               </div>
             )}
             <div className="flex flex-col gap-1">
-              <ToolTip
-                toolTipTrigger={
-                  <h2 className="text-xl font-[700] truncate block max-w-[250px]">
-                    {coinName}
-                  </h2>
-                }
-                toolTipContent={coinName}
-              />
+              {pageLink ? (
+                <ToolTip
+                  toolTipTrigger={
+                    <Link
+                      href={`/coin-page/${pageLink}`}
+                      className="hover:underline underline-offset-4"
+                    >
+                      <h2 className="text-xl font-[700] truncate block max-w-[250px]">
+                        {coinName}
+                      </h2>
+                    </Link>
+                  }
+                  toolTipContent={coinName}
+                />
+              ) : (
+                <ToolTip
+                  toolTipTrigger={
+                    <h2 className="text-xl font-[700] truncate block max-w-[250px]">
+                      {coinName}
+                    </h2>
+                  }
+                  toolTipContent={coinName}
+                />
+              )}
 
               {coinUrl && (
                 <div className="flex items-center gap-2">
@@ -109,7 +128,7 @@ export const CoinDetails = ({
         <div className="flex flex-col gap-1">
           <div className="flex gap-3">
             {value && <p className="text-2xl font-[700]">{value}</p>}
-            {percentage != null && (
+            {percentage !== undefined && (
               <div className="flex items-center gap-1">
                 <div className="w-[1rem] h-[1rem]">
                   <Image

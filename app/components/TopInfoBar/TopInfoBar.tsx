@@ -49,7 +49,7 @@ export const TopInfoBar = () => {
 
   return (
     <div className="bg-deep-plum px-2 py-3 border-b border-b-white/10 text-white flex justify-center w-full min-h-14">
-      <div className="flex items-center sm:gap-7 gap-5 flex-wrap">
+      <div className="flex items-center sm:gap-7 gap-5 flex-wrap justify-center">
         {loading ? (
           <>
             <InfoTextSkeleton image title />
