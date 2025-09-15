@@ -6,6 +6,7 @@ import graphDataSlice from "./features/graphData/graphDataSlice";
 import convertorGraphDataSlice from "./features/convertorGraphData/convertorGraphDataSlice";
 import coinPageDataSlice from "./features/coinPageData/coinPageDataSlice";
 import portfolioDataSlice from "./features/portfolioData/portfolioDataSlice";
+import pageLoaderSlice from "./features/pageLoaderData/pageLoaderSlice";
 
 export const makeStore = () => {
   return configureStore({
@@ -17,6 +18,7 @@ export const makeStore = () => {
       convertorGraphData: convertorGraphDataSlice,
       coinPageData: coinPageDataSlice,
       portfolioData: portfolioDataSlice,
+      pageLoaderData: pageLoaderSlice,
     },
   });
 };

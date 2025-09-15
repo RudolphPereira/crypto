@@ -38,8 +38,8 @@ type InitialState = {
 
 const initialState: InitialState = {
   coinName: "",
-  skeletonLoader: true,
-  loading: true,
+  skeletonLoader: false,
+  loading: false,
   coin: {
     id: "",
     symbol: "",

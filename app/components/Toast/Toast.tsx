@@ -15,7 +15,6 @@ export function Toast({ title, message, btnLabel }: Props) {
       label: btnLabel,
       onClick: () => {
         window.location.reload();
-        // toast.dismiss;
       },
     },
   });

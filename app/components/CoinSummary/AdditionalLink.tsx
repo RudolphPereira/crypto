@@ -18,7 +18,7 @@ export const AdditionalLink = ({ linkUrl, handleCopyLink }: Props) => {
             href={`${linkUrl}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm justify-center text-center flex max-w-[250px] items-center gap-1"
+            className="text-sm justify-center text-center flex max-w-[250px] items-center gap-1 hover:underline"
           >
             <ExternalLink className="w-4 h-4 flex-shrink-0" />
             <span className="truncate">{linkUrl}</span>

@@ -19,7 +19,7 @@ interface Props {
   numberOfCoins?: string;
   ledgerNum?: number | undefined;
   ledgerText?: string | undefined;
-  percentage?: number;
+  percentage?: number | undefined;
   highStatus?: boolean;
   hasAddAsset?: boolean;
   handleCopyLink?: () => void | Promise<void>;
@@ -88,14 +88,14 @@ export const CoinDetails = ({
               )}
 
               {coinUrl && (
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 flex-wrap">
                   <ToolTip
                     toolTipTrigger={
                       <a
                         href={`${coinUrl}`}
                         target="_blank"
                         rel={"noreferrer"}
-                        className="text-sm flex gap-1 items-center max-w-[250px]"
+                        className="text-sm flex gap-1 items-center max-w-[250px] hover:underline"
                       >
                         <ExternalLink className="w-4 h-4 flex-shrink-0" />
                         <span className="truncate">{coinUrl}</span>

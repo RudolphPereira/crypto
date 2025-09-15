@@ -31,7 +31,7 @@ const initialState: InitialState = {
   noOfCoins: "",
   coinList: [],
   skeletonLoader: false,
-  loading: true,
+  loading: false,
   error: "",
 };
 
@@ -144,6 +144,7 @@ const portfolioDataSlice = createSlice({
     );
     builder.addCase(fetchPortfolioCoinList.rejected, (state, action) => {
       state.loading = true;
+      state.skeletonLoader = true;
       state.error = action.error.message || "Something went wrong here";
     });
   },
