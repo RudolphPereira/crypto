@@ -110,7 +110,7 @@ export const CoinSlider = () => {
                             } group/scaleImage sm:min-h-19 shadow-xs light:[&.active]:bg-periwinkle-blue/30 [&.active]:bg-periwinkle-blue/40 [&.active]:border-periwinkle-blue  light:bg-white rounded-sm py-3 sm:py-4 w-full bg-black-russian border border-transparent border-b-0 text-background cursor-pointer hover:bg-periwinkle-blue/30 light:hover:bg-periwinkle-blue/30 transition-all duration-150 ease flex justify-center items-center sm:items-start`}
                           >
                             <CardContent className="flex items-center gap-2 sm:gap-4 px-3 sm:px-4">
-                              <div className="w-[1.5rem] h-[1.5rem] sm:w-[2.2rem] sm:h-[2.2rem] rounded-full group-hover:rotate-360 group-hover:scale-120 group-[&.active]/scaleImage:scale-120 group-[&.active]/scaleImage:rotate-360  transition-all ease-in-out duration-600 bg-white p-[.08rem] sm:p-0.5 ">
+                              <div className="w-[1.5rem] h-[1.5rem] sm:w-[2.2rem] sm:h-[2.2rem] rounded-full  group-hover:scale-110 group-[&.active]/scaleImage:scale-110 transition-all ease-in-out duration-600 bg-white p-[.08rem] sm:p-0.5 ">
                                 <Image
                                   width={100}
                                   height={100}

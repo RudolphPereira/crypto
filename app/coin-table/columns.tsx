@@ -66,7 +66,7 @@ export const columns: ColumnDef<CoinData>[] = [
             toolTipTrigger={
               <Link href={`/coin-page/${row.original.id}`} className="group">
                 <div className="flex items-center gap-3 group cursor-pointer">
-                  <div className="w-[2rem] h-[2rem] bg-white rounded-full shadow-md group-hover:rotate-360 group-hover:scale-120 transition-all ease-in-out duration-600">
+                  <div className="w-[2rem] h-[2rem] bg-white rounded-full shadow-md group-hover:scale-110 transition-all ease-in-out duration-600">
                     <Image
                       width={100}
                       height={100}
