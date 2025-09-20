@@ -10,6 +10,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { BrandLoader } from "./components/PageLoaders/BrandLoader";
 import { PageLoader } from "./components/PageLoaders/PageLoader";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -60,6 +61,7 @@ export default function RootLayout({
         </StoreProvider>
         <Toaster richColors />
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
