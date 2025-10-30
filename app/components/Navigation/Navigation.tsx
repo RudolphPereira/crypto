@@ -2,6 +2,7 @@ import { SearchBox } from "./SearchBox";
 import { CurrencyBox } from "./CurrencyBox";
 import { ThemeBox } from "./ThemeBox";
 import { LinkBox } from "./LinkBox";
+import LoginBox from "./LoginBox";
 
 export const Navigation = () => {
   return (
@@ -18,6 +19,9 @@ export const Navigation = () => {
         </div>
         <div className="">
           <CurrencyBox />
+        </div>
+        <div className="">
+          <LoginBox />
         </div>
         <div className="">
           <ThemeBox />
