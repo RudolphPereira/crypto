@@ -8,10 +8,15 @@ import moonIcon from "../../assets/moonIcon.svg";
 import sunIcon from "../../assets/sunIcon.svg";
 import { useEffect, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useThemeToggle } from "@/components/ui/skiper-ui/skiper26";
 
 export const ThemeBox = () => {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const { toggleTheme } = useThemeToggle({
+    variant: "rectangle",
+    start: "bottom-up",
+  });
 
   useEffect(() => {
     setMounted(true);
@@ -22,9 +27,12 @@ export const ThemeBox = () => {
   }, [theme, setTheme]);
 
   const handleTheme = () => {
-    const appTheme = theme === "dark" ? "light" : "dark";
-    setTheme(appTheme);
-    localStorage.setItem("theme", appTheme);
+    toggleTheme();
+    setTimeout(() => {
+      const appTheme = resolvedTheme === "dark" ? "light" : "dark";
+      setTheme(appTheme);
+      localStorage.setItem("theme", appTheme);
+    }, 300);
   };
 
   if (!mounted) {
@@ -43,7 +51,9 @@ export const ThemeBox = () => {
       <div className="h-10">
         <Button
           aria-labelledby={
-            theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+            resolvedTheme === "dark"
+              ? "Switch to light mode"
+              : "Switch to dark mode"
           }
           onClick={handleTheme}
           size="icon"
@@ -51,12 +61,12 @@ export const ThemeBox = () => {
         >
           <div className="w-[1.3rem] h-[1.3rem] flex items-center justify-center">
             <Image
-              src={theme === "light" ? moonIcon : sunIcon}
+              src={resolvedTheme === "light" ? moonIcon : sunIcon}
               alt="logo"
               width={24}
               height={24}
               className={`w-full h-full transition-all ease-in duration-250 ${
-                theme === "light"
+                resolvedTheme === "light"
                   ? "group-hover:-rotate-20"
                   : "group-hover:rotate-75"
               }`}
