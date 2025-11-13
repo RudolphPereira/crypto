@@ -33,7 +33,7 @@ export function PurchasedDatePicker({ date, setDate }: Props) {
   );
   startMonth.setHours(0, 0, 0, 0);
 
-  const endMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+  const endMonth = new Date(today.getFullYear(), today.getMonth() + 1, 1);
   endMonth.setHours(0, 0, 0, 0);
 
   return (
