@@ -15,7 +15,7 @@ export const ThemeBox = () => {
   const [mounted, setMounted] = useState(false);
   const { toggleTheme } = useThemeToggle({
     variant: "rectangle",
-    start: "bottom-up",
+    start: "top-down",
   });
 
   useEffect(() => {
